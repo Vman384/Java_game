@@ -1,20 +1,22 @@
-package game;
+package game.behaviour;
+
+import edu.monash.fit2099.engine.actions.Action;
+import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.actors.Behaviour;
+import edu.monash.fit2099.engine.positions.Exit;
+import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-import edu.monash.fit2099.engine.actions.Action;
-import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.positions.Exit;
-import edu.monash.fit2099.engine.positions.GameMap;
-import edu.monash.fit2099.engine.positions.Location;
-import edu.monash.fit2099.engine.actors.Behaviour;
-
 /**
  * Created by:
+ *
  * @author Riordan D. Alfredo
  * Modified by:
  *
+ * @author Weize Yu
  */
 public class WanderBehaviour implements Behaviour {
 
@@ -25,7 +27,7 @@ public class WanderBehaviour implements Behaviour {
      * If no movement is possible, returns null.
      *
      * @param actor the Actor enacting the behaviour
-     * @param map the map that actor is currently on
+     * @param map   the map that actor is currently on
      * @return an Action, or null if no MoveAction is possible
      */
     @Override
@@ -41,8 +43,7 @@ public class WanderBehaviour implements Behaviour {
 
         if (!actions.isEmpty()) {
             return actions.get(random.nextInt(actions.size()));
-        }
-        else {
+        } else {
             return null;
         }
 
