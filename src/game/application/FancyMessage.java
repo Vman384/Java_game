@@ -8,7 +8,6 @@ package game.application;
  *
  * @author Adrian Kristanto
  * Modified by:
- *
  * @author Weize Yu
  */
 public class FancyMessage {

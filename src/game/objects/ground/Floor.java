@@ -10,7 +10,6 @@ import game.constants.Ability;
  *
  * @author Riordan D. Alfredo
  * Modified by:
- *
  * @author Weize Yu
  */
 public class Floor extends Ground {

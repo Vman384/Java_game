@@ -14,15 +14,17 @@ import game.action.ConsumeAction;
  * @author Weize Yu
  */
 public abstract class ConsumableItem extends Item {
-    /** The amount of health restored when this item is consumed. */
+    /**
+     * The amount of health restored when this item is consumed.
+     */
     protected int healEffects = 0;
 
     /**
      * Constructor for ConsumableItem objects.
      *
-     * @param name         the name of the consumable item
-     * @param displayChar  the character representing the consumable item on the map
-     * @param portable     indicates whether the item can be picked up and carried by actors
+     * @param name        the name of the consumable item
+     * @param displayChar the character representing the consumable item on the map
+     * @param portable    indicates whether the item can be picked up and carried by actors
      */
     public ConsumableItem(String name, char displayChar, boolean portable) {
         super(name, displayChar, portable);

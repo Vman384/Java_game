@@ -1,5 +1,7 @@
 package game.abstractions.transformable;
 
+import edu.monash.fit2099.engine.positions.Location;
+
 /**
  * Interface representing objects that can transform into different forms.
  * Created by:
@@ -7,6 +9,16 @@ package game.abstractions.transformable;
  * @author Weize Yu
  */
 public interface Transformable {
+    /**
+     * checks if object can transform
+     *
+     * @return void
+     */
+    default void checkTransform(Location location) {
+        if (canTransform()) {
+            transform(location);
+        }
+    }
 
     /**
      * Checks if the object can transform into another form based on certain conditions.
@@ -18,7 +30,7 @@ public interface Transformable {
     /**
      * Transforms the object into another form.
      *
-     * @return the transformed object
+     * @return void
      */
-    Transformable transform();
+    void transform(Location location);
 }

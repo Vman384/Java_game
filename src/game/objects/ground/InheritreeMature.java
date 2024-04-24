@@ -19,14 +19,4 @@ public class InheritreeMature extends Tree {
     public InheritreeMature(SpawnRule... spawnrules) {
         super('T', 5, spawnrules);
     }
-
-    /**
-     * Determines if the InheritreeMature object can transform into another type of tree.
-     *
-     * @return Always returns false since InheritreeMature cannot transform.
-     */
-    @Override
-    public boolean canTransform() {
-        return false;
-    }
 }
