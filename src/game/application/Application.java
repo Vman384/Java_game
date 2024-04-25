@@ -64,12 +64,16 @@ public class Application {
 
         gameMap.at(10, 10).setGround(new Crater(new SimpleSpawner(0.02, new HuntsmanSpider())));
 
-        gameMap.at(7, 9).addActor(new HuntsmanSpider());
         gameMap.at(2, 3).addItem(new MetalSheet());
         gameMap.at(4, 6).addItem(new LargeBolt());
         gameMap.at(10, 6).addItem(new LargeBolt());
         gameMap.at(11, 12).addItem(new MetalPipe());
         gameMap.at(10, 12).addItem(new PotofGold());
+        gameMap.at(12, 8).addItem(new JarofPickles());
+        gameMap.at(12, 8).addItem(new JarofPickles());
+        gameMap.at(12, 8).addItem(new JarofPickles());
+
+
 
 
         Player player = new Player("Intern", '@', 4);

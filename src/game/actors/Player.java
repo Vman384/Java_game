@@ -72,7 +72,7 @@ public class Player extends Actor {
      */
     @Override
     public String toString() {
-        return name + "Health: (" +
+        return name + " Health: (" +
                 this.getAttribute(BaseActorAttributes.HEALTH) + "/" +
                 this.getAttributeMaximum(BaseActorAttributes.HEALTH) +
                 ") Balance: " + this.getBalance();
