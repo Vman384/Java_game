@@ -69,11 +69,21 @@ public class Application {
         gameMap.at(4, 6).addItem(new LargeBolt());
         gameMap.at(10, 6).addItem(new LargeBolt());
         gameMap.at(11, 12).addItem(new MetalPipe());
+        gameMap.at(10, 12).addItem(new PotofGold());
 
 
         Player player = new Player("Intern", '@', 4);
         world.addPlayer(player, gameMap.at(15, 6));
 
         world.run();
+        // Display a message at the end of the game
+        for (String line : FancyMessage.YOU_ARE_FIRED.split("\n")) {
+            new Display().println(line);
+            try {
+                Thread.sleep(200);
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+        }
     }
 }
