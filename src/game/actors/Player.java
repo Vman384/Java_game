@@ -15,8 +15,9 @@ import game.constants.Status;
  * The Player is controlled by the user and interacts with the game environment.
  * The Player can take actions during gameplay.
  * Created by:
- * @author  Kristanto
  *
+ * @author Kristanto
+ * <p>
  * Modified by:
  * @author Weize Yu
  */

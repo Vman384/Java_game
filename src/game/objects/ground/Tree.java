@@ -3,7 +3,6 @@ package game.objects.ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.abstractions.ground.SpawnerGround;
 import game.abstractions.spawnable.SpawnRule;
-import game.abstractions.transformable.Transformable;
 
 /**
  * class representing a tree in the game world.
@@ -13,9 +12,11 @@ import game.abstractions.transformable.Transformable;
  *
  * @author Weize Yu
  */
-public class Tree extends SpawnerGround implements Transformable {
+public class Tree extends SpawnerGround {
 
-    /** The age of the tree. */
+    /**
+     * The age of the tree.
+     */
     protected int age = 0;
 
     /**
@@ -31,7 +32,7 @@ public class Tree extends SpawnerGround implements Transformable {
     }
 
     /**
-     * Performs actions that occur on each game tick, such as aging and potentially transforming.
+     * Performs actions that occur on each game tick, such as aging
      *
      * @param location the location of the tree in the game world
      */
@@ -39,10 +40,6 @@ public class Tree extends SpawnerGround implements Transformable {
     public void tick(Location location) {
         super.tick(location);
         age++;
-        if (canTransform()) {
-            Tree transformedTree = transform();
-            location.setGround(transformedTree);
-        }
     }
 
     /**
@@ -52,7 +49,8 @@ public class Tree extends SpawnerGround implements Transformable {
      */
     public boolean canTransform() {
         return false;
-    };
+    }
+
 
     /**
      * Transforms the tree into another form. Subclasses can override this method to implement specific transformation behavior.

@@ -1,6 +1,8 @@
 package game.objects.ground;
 
+import edu.monash.fit2099.engine.positions.Location;
 import game.abstractions.spawnable.SpawnRule;
+import game.abstractions.transformable.Transformable;
 import game.objects.items.LargeFruit;
 import game.spawning.SimpleSpawner;
 
@@ -11,7 +13,7 @@ import game.spawning.SimpleSpawner;
  *
  * @author Weize Yu
  */
-public class InheritreeNonMature extends Tree {
+public class InheritreeNonMature extends Tree implements Transformable {
 
     /**
      * Constructs a new InheritreeNonMature object.
@@ -19,6 +21,17 @@ public class InheritreeNonMature extends Tree {
      */
     public InheritreeNonMature(SpawnRule... spawnrules) {
         super('t', 0, spawnrules);
+    }
+
+    /**
+     * Performs actions that occur on each game tick, such as aging and potentially transforming.
+     *
+     * @param location the location of the tree in the game world
+     */
+    @Override
+    public void tick(Location location) {
+        super.tick(location);
+        checkTransform(location);
     }
 
     /**
@@ -37,7 +50,7 @@ public class InheritreeNonMature extends Tree {
      * @return A new InheritreeMature object.
      */
     @Override
-    public Tree transform() {
-        return new InheritreeMature(new SimpleSpawner(0.2, new LargeFruit()));
+    public void transform(Location location) {
+        location.setGround(new InheritreeMature(new SimpleSpawner(0.2, new LargeFruit())));
     }
 }

@@ -11,9 +11,13 @@ package game.constants;
  * @author Weize Yu
  */
 public enum Status {
-    /** Indicates that an actor is hostile towards enemies. */
+    /**
+     * Indicates that an actor is hostile towards enemies.
+     */
     HOSTILE_TO_ENEMY,
 
-    /** Indicates that an actor is hostile towards the player. */
+    /**
+     * Indicates that an actor is hostile towards the player.
+     */
     HOSTILE_TO_PLAYER
 }

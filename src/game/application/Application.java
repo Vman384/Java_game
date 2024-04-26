@@ -19,7 +19,6 @@ import java.util.List;
  *
  * @author Adrian Kristanto
  * Modified by:
- *
  * @author Weize Yu
  */
 public class Application {
