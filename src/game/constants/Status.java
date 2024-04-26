@@ -19,5 +19,9 @@ public enum Status {
     /**
      * Indicates that an actor is hostile towards the player.
      */
-    HOSTILE_TO_PLAYER
+    HOSTILE_TO_PLAYER,
+    /**
+     *  Indicates that this is the INTERN
+     */
+    INTERN,
 }
