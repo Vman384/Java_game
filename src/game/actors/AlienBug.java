@@ -6,6 +6,7 @@ import game.abstractions.actor.NPC;
 import game.abstractions.spawnable.Spawnable;
 import game.behaviour.AttackBehaviour;
 import game.behaviour.WanderBehaviour;
+import game.constants.Status;
 
 /**
  * A class representing an Alien Bug NPC in the game world.
@@ -18,7 +19,7 @@ import game.behaviour.WanderBehaviour;
 public class AlienBug extends NPC implements Spawnable {
 
     public AlienBug() {
-        super("Alien Bug", 'a', '1');
+        super("Alien Bug", 'a', '2');
         this.behaviours.put(999, new WanderBehaviour());
         this.behaviours.put(100, new AttackBehaviour());
     }
@@ -41,16 +42,6 @@ public class AlienBug extends NPC implements Spawnable {
     @Override
     public void spawn(Location location) {
         location.addActor(createNewInstance());
-    }
-
-    /**
-     * Retrieves the intrinsic weapon of the AlienBug.
-     *
-     * @return the intrinsic weapon of the AlienBug
-     */
-    @Override
-    public IntrinsicWeapon getIntrinsicWeapon() {
-        return new IntrinsicWeapon(1, "claws", 25);
     }
 
 }

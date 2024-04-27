@@ -34,7 +34,6 @@ public abstract class NPC extends Actor {
      */
     public NPC(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
-        this.addCapability(Status.HOSTILE_TO_PLAYER);
     }
 
     /**

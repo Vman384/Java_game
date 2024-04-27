@@ -6,6 +6,7 @@ import game.abstractions.actor.NPC;
 import game.abstractions.spawnable.Spawnable;
 import game.behaviour.AttackBehaviour;
 import game.behaviour.WanderBehaviour;
+import game.constants.Status;
 
 /**
  * A class representing a Huntsman Spider NPC in the game world.
@@ -25,6 +26,7 @@ public class HuntsmanSpider extends NPC implements Spawnable {
         super("Huntsman Spider", '8', 1);
         this.behaviours.put(999, new WanderBehaviour());
         this.behaviours.put(100, new AttackBehaviour());
+        this.addCapability(Status.HOSTILE_TO_PLAYER);
     }
 
     /**
