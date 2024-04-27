@@ -5,12 +5,13 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.abstractions.ground.SpawnerGround;
 import game.abstractions.item.PrintableItem;
+import game.objects.ground.ComputerTerminal;
 
 public class PrintAction extends Action {
     private PrintableItem itemPrinted;
-    private SpawnerGround spawnGround;
+    private ComputerTerminal spawnGround;
 
-    public PrintAction(PrintableItem itemPrinted, SpawnerGround spawnGround) {
+    public PrintAction(PrintableItem itemPrinted, ComputerTerminal spawnGround) {
         this.itemPrinted = itemPrinted;
         this.spawnGround = spawnGround;
     }
