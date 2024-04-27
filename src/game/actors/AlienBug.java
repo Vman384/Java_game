@@ -21,7 +21,6 @@ public class AlienBug extends NPC implements Spawnable {
     public AlienBug() {
         super("Alien Bug", 'a', '2');
         this.behaviours.put(999, new WanderBehaviour());
-        this.behaviours.put(100, new AttackBehaviour());
     }
 
     /**
