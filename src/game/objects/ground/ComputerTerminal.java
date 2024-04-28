@@ -7,7 +7,6 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.abstractions.item.PrintableItem;
 import game.action.PrintAction;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ComputerTerminal extends Ground {
@@ -38,5 +37,10 @@ public class ComputerTerminal extends Ground {
         }
 
         return actions;
+    }
+
+    @Override
+    public String toString() {
+        return "Computer Terminal";
     }
 }

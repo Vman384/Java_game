@@ -4,12 +4,14 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
+import game.abstractions.item.PrintableItem;
 import game.actors.HuntsmanSpider;
 import game.actors.Player;
 import game.objects.ground.*;
 import game.objects.items.*;
 import game.spawning.SimpleSpawner;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -64,6 +66,13 @@ public class Application {
 
         gameMap.at(10, 10).setGround(new Crater(new SimpleSpawner(0.02, new HuntsmanSpider())));
 
+        List<PrintableItem> printables = new ArrayList<>();
+        printables.add(new EnergyDrink());
+        printables.add(new ToiletRoll());
+        printables.add(new DragonSlayerSword());
+
+        gameMap.at(6, 8).setGround(new ComputerTerminal(printables));
+
         gameMap.at(7, 9).addActor(new HuntsmanSpider());
         gameMap.at(2, 3).addItem(new MetalSheet());
         gameMap.at(4, 6).addItem(new LargeBolt());
@@ -73,7 +82,7 @@ public class Application {
 
         Player player = new Player("Intern", '@', 4);
         world.addPlayer(player, gameMap.at(15, 6));
-
+        player.addBalance(10000);
         world.run();
     }
 }

@@ -18,8 +18,7 @@ public class PrintAction extends Action {
 
     @Override
     public String execute(Actor actor, GameMap map) {
-        itemPrinted.print(actor);
-        return this.itemPrinted + " printed to " + actor + " inventory.";
+        return itemPrinted.print(actor, this.spawnGround);
     }
 
     @Override
