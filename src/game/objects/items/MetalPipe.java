@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.action.AttackAction;
+import game.constants.Status;
 
 /**
  * Represents a metal pipe item in the game world.
@@ -19,7 +20,7 @@ public class MetalPipe extends WeaponItem {
      * Constructor for MetalPipe objects.
      */
     public MetalPipe() {
-        super("Metal Pipe", '!', 1, "hit", 20);
+        super("Metal Pipe", '!', 100, "hit", 100);
     }
 
     /**

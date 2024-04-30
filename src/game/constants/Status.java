@@ -24,4 +24,5 @@ public enum Status {
      *  Indicates that this is the INTERN
      */
     INTERN,
+    SCRAP
 }

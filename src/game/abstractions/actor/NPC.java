@@ -6,12 +6,13 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.Behaviour;
 import edu.monash.fit2099.engine.displays.Display;
+import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
 import game.action.AttackAction;
 import game.constants.Status;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * An abstract class representing non-playable characters (NPCs) in the game world.
@@ -48,7 +49,12 @@ public abstract class NPC extends Actor {
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        for (Behaviour behaviour : behaviours.values()) {
+
+        List<Integer> sortedKeys = new ArrayList<>(behaviours.keySet());
+        Collections.sort(sortedKeys);
+
+        for (Integer key : sortedKeys) {
+            Behaviour behaviour = behaviours.get(key);
             Action action = behaviour.getAction(this, map);
             if (action != null)
                 return action;

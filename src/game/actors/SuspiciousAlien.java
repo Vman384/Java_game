@@ -14,7 +14,6 @@ import game.constants.Status;
  * Created by:
  *
  * @author Harvey Houlahan
- *
  */
 public class SuspiciousAlien extends NPC implements Spawnable {
 
@@ -24,6 +23,7 @@ public class SuspiciousAlien extends NPC implements Spawnable {
         this.behaviours.put(100, new AttackBehaviour());
         this.addCapability(Status.HOSTILE_TO_PLAYER);
     }
+
     /**
      * Creates a new instance of the SuspiciousAlien.
      *

@@ -72,8 +72,14 @@ public class Application {
         gameMap.at(1, 1).setGround((new Crater(new SimpleSpawner(0.5, new AlienBug()))));
         gameMap.at(15, 11).setGround((new Crater(new SimpleSpawner(0.05, new SuspiciousAlien()))));
 
+        gameMap.at(3, 6).addActor(new AlienBug());
+        gameMap.at(5, 6).addActor(new AlienBug());
+
         gameMap.at(2, 3).addItem(new MetalSheet());
         gameMap.at(4, 6).addItem(new LargeBolt());
+        gameMap.at(5, 6).addItem(new LargeBolt());
+        gameMap.at(6, 6).addItem(new LargeBolt());
+        gameMap.at(7, 6).addItem(new LargeBolt());
         gameMap.at(10, 6).addItem(new LargeBolt());
         gameMap.at(11, 12).addItem(new MetalPipe());
 

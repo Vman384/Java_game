@@ -1,6 +1,7 @@
 package game.objects.items;
 
 import edu.monash.fit2099.engine.items.Item;
+import game.constants.Status;
 
 /**
  * Represents a metal sheet item, which is a type of item that extends the base Item class.
@@ -17,5 +18,6 @@ public class MetalSheet extends Item {
      */
     public MetalSheet() {
         super("Metal Sheet", '%', true);
+        addCapability(Status.SCRAP);
     }
 }

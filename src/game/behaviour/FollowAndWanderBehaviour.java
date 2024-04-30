@@ -16,6 +16,7 @@ import java.util.ArrayList;
  */
 public class FollowAndWanderBehaviour implements Behaviour {
     private final Behaviour wanderBehaviour = new WanderBehaviour();
+
     /**
      * Constructor for FollowAndWanderBehaviour.
      */

@@ -1,13 +1,10 @@
 package game.actors;
 
 import edu.monash.fit2099.engine.positions.Location;
-import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.abstractions.actor.NPC;
 import game.abstractions.spawnable.Spawnable;
-import game.behaviour.AttackBehaviour;
 import game.behaviour.FollowAndWanderBehaviour;
-import game.behaviour.WanderBehaviour;
-import game.constants.Status;
+import game.behaviour.PickUpScrapsBehaviour;
 
 /**
  * A class representing an Alien Bug NPC in the game world.
@@ -15,13 +12,13 @@ import game.constants.Status;
  * Created by:
  *
  * @author Harvey Houlahan
- *
  */
 public class AlienBug extends NPC implements Spawnable {
 
     public AlienBug() {
         super("Alien Bug", 'a', '2');
         this.behaviours.put(999, new FollowAndWanderBehaviour());
+        this.behaviours.put(99, new PickUpScrapsBehaviour());
     }
 
     /**
