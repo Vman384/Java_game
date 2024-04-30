@@ -2,6 +2,7 @@ package game.abstractions.actor;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
+import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.Behaviour;
 import edu.monash.fit2099.engine.displays.Display;
@@ -52,7 +53,7 @@ public abstract class NPC extends Actor {
             if (action != null)
                 return action;
         }
-        return null; // Default to no action
+        return new DoNothingAction(); // Default to no action
     }
 
     /**
