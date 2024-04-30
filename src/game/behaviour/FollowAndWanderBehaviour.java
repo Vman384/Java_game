@@ -2,6 +2,7 @@ package game.behaviour;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.actors.Behaviour;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
@@ -13,8 +14,8 @@ import java.util.ArrayList;
 /**
  * A behavior subclass representing following and wandering behavior for an actor.
  */
-public class FollowAndWanderBehaviour extends WanderBehaviour {
-
+public class FollowAndWanderBehaviour implements Behaviour {
+    private final Behaviour wanderBehaviour = new WanderBehaviour();
     /**
      * Constructor for FollowAndWanderBehaviour.
      */
@@ -48,7 +49,7 @@ public class FollowAndWanderBehaviour extends WanderBehaviour {
         }
 
         // If not within follow range or intern is not reachable, perform wandering behavior
-        return super.getAction(actor, map);
+        return wanderBehaviour.getAction(actor, map);
     }
 
     /**

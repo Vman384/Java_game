@@ -61,21 +61,21 @@ public class Application {
                 exception.printStackTrace();
             }
         }
+
+        Player player = new Player("Intern", '@', 4);
+        world.addPlayer(player, gameMap.at(15, 6));
+
         gameMap.at(8, 6).setGround(new InheritreeNonMature(new SimpleSpawner(0.3, new SmallFruit())));
         gameMap.at(1, 6).setGround(new InheritreeMature(new SimpleSpawner(0.2, new LargeFruit())));
 
         gameMap.at(10, 10).setGround(new Crater(new SimpleSpawner(0.2, new HuntsmanSpider())));
-        gameMap.at(1, 1).setGround((new Crater(new SimpleSpawner(0.1, new AlienBug()))));
+        gameMap.at(1, 1).setGround((new Crater(new SimpleSpawner(0.5, new AlienBug()))));
         gameMap.at(15, 11).setGround((new Crater(new SimpleSpawner(0.05, new SuspiciousAlien()))));
 
         gameMap.at(2, 3).addItem(new MetalSheet());
         gameMap.at(4, 6).addItem(new LargeBolt());
         gameMap.at(10, 6).addItem(new LargeBolt());
         gameMap.at(11, 12).addItem(new MetalPipe());
-
-
-        Player player = new Player("Intern", '@', 4);
-        world.addPlayer(player, gameMap.at(15, 6));
 
         world.run();
     }

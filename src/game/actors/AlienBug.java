@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.abstractions.actor.NPC;
 import game.abstractions.spawnable.Spawnable;
 import game.behaviour.AttackBehaviour;
+import game.behaviour.FollowAndWanderBehaviour;
 import game.behaviour.WanderBehaviour;
 import game.constants.Status;
 
@@ -20,7 +21,7 @@ public class AlienBug extends NPC implements Spawnable {
 
     public AlienBug() {
         super("Alien Bug", 'a', '2');
-        this.behaviours.put(999, new WanderBehaviour());
+        this.behaviours.put(999, new FollowAndWanderBehaviour());
     }
 
     /**
