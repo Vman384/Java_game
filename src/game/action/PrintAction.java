@@ -22,6 +22,6 @@ public class PrintAction extends Action {
 
     @Override
     public String menuDescription(Actor actor) {
-        return "Print " + this.itemPrinted + " from " + this.printGround + " to " + actor + " inventory.";
+        return "Print " + this.itemPrinted + " from " + this.printGround + " to " + actor + " inventory for " + itemPrinted.getCost() + " credits.";
     }
 }

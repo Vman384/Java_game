@@ -33,8 +33,11 @@ public class EnergyDrink extends ConsumableItem implements PrintableItem {
         } else {
             return "Transaction failed, " + actor + " does not have " + dummyCost + " credits to purchase " + this + " from " + printGround;
         }
+    }
 
-
+    @Override
+    public int getCost() {
+        return this.creditCost;
     }
 
 }

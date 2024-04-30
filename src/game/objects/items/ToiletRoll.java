@@ -34,4 +34,9 @@ public class ToiletRoll extends Item implements PrintableItem {
             return "Transaction failed, " + actor + " does not have " + dummyCost + " credits to purchase " + this + " from " + printGround;
         }
     }
+
+    @Override
+    public int getCost() {
+        return this.creditCost;
+    }
 }

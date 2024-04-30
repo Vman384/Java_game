@@ -50,4 +50,9 @@ public class DragonSlayerSword extends WeaponItem implements PrintableItem {
         actionList.add(new AttackAction(otherActor, location.toString(), this));
         return actionList;
     }
+
+    @Override
+    public int getCost() {
+        return this.creditCost;
+    }
 }
