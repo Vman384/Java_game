@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.abstractions.item.PrintableItem;
 import game.action.AttackAction;
 import game.objects.ground.ComputerTerminal;
+import game.utility.PrintValidation;
 import game.utility.Probability;
 
 public class DragonSlayerSword extends WeaponItem implements PrintableItem {
@@ -27,13 +28,7 @@ public class DragonSlayerSword extends WeaponItem implements PrintableItem {
             return "Error! There has been an error in the " + printGround + " and the " + actor + " has lost " + this.creditCost + " credits.";
         }
 
-        if (actor.getBalance() >= this.creditCost) {
-            actor.addItemToInventory(this);
-            actor.deductBalance(this.creditCost);
-            return actor + " has purchased " + this + " from " + printGround + " for " + this.creditCost + " credits.";
-        } else {
-            return "Transaction failed, " + actor + " does not have " + this.creditCost + " credits to purchase " + this + " from " + printGround;
-        }
+        return PrintValidation.validatePrinting(this.creditCost, this, actor, printGround);
 
     }
 

@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.abstractions.item.PrintableItem;
 import game.abstractions.spawnable.Spawnable;
 import game.objects.ground.ComputerTerminal;
+import game.utility.PrintValidation;
 import game.utility.Probability;
 
 public class ToiletRoll extends Item implements PrintableItem {
@@ -26,13 +27,7 @@ public class ToiletRoll extends Item implements PrintableItem {
             dummyCost = 1;
         }
 
-        if (actor.getBalance() >= dummyCost) {
-            actor.addItemToInventory(this);
-            actor.deductBalance(dummyCost);
-            return actor + " has purchased " + this + " from " + printGround + " for " + dummyCost + " credits.";
-        } else {
-            return "Transaction failed, " + actor + " does not have " + dummyCost + " credits to purchase " + this + " from " + printGround;
-        }
+        return PrintValidation.validatePrinting(dummyCost, this, actor, printGround);
     }
 
     @Override

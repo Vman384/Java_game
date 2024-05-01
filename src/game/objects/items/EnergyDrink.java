@@ -4,6 +4,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import game.abstractions.item.ConsumableItem;
 import game.abstractions.item.PrintableItem;
 import game.objects.ground.ComputerTerminal;
+import game.utility.PrintValidation;
 import game.utility.Probability;
 
 public class EnergyDrink extends ConsumableItem implements PrintableItem {
@@ -26,13 +27,8 @@ public class EnergyDrink extends ConsumableItem implements PrintableItem {
             dummyCost = 2 * this.creditCost;
         }
 
-        if (actor.getBalance() >= dummyCost) {
-            actor.addItemToInventory(this);
-            actor.deductBalance(dummyCost);
-            return actor + " has purchased " + this + " from " + printGround + " for " + dummyCost + " credits.";
-        } else {
-            return "Transaction failed, " + actor + " does not have " + dummyCost + " credits to purchase " + this + " from " + printGround;
-        }
+        return PrintValidation.validatePrinting(dummyCost, this, actor, printGround);
+
     }
 
     @Override
