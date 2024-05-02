@@ -11,7 +11,9 @@ import java.util.Random;
  */
 public class Probability {
 
-    /** Random number generator. */
+    /**
+     * Random number generator.
+     */
     private static final Random random = new Random();
 
     /**

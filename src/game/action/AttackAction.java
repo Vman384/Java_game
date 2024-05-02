@@ -16,16 +16,24 @@ import java.util.Random;
  */
 public class AttackAction extends Action {
 
-    /** The actor that is to be attacked. */
+    /**
+     * The actor that is to be attacked.
+     */
     private Actor target;
 
-    /** The direction of the incoming attack (for display purposes). */
+    /**
+     * The direction of the incoming attack (for display purposes).
+     */
     private String direction;
 
-    /** Random number generator. */
+    /**
+     * Random number generator.
+     */
     private Random rand = new Random();
 
-    /** The weapon used for the attack. */
+    /**
+     * The weapon used for the attack.
+     */
     private Weapon weapon;
 
     /**

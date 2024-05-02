@@ -7,6 +7,8 @@ package game.constants;
  * @author Weize Yu
  */
 public enum Ability {
-    /** The ability to enter a ship. */
+    /**
+     * The ability to enter a ship.
+     */
     ENTER_SHIP
 }

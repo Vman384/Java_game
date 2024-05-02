@@ -9,40 +9,35 @@ import game.behaviour.WanderBehaviour;
 import game.constants.Status;
 
 /**
- * A class representing a Huntsman Spider NPC in the game world.
+ * A class representing a Suspicious Alien NPC in the game world.
  * Huntsman Spiders are aggressive creatures capable of attacking nearby actors.
  * Created by:
- * @author Weize Yu
  *
- * Modified by:
- * Harvey Houlahan
+ * @author Harvey Houlahan
  *
  */
-public class HuntsmanSpider extends NPC implements Spawnable {
-    /**
-     * Constructor for HuntsmanSpider objects.
-     */
-    public HuntsmanSpider() {
-        super("Huntsman Spider", '8', 1);
+public class SuspiciousAlien extends NPC implements Spawnable {
+
+    public SuspiciousAlien() {
+        super("Suspicious Alien", 'ඞ', 3);
         this.behaviours.put(999, new WanderBehaviour());
         this.behaviours.put(100, new AttackBehaviour());
         this.addCapability(Status.HOSTILE_TO_PLAYER);
     }
-
     /**
-     * Creates a new instance of the HuntsmanSpider.
+     * Creates a new instance of the SuspiciousAlien.
      *
-     * @return a new instance of HuntsmanSpider
+     * @return a new instance of SuspiciousAlien
      */
     @Override
     protected NPC createNewInstance() {
-        return new HuntsmanSpider();
+        return new SuspiciousAlien();
     }
 
     /**
-     * Spawns a HuntsmanSpider at the specified location.
+     * Spawns a Suspicious Alien at the specified location.
      *
-     * @param location the location where the HuntsmanSpider will spawn
+     * @param location the location where the Suspicious Alien will spawn
      */
     @Override
     public void spawn(Location location) {
@@ -50,12 +45,12 @@ public class HuntsmanSpider extends NPC implements Spawnable {
     }
 
     /**
-     * Retrieves the intrinsic weapon of the HuntsmanSpider.
+     * Retrieves the intrinsic weapon of the Suspicious Alien.
      *
-     * @return the intrinsic weapon of the HuntsmanSpider
+     * @return the intrinsic weapon of the Suspicious Alien
      */
     @Override
     public IntrinsicWeapon getIntrinsicWeapon() {
-        return new IntrinsicWeapon(1, "bites", 25);
+        return new IntrinsicWeapon(1, "susses", 25);
     }
 }

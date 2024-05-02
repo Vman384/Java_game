@@ -15,7 +15,6 @@ import java.util.Random;
  *
  * @author Riordan D. Alfredo
  * Modified by:
- *
  * @author Weize Yu
  */
 public class WanderBehaviour implements Behaviour {

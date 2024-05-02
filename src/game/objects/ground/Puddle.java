@@ -1,6 +1,12 @@
 package game.objects.ground;
 
+import edu.monash.fit2099.engine.actions.ActionList;
+import edu.monash.fit2099.engine.actors.Actor;
+import game.action.AddHealthAction;
 import edu.monash.fit2099.engine.positions.Ground;
+import edu.monash.fit2099.engine.positions.Location;
+
+
 
 /**
  * Represents a puddle on the ground in the game world.
@@ -9,14 +15,31 @@ import edu.monash.fit2099.engine.positions.Ground;
  *
  * @author Riordan D. Alfredo
  * Modified by:
- *
  * @author Weize Yu
  */
 public class Puddle extends Ground {
+    private int healthIncrease = 1;
     /**
      * Constructor for Puddle objects.
      */
     public Puddle() {
         super('~');
     }
+
+    /**
+	 * Returns an Action list that has the AddHealthAction
+	 *
+	 * @param actor the Actor acting
+	 * @param location the current Location
+	 * @param direction the direction of the Ground from the Actor
+	 * @return a new, empty collection of Actions
+	 */
+    @Override
+	public ActionList allowableActions(Actor actor, Location location, String direction){
+		ActionList actions = super.allowableActions(actor, location, direction);
+        if(location.containsAnActor()){
+            actions.add(new AddHealthAction(healthIncrease));
+        }
+        return actions;
+	}
 }
