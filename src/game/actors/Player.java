@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.displays.Menu;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
+import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import game.constants.Ability;
 import game.constants.Status;
 
@@ -64,5 +65,16 @@ public class Player extends Actor {
     @Override
     public IntrinsicWeapon getIntrinsicWeapon() {
         return new IntrinsicWeapon(1, "punches", 5);
+    }
+
+    /**
+     * A method for returning the string representation of an actor.
+     * It displays the actor's name and its current hit points, along with its maximum health hit points.
+     * Also diaplys the amount of money the actor has
+     */
+    @Override
+    public String toString() {
+        return super.toString() +
+                " Balance: " + this.getBalance();
     }
 }
