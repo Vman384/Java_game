@@ -1,12 +1,9 @@
 package game.actors;
 
 import edu.monash.fit2099.engine.positions.Location;
-import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.abstractions.actor.NPC;
 import game.abstractions.spawnable.Spawnable;
-import game.behaviour.AttackBehaviour;
 import game.behaviour.WanderBehaviour;
-import game.constants.Status;
 
 /**
  * A class representing an Alien Bug NPC in the game world.

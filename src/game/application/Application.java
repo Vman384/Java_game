@@ -10,9 +10,6 @@ import game.actors.Player;
 import game.actors.SuspiciousAlien;
 
 import game.actors.AlienBug;
-import game.actors.HuntsmanSpider;
-import game.actors.Player;
-import game.actors.SuspiciousAlien;
 import game.objects.ground.*;
 import game.objects.items.*;
 import game.spawning.SimpleSpawner;

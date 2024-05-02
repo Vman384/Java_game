@@ -2,9 +2,7 @@ package game.objects.items;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
-import edu.monash.fit2099.engine.positions.Location;
 import game.abstractions.item.PrintableItem;
-import game.abstractions.spawnable.Spawnable;
 import game.objects.ground.ComputerTerminal;
 import game.utility.PrintValidation;
 import game.utility.Probability;
