@@ -31,7 +31,7 @@ public class AddHealthAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
         actor.modifyAttributeMaximum(BaseActorAttributes.HEALTH, ActorAttributeOperations.INCREASE,this.healthIncrease);
-        return actor + " drinks water. Health increased by " + this.healthIncrease + "!";
+        return actor + " Health increased by " + this.healthIncrease + "!";
     }
     
 

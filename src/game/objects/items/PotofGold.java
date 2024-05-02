@@ -3,13 +3,13 @@ package game.objects.items;
 import edu.monash.fit2099.engine.actors.Actor;
 import game.abstractions.item.ConsumableItem;
 
-public class PotofGold extends ConsumableItem {
+public class PotOfGold extends ConsumableItem {
 
-    int moneyValue = 10;
+    private int moneyValue = 10;
     /**
      * Constructor.
      */
-    public PotofGold() {
+    public PotOfGold() {
         super("Pot of Gold", '$', true);
     }
 

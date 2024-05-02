@@ -2,19 +2,15 @@ package game.objects.ground;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
-import game.abstractions.item.ConsumableItem;
 import game.action.AddHealthAction;
-import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
-import edu.monash.fit2099.engine.items.PickUpAction;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
-import edu.monash.fit2099.engine.actors.attributes.ActorAttributeOperations;
 
 
 
 /**
  * Represents a puddle on the ground in the game world.
- * Puddles are represented by the '.' character.
+ * Puddles are represented by the '~' character.
  * Created by:
  *
  * @author Riordan D. Alfredo
@@ -23,7 +19,7 @@ import edu.monash.fit2099.engine.actors.attributes.ActorAttributeOperations;
  * @author Weize Yu
  */
 public class Puddle extends Ground {
-    int healthIncrease = 1;
+    private int healthIncrease = 1;
     /**
      * Constructor for Puddle objects.
      */

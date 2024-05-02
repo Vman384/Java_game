@@ -68,10 +68,10 @@ public class Application {
         gameMap.at(4, 6).addItem(new LargeBolt());
         gameMap.at(10, 6).addItem(new LargeBolt());
         gameMap.at(11, 12).addItem(new MetalPipe());
-        gameMap.at(10, 12).addItem(new PotofGold());
-        gameMap.at(12, 8).addItem(new JarofPickles());
-        gameMap.at(12, 8).addItem(new JarofPickles());
-        gameMap.at(12, 8).addItem(new JarofPickles());
+        gameMap.at(10, 12).addItem(new PotOfGold());
+        gameMap.at(12, 8).addItem(new JarOfPickles());
+        gameMap.at(12, 8).addItem(new JarOfPickles());
+        gameMap.at(12, 8).addItem(new JarOfPickles());
 
 
 
