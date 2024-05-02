@@ -30,11 +30,10 @@ public abstract class NPC extends Actor {
      *
      * @param name        the name of the NPC
      * @param displayChar the character representing the NPC on the map
-     * @param priority    the priority of the NPC, used in determining execution order of behaviours
+     * @param hitPoints    the hitPoints of the NPC, the NPC's starting hit points
      */
-    public NPC(String name, char displayChar, int priority) {
-        super(name, displayChar, priority);
-        this.addCapability(Status.HOSTILE_TO_PLAYER);
+    public NPC(String name, char displayChar, int hitPoints) {
+        super(name, displayChar, hitPoints);
     }
 
     /**
