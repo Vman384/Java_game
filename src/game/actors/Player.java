@@ -50,9 +50,11 @@ public class Player extends Actor {
         if (lastAction.getNextAction() != null)
             return lastAction.getNextAction();
 
-        System.out.println(name);
-        System.out.println("HP: " + this.getAttribute(BaseActorAttributes.HEALTH) + "/" + this.getAttributeMaximum(BaseActorAttributes.HEALTH));
-        System.out.println("Credits: " + this.getBalance());
+        display.println(name);
+        display.println("HP: " + this.getAttribute(BaseActorAttributes.HEALTH) + "/" + this.getAttributeMaximum(BaseActorAttributes.HEALTH));
+        display.println("Credits: " + this.getBalance());
+//        System.out.println("HP: " + this.getAttribute(BaseActorAttributes.HEALTH) + "/" + this.getAttributeMaximum(BaseActorAttributes.HEALTH));
+//        System.out.println("Credits: " + this.getBalance());
 
         // return/print the console menu
         Menu menu = new Menu(actions);
