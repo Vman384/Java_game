@@ -22,7 +22,7 @@ public class AddHealthAction extends Action {
     }
 
     /**
-     * Executes the consume action, causing the actor to consume the consumable item.
+     * Permanantly adds 1 health point to the actors max health
      *
      * @param actor the actor performing the action
      * @param map   the game map where the action is taking place
