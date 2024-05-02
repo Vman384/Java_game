@@ -19,7 +19,7 @@ import game.constants.Status;
 public class AlienBug extends NPC implements Spawnable {
 
     public AlienBug() {
-        super("Alien Bug", 'a', '2');
+        super("Alien Bug", 'a', 2);
         this.behaviours.put(999, new WanderBehaviour());
     }
 

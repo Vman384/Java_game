@@ -19,7 +19,7 @@ import game.constants.Status;
 public class SuspiciousAlien extends NPC implements Spawnable {
 
     public SuspiciousAlien() {
-        super("Suspicious Alien", 'ඞ', '3');
+        super("Suspicious Alien", 'ඞ', 3);
         this.behaviours.put(999, new WanderBehaviour());
         this.behaviours.put(100, new AttackBehaviour());
         this.addCapability(Status.HOSTILE_TO_PLAYER);
