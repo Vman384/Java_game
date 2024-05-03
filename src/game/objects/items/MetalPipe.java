@@ -19,7 +19,7 @@ public class MetalPipe extends WeaponItem {
      * Constructor for MetalPipe objects.
      */
     public MetalPipe() {
-        super("Metal Pipe", '!', 100, "hit", 100);
+        super("Metal Pipe", '!', 1, "hit", 20);
     }
 
     /**
