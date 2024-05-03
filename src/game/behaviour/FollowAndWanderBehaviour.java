@@ -39,8 +39,13 @@ public class FollowAndWanderBehaviour implements Behaviour {
         // Check if intern is within 1 exit of the actor
         for (Exit exit : actorLocation.getExits()) {
             Location destination = exit.getDestination();
-            if (containsIntern(destination)) {
-                actions.add(destination.getMoveAction(actor, "towards intern", exit.getHotKey()));
+            // Check if Intern now that intern has moved away, due to player game order
+            for (Exit innerExit : destination.getExits()) {
+                Location innerDestination = innerExit.getDestination();
+                if (containsIntern(innerDestination)) {
+                    // move towards intern
+                    actions.add(destination.getMoveAction(actor, "towards intern", innerExit.getHotKey()));
+                }
             }
         }
 
