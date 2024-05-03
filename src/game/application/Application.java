@@ -69,7 +69,7 @@ public class Application {
         gameMap.at(1, 6).setGround(new InheritreeMature(new SimpleSpawner(0.2, new LargeFruit())));
 
         gameMap.at(10, 10).setGround(new Crater(new SimpleSpawner(0.2, new HuntsmanSpider())));
-        gameMap.at(1, 1).setGround((new Crater(new SimpleSpawner(0.5, new AlienBug()))));
+        gameMap.at(1, 1).setGround((new Crater(new SimpleSpawner(0.1, new AlienBug()))));
         gameMap.at(15, 11).setGround((new Crater(new SimpleSpawner(0.05, new SuspiciousAlien()))));
 
         gameMap.at(3, 6).addActor(new AlienBug());

@@ -6,6 +6,7 @@ import game.abstractions.actor.NPC;
 import game.abstractions.spawnable.Spawnable;
 import game.behaviour.AttackBehaviour;
 import game.behaviour.WanderBehaviour;
+import game.constants.Ability;
 import game.constants.Status;
 
 /**
@@ -18,9 +19,9 @@ import game.constants.Status;
 public class SuspiciousAlien extends NPC implements Spawnable {
 
     public SuspiciousAlien() {
-        super("Suspicious Alien", 'ඞ', 3);
+        super("Suspicious Alien", 'ඞ', 99);
         this.behaviours.put(999, new WanderBehaviour());
-        this.behaviours.put(100, new AttackBehaviour());
+        this.behaviours.put(1, new AttackBehaviour());
         this.addCapability(Status.HOSTILE_TO_PLAYER);
     }
 
@@ -51,6 +52,6 @@ public class SuspiciousAlien extends NPC implements Spawnable {
      */
     @Override
     public IntrinsicWeapon getIntrinsicWeapon() {
-        return new IntrinsicWeapon(1, "susses", 25);
+        return new IntrinsicWeapon(Integer.MAX_VALUE, "susses", 100);
     }
 }
