@@ -11,7 +11,11 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import game.action.AttackAction;
 import game.constants.Status;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Collections;
 
 /**
  * An abstract class representing non-playable characters (NPCs) in the game world.
