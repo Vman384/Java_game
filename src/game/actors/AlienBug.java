@@ -8,7 +8,7 @@ import game.behaviour.PickUpScrapsBehaviour;
 
 /**
  * A class representing an Alien Bug NPC in the game world.
- * Alien Bugs are aggressive creatures capable of attacking nearby actors.
+ * Alien Bugs cannot attack the intern but can wander and follow and also pick up scraps.
  * Created by:
  *
  * @author Harvey Houlahan

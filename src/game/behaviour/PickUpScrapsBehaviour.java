@@ -12,7 +12,18 @@ import game.utility.Probability;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A behavior class representing the behavior of picking up scraps by an actor.
+ */
 public class PickUpScrapsBehaviour implements Behaviour {
+
+    /**
+     * Retrieves the action for the actor based on the behavior of picking up scraps.
+     *
+     * @param actor the actor whose action is to be determined
+     * @param map   the current game map
+     * @return the action to be performed by the actor, or null if no scraps are available to pick up
+     */
     @Override
     public Action getAction(Actor actor, GameMap map) {
         Location location = map.locationOf(actor);

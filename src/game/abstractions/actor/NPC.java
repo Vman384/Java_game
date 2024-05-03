@@ -20,11 +20,12 @@ import java.util.Collections;
 /**
  * An abstract class representing non-playable characters (NPCs) in the game world.
  * NPCs have behaviours that dictate their actions during gameplay.
- * Created by:
- *
- * @author Weize Yu
+ * Created by: Weize Yu
  */
 public abstract class NPC extends Actor {
+    /**
+     * Display engine
+     */
     private final Display displayEngine = new Display();
     /**
      * A mapping of priorities to behaviours. Behaviours with higher priorities are executed first.
@@ -83,9 +84,20 @@ public abstract class NPC extends Actor {
         return actions;
     }
 
-    // Abstract method to be implemented by subclasses to create new instances of themselves
+    /**
+     * Abstract method to be implemented by subclasses to create new instances of themselves.
+     *
+     * @return a new instance of the subclass
+     */
     protected abstract NPC createNewInstance();
 
+    /**
+     * Handles the unconscious state of the NPC, dropping all items from its inventory and printing a message.
+     *
+     * @param actor the Actor responsible for causing the NPC to become unconscious
+     * @param map   the current GameMap
+     * @return a message describing the NPC's demise
+     */
     @Override
     public String unconscious(Actor actor, GameMap map) {
         List<Item> inventoryCopy = new ArrayList<>(this.getItemInventory());
