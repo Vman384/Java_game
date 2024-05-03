@@ -1,12 +1,13 @@
 package game.utility;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 /**
  * Utility class for probability-related operations.
  * Created by:
- *
  * @author Weize Yu
  */
 public class Probability {
@@ -29,6 +30,28 @@ public class Probability {
         }
         int randomIndex = random.nextInt(list.size());
         return list.get(randomIndex);
+    }
+
+    /**
+     * Picks a random non-null element from the given list.
+     *
+     * @param list the list of objects to pick from
+     * @param <T>  the type of objects in the list
+     * @return a randomly selected non-null element from the list, or null if all elements are null or the list is empty
+     */
+    public static <T> T pickRandomNonNull(List<T> list) {
+        if (list == null || list.isEmpty()) {
+            return null;
+        }
+
+        List<T> nonNullList = new ArrayList<>();
+        for (T element : list) {
+            if (element != null) {
+                nonNullList.add(element);
+            }
+        }
+
+        return pickRandom(nonNullList);
     }
 
     /**

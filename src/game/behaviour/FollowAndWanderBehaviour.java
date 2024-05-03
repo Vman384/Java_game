@@ -51,7 +51,7 @@ public class FollowAndWanderBehaviour implements Behaviour {
 
         // in case of multiple interns
         if (!actions.isEmpty()) {
-            return Probability.pickRandom(actions);
+            return Probability.pickRandomNonNull(actions);
         }
 
         // If not within follow range or intern is not reachable, perform wandering behavior
