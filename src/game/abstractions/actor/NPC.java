@@ -106,6 +106,6 @@ public abstract class NPC extends Actor {
             displayEngine.print(handle + '\n');
             this.removeItemFromInventory(item);
         }
-        return this + " met their demise at the hand of " + actor;
+        return super.unconscious(actor, map);
     }
 }
