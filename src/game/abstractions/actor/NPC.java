@@ -8,7 +8,6 @@ import edu.monash.fit2099.engine.actors.Behaviour;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
-import edu.monash.fit2099.engine.positions.Location;
 import game.action.AttackAction;
 import game.constants.Status;
 
@@ -22,6 +21,7 @@ import java.util.*;
  * @author Weize Yu
  */
 public abstract class NPC extends Actor {
+    private final Display displayEngine = new Display();
     /**
      * A mapping of priorities to behaviours. Behaviours with higher priorities are executed first.
      */
@@ -81,4 +81,15 @@ public abstract class NPC extends Actor {
 
     // Abstract method to be implemented by subclasses to create new instances of themselves
     protected abstract NPC createNewInstance();
+
+    @Override
+    public String unconscious(Actor actor, GameMap map) {
+        List<Item> inventoryCopy = new ArrayList<>(this.getItemInventory());
+        for (Item item : inventoryCopy) {
+            String handle = item.getDropAction(this).execute(this, map);
+            displayEngine.print(handle + '\n');
+            this.removeItemFromInventory(item);
+        }
+        return this + " met their demise at the hand of " + actor;
+    }
 }

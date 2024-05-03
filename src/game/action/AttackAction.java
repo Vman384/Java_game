@@ -2,12 +2,9 @@ package game.action;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.Weapon;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 /**
@@ -84,12 +81,6 @@ public class AttackAction extends Action {
         String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
         target.hurt(damage);
         if (!target.isConscious()) {
-            List<Item> inventoryCopy = new ArrayList<>(target.getItemInventory());
-            for (Item item : inventoryCopy) {
-                String handle = item.getDropAction(target).execute(target, map);
-                System.out.println(handle);
-                target.removeItemFromInventory(item);
-            }
             result += "\n" + target.unconscious(actor, map);
         }
 

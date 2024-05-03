@@ -5,7 +5,6 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.action.AttackAction;
-import game.constants.Status;
 
 /**
  * Represents a metal pipe item in the game world.
