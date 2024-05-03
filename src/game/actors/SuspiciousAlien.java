@@ -11,13 +11,16 @@ import game.constants.Status;
 
 /**
  * A class representing a Suspicious Alien NPC in the game world.
- * Huntsman Spiders are aggressive creatures capable of attacking nearby actors.
- * Created by:
- *
- * @author Harvey Houlahan
+ * Suspicious Aliens are aggressive creatures capable of attacking nearby actors.
+ * They wander aimlessly and attack players when encountered.
+ * Created by: Harvey Houlahan
  */
 public class SuspiciousAlien extends NPC implements Spawnable {
 
+    /**
+     * Constructor for SuspiciousAlien.
+     * Initializes the Suspicious Alien's behaviors and adds the HOSTILE_TO_PLAYER capability.
+     */
     public SuspiciousAlien() {
         super("Suspicious Alien", 'ඞ', 99);
         this.behaviours.put(999, new WanderBehaviour());
@@ -46,7 +49,7 @@ public class SuspiciousAlien extends NPC implements Spawnable {
     }
 
     /**
-     * Retrieves the intrinsic weapon of the Suspicious Alien.
+     * Retrieves the intrinsic weapon of the Suspicious Alien. MAX DMG
      *
      * @return the intrinsic weapon of the Suspicious Alien
      */
