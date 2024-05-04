@@ -15,6 +15,9 @@ import game.behaviour.PickUpScrapsBehaviour;
  */
 public class AlienBug extends NPC implements Spawnable {
 
+    /**
+     * Constructor for AlienBug Objects
+     */
     public AlienBug() {
         super("Alien Bug", 'a', 2);
         this.behaviours.put(999, new FollowAndWanderBehaviour());
