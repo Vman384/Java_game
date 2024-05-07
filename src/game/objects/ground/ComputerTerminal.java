@@ -6,14 +6,20 @@ import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.abstractions.item.PrintableItem;
 import game.action.PrintAction;
-
 import java.util.List;
 
+/**
+ * ComputerTerminal class which represents a terminal that has the capability to print items to the players inventory
+ *
+ * @author Dean Mascitti
+ */
 public class ComputerTerminal extends Ground {
-    List<PrintableItem> printingOptions;
+    private List<PrintableItem> printingOptions;
+
     /**
-     * Constructor for ComputerTerminal.
+     * Class Constructor.
      *
+     * @param printingOptions a list of all the printable items of the terminal
      */
     public ComputerTerminal(List<PrintableItem> printingOptions) {
         super('=');
@@ -22,7 +28,7 @@ public class ComputerTerminal extends Ground {
 
 
     /**
-     * Returns an Action list.
+     * Returns an Action list containing all print actions for printable items.
      *
      * @param actor the Actor acting
      * @param location the current Location
@@ -39,6 +45,11 @@ public class ComputerTerminal extends Ground {
         return actions;
     }
 
+    /**
+     * Method for printing class name.
+     *
+     * @return String of computer terminal
+     */
     @Override
     public String toString() {
         return "Computer Terminal";

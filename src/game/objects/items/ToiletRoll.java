@@ -7,6 +7,11 @@ import game.objects.ground.ComputerTerminal;
 import game.utility.PrintValidation;
 import game.utility.Probability;
 
+/**
+ * ToiletRoll class represents a toilet paper roll item that some actors can possess.
+ *
+ * @author Dean Mascitti
+ */
 public class ToiletRoll extends Item implements PrintableItem {
     private int creditCost;
     /***
@@ -17,6 +22,12 @@ public class ToiletRoll extends Item implements PrintableItem {
         this.creditCost = 5;
     }
 
+    /**
+     * Print method which implements the toilet rolls printing to player inventory functionality.
+     * @param actor The actor doing the print action
+     * @param printGround the ground type printing the item
+     * @return String describing the outcome of the print
+     */
     @Override
     public String print(Actor actor, ComputerTerminal printGround) {
         int dummyCost = this.creditCost;
@@ -28,6 +39,10 @@ public class ToiletRoll extends Item implements PrintableItem {
         return PrintValidation.validatePrinting(dummyCost, this, actor, printGround);
     }
 
+    /**
+     * Getter for the cost of the toilet roll.
+     * @return Cost of the toilet roll as an int
+     */
     @Override
     public int getCost() {
         return this.creditCost;
