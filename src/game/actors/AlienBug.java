@@ -5,6 +5,8 @@ import game.abstractions.actor.NPC;
 import game.abstractions.spawnable.Spawnable;
 import game.behaviour.FollowAndWanderBehaviour;
 import game.behaviour.PickUpScrapsBehaviour;
+import game.constants.Ability;
+import game.constants.Status;
 
 /**
  * A class representing an Alien Bug NPC in the game world.
@@ -19,6 +21,7 @@ public class AlienBug extends NPC implements Spawnable {
         super("Alien Bug", 'a', 2);
         this.behaviours.put(999, new FollowAndWanderBehaviour());
         this.behaviours.put(99, new PickUpScrapsBehaviour());
+        this.addCapability(Ability.ENTER_SHIP);
     }
 
     /**
