@@ -1,10 +1,13 @@
 package game.objects.items;
 
+import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
-import game.abstractions.item.ConsumableItem;
+import edu.monash.fit2099.engine.items.Item;
+import game.abstractions.item.Consumable;
+import game.action.ConsumeAction;
 import game.utility.Probability;
 
-public class JarOfPickles extends ConsumableItem {
+public class JarOfPickles extends Item implements Consumable {
 
     private int healAmount = 1;
     private int hurtAmount = 1;
@@ -14,6 +17,19 @@ public class JarOfPickles extends ConsumableItem {
      */
     public JarOfPickles() {
         super("Jar of Pickles", 'n', true);
+    }
+
+    /**
+     * Generates a list of allowable actions for this consumable, which includes the action to consume it.
+     *
+     * @param owner the actor who owns or holds the item
+     * @return list of allowable actions
+     */
+    @Override
+    public ActionList allowableActions(Actor owner) {
+        ActionList actionList = new ActionList();
+        actionList.add(new ConsumeAction(this));
+        return actionList;
     }
 
     /**
