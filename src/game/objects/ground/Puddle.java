@@ -5,7 +5,6 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.attributes.ActorAttributeOperations;
 import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import game.abstractions.item.Consumable;
-import game.action.AddHealthAction;
 import game.action.ConsumeAction;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
@@ -19,7 +18,7 @@ import edu.monash.fit2099.engine.positions.Location;
  *
  * @author Riordan D. Alfredo
  * Modified by:
- * @author Weize Yu
+ * @author Vedansh Malhan
  */
 public class Puddle extends Ground implements Consumable {
     private int healthIncrease = 1;
