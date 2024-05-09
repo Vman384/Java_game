@@ -4,36 +4,54 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.items.Item;
-import edu.monash.fit2099.engine.positions.Location;
 import game.abstractions.item.Consumable;
-import game.abstractions.spawnable.Spawnable;
+import game.abstractions.item.PrintableItem;
 import game.action.ConsumeAction;
+import game.objects.ground.ComputerTerminal;
+import game.utility.PrintValidation;
+import game.utility.Probability;
 
-
-/**
- * A class representing a small fruit that inherits from Item and implements Spawnable.
- * Created by:
- *
- * @author Weize Yu
- */
-public class SmallFruit extends Item implements Spawnable, Consumable {
-
+public class EnergyDrink extends Item implements PrintableItem, Consumable {
+    private int creditCost;
     private final int healEffects = 1;
+    private double costProbability;
     /**
-     * Constructor.
+     * Constructor for ConsumableItem subclass Energy Drink.
+     *
      */
-    public SmallFruit() {
-        super("Small Fruit", 'o', true);
+    public EnergyDrink() {
+        super("Energy Drink", '*', true);
+        this.creditCost = 10;
+        this.costProbability = 0.2;
     }
 
     /**
-     * Spawns the fruit at the specified location.
+     * Print method which implements the energy drinks printing to player inventory functionality.
      *
-     * @param location the location where the fruit will be spawned
+     * @param actor The actor doing the print action
+     * @param printGround the ground type printing the item
+     * @return
      */
     @Override
-    public void spawn(Location location) {
-        location.addItem(this);
+    public String print(Actor actor, ComputerTerminal printGround) {
+        int dummyCost = this.creditCost;
+
+        if (Probability.generateBoolean(this.costProbability)) {
+            dummyCost = 2 * this.creditCost;
+        }
+
+        return PrintValidation.validatePrinting(dummyCost, this, actor, printGround);
+
+    }
+
+    /**
+     * Getter for cost of energy drink.
+     *
+     * @return cost of energy drink as an int.
+     */
+    @Override
+    public int getCost() {
+        return this.creditCost;
     }
 
     /**

@@ -4,14 +4,17 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
-import game.actors.AlienBug;
+import game.abstractions.item.PrintableItem;
 import game.actors.HuntsmanSpider;
 import game.actors.Player;
 import game.actors.SuspiciousAlien;
+
+import game.actors.AlienBug;
 import game.objects.ground.*;
 import game.objects.items.*;
 import game.spawning.SimpleSpawner;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -65,6 +68,14 @@ public class Application {
         Player player = new Player("Intern", '@', 4);
         world.addPlayer(player, gameMap.at(15, 6));
 
+        List <PrintableItem> printingOptions = new ArrayList<>();
+        printingOptions.add(new EnergyDrink());
+        printingOptions.add(new DragonSlayerSword());
+        printingOptions.add(new ToiletRoll());
+        gameMap.at(4, 10).setGround(new ComputerTerminal(printingOptions));
+        player.addBalance(10000);
+
+
         gameMap.at(8, 6).setGround(new InheritreeNonMature(new SimpleSpawner(0.3, new SmallFruit())));
         gameMap.at(1, 6).setGround(new InheritreeMature(new SimpleSpawner(0.2, new LargeFruit())));
 
@@ -82,7 +93,22 @@ public class Application {
         gameMap.at(7, 6).addItem(new LargeBolt());
         gameMap.at(10, 6).addItem(new LargeBolt());
         gameMap.at(11, 12).addItem(new MetalPipe());
+        gameMap.at(10, 12).addItem(new PotOfGold());
+        gameMap.at(12, 8).addItem(new JarOfPickles());
+        gameMap.at(12, 8).addItem(new JarOfPickles());
+        gameMap.at(12, 8).addItem(new JarOfPickles());
+
+
 
         world.run();
+        // Display a message at the end of the game
+        for (String line : FancyMessage.YOU_ARE_FIRED.split("\n")) {
+            new Display().println(line);
+            try {
+                Thread.sleep(200);
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+        }
     }
 }
