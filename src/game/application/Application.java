@@ -68,6 +68,14 @@ public class Application {
         Player player = new Player("Intern", '@', 4);
         world.addPlayer(player, gameMap.at(15, 6));
 
+        List <PrintableItem> printingOptions = new ArrayList<>();
+        printingOptions.add(new EnergyDrink());
+        printingOptions.add(new DragonSlayerSword());
+        printingOptions.add(new ToiletRoll());
+        gameMap.at(4, 10).setGround(new ComputerTerminal(printingOptions));
+        player.addBalance(10000);
+
+
         gameMap.at(8, 6).setGround(new InheritreeNonMature(new SimpleSpawner(0.3, new SmallFruit())));
         gameMap.at(1, 6).setGround(new InheritreeMature(new SimpleSpawner(0.2, new LargeFruit())));
 
