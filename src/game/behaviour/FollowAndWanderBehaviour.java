@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.constants.Status;
+import game.utility.Math;
 import game.utility.Probability;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
  */
 public class FollowAndWanderBehaviour implements Behaviour {
     private final Behaviour wanderBehaviour = new WanderBehaviour();
+    private Actor target = null;
 
     /**
      * Constructor for FollowAndWanderBehaviour.
@@ -36,6 +38,23 @@ public class FollowAndWanderBehaviour implements Behaviour {
         ArrayList<Action> actions = new ArrayList<>();
         Location actorLocation = map.locationOf(actor);
 
+        // have target
+        if (target != null) {
+            Location targetLocation = map.locationOf(target);
+            int currentDistance = Math.distance(actorLocation, targetLocation);
+            for (Exit exit : actorLocation.getExits()) {
+                Location destination = exit.getDestination();
+                if (destination.canActorEnter(actor)) {
+                    int newDistance = Math.distance(destination, targetLocation);
+                    if (newDistance < currentDistance) {
+                        actions.add(destination.getMoveAction(actor, "towards interm", exit.getHotKey()));
+                    }
+                }
+            }
+            return Probability.pickRandomNonNull(actions);
+        }
+
+        // no target
         // Check if intern is within 1 exit of the actor
         for (Exit exit : actorLocation.getExits()) {
             Location destination = exit.getDestination();
@@ -44,6 +63,7 @@ public class FollowAndWanderBehaviour implements Behaviour {
                 Location innerDestination = innerExit.getDestination();
                 if (containsIntern(innerDestination)) {
                     // move towards intern
+                    target = innerDestination.getActor();
                     actions.add(destination.getMoveAction(actor, "towards intern", innerExit.getHotKey()));
                 }
             }
