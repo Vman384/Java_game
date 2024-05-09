@@ -23,6 +23,13 @@ public class EnergyDrink extends Item implements PrintableItem, Consumable {
         this.creditCost = 10;
     }
 
+    /**
+     * Print method which implements the energy drinks printing to player inventory functionality.
+     *
+     * @param actor The actor doing the print action
+     * @param printGround the ground type printing the item
+     * @return
+     */
     @Override
     public String print(Actor actor, ComputerTerminal printGround) {
         int dummyCost = this.creditCost;
@@ -35,6 +42,11 @@ public class EnergyDrink extends Item implements PrintableItem, Consumable {
 
     }
 
+    /**
+     * Getter for cost of energy drink.
+     *
+     * @return cost of energy drink as an int.
+     */
     @Override
     public int getCost() {
         return this.creditCost;

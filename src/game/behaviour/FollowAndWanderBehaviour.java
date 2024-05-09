@@ -2,6 +2,7 @@ package game.behaviour;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.actors.Behaviour;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
@@ -13,7 +14,8 @@ import java.util.ArrayList;
 /**
  * A behavior subclass representing following and wandering behavior for an actor.
  */
-public class FollowAndWanderBehaviour extends WanderBehaviour {
+public class FollowAndWanderBehaviour implements Behaviour {
+    private final Behaviour wanderBehaviour = new WanderBehaviour();
 
     /**
      * Constructor for FollowAndWanderBehaviour.
@@ -37,18 +39,23 @@ public class FollowAndWanderBehaviour extends WanderBehaviour {
         // Check if intern is within 1 exit of the actor
         for (Exit exit : actorLocation.getExits()) {
             Location destination = exit.getDestination();
-            if (containsIntern(destination)) {
-                actions.add(destination.getMoveAction(actor, "towards intern", exit.getHotKey()));
+            // Check if Intern now that intern has moved away, due to player game order
+            for (Exit innerExit : destination.getExits()) {
+                Location innerDestination = innerExit.getDestination();
+                if (containsIntern(innerDestination)) {
+                    // move towards intern
+                    actions.add(destination.getMoveAction(actor, "towards intern", innerExit.getHotKey()));
+                }
             }
         }
 
         // in case of multiple interns
         if (!actions.isEmpty()) {
-            return Probability.pickRandom(actions);
+            return Probability.pickRandomNonNull(actions);
         }
 
         // If not within follow range or intern is not reachable, perform wandering behavior
-        return super.getAction(actor, map);
+        return wanderBehaviour.getAction(actor, map);
     }
 
     /**

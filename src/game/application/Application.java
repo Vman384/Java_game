@@ -64,6 +64,10 @@ public class Application {
                 exception.printStackTrace();
             }
         }
+
+        Player player = new Player("Intern", '@', 4);
+        world.addPlayer(player, gameMap.at(15, 6));
+
         gameMap.at(8, 6).setGround(new InheritreeNonMature(new SimpleSpawner(0.3, new SmallFruit())));
         gameMap.at(1, 6).setGround(new InheritreeMature(new SimpleSpawner(0.2, new LargeFruit())));
 
@@ -71,16 +75,14 @@ public class Application {
         gameMap.at(1, 1).setGround((new Crater(new SimpleSpawner(0.1, new AlienBug()))));
         gameMap.at(15, 11).setGround((new Crater(new SimpleSpawner(0.05, new SuspiciousAlien()))));
 
-        List<PrintableItem> printables = new ArrayList<>();
-        printables.add(new EnergyDrink());
-        printables.add(new ToiletRoll());
-        printables.add(new DragonSlayerSword());
+        gameMap.at(3, 6).addActor(new AlienBug());
+        gameMap.at(5, 6).addActor(new AlienBug());
 
-        gameMap.at(6, 8).setGround(new ComputerTerminal(printables));
-
-        gameMap.at(7, 9).addActor(new HuntsmanSpider());
         gameMap.at(2, 3).addItem(new MetalSheet());
         gameMap.at(4, 6).addItem(new LargeBolt());
+        gameMap.at(5, 6).addItem(new LargeBolt());
+        gameMap.at(6, 6).addItem(new LargeBolt());
+        gameMap.at(7, 6).addItem(new LargeBolt());
         gameMap.at(10, 6).addItem(new LargeBolt());
         gameMap.at(11, 12).addItem(new MetalPipe());
         gameMap.at(10, 12).addItem(new PotOfGold());
@@ -90,10 +92,6 @@ public class Application {
 
 
 
-
-        Player player = new Player("Intern", '@', 4);
-        world.addPlayer(player, gameMap.at(15, 6));
-        player.addBalance(10000); // testing purposes
         world.run();
         // Display a message at the end of the game
         for (String line : FancyMessage.YOU_ARE_FIRED.split("\n")) {

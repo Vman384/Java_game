@@ -10,6 +10,11 @@ import game.objects.ground.ComputerTerminal;
 import game.utility.PrintValidation;
 import game.utility.Probability;
 
+/**
+ * DragonSlayerSword class which represents a dragon slayer sword which is an item some actors can possess.
+ *
+ * @author Dean Mascitti
+ */
 public class DragonSlayerSword extends WeaponItem implements PrintableItem {
     private int creditCost;
     /**
@@ -21,6 +26,13 @@ public class DragonSlayerSword extends WeaponItem implements PrintableItem {
         this.creditCost = 100;
     }
 
+    /**
+     * Print method which implements the dragons slayer swords printing to player inventory functionality.
+     *
+     * @param actor The actor doing the print action
+     * @param printGround the ground type printing the item
+     * @return string describing the outcome of the print
+     */
     @Override
     public String print(Actor actor, ComputerTerminal printGround) {
         if (Probability.generateBoolean(0.5)) {
@@ -46,6 +58,11 @@ public class DragonSlayerSword extends WeaponItem implements PrintableItem {
         return actionList;
     }
 
+    /**
+     * Getter for the cost of the dragon slayer sword.
+     *
+     * @return cost of dragon slayer sword as an int
+     */
     @Override
     public int getCost() {
         return this.creditCost;

@@ -12,11 +12,11 @@ import game.constants.Status;
  * A class representing a Huntsman Spider NPC in the game world.
  * Huntsman Spiders are aggressive creatures capable of attacking nearby actors.
  * Created by:
- * @author Weize Yu
  *
+ * @author Weize Yu
+ * <p>
  * Modified by:
  * Harvey Houlahan
- *
  */
 public class HuntsmanSpider extends NPC implements Spawnable {
     /**
