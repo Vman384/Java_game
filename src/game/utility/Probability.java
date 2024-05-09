@@ -2,7 +2,6 @@ package game.utility;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Random;
 
 /**
@@ -67,4 +66,26 @@ public class Probability {
         }
         return random.nextDouble() < probability;
     }
+
+    /**
+     * Generates a random numeric string with the specified number of digits.
+     *
+     * @param numDigits the number of digits in the generated string
+     * @return a randomly generated numeric string with the specified number of digits
+     * @throws IllegalArgumentException if numDigits is less than 1
+     */
+    public static String generateRandomNumericString(int numDigits) {
+        final int MIN_DIGIT = 1;
+        final int MAX_DIGIT = 9;
+
+        if (numDigits < MIN_DIGIT) {
+            throw new IllegalArgumentException("Number of digits must be at least " + MIN_DIGIT);
+        }
+
+        int min = (int) Math.pow(10, numDigits - 1); // Minimum value for the specified number of digits
+        int max = (int) Math.pow(10, numDigits) - 1; // Maximum value for the specified number of digits
+        int randomNumber = random.nextInt(max - min + 1) + min;
+        return String.valueOf(randomNumber);
+    }
+
 }

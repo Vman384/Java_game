@@ -7,7 +7,7 @@ import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.constants.Status;
-import game.utility.Math;
+import game.utility.Mathematics;
 import game.utility.Probability;
 
 import java.util.ArrayList;
@@ -41,11 +41,11 @@ public class FollowAndWanderBehaviour implements Behaviour {
         // have target
         if (target != null) {
             Location targetLocation = map.locationOf(target);
-            int currentDistance = Math.distance(actorLocation, targetLocation);
+            int currentDistance = Mathematics.distance(actorLocation, targetLocation);
             for (Exit exit : actorLocation.getExits()) {
                 Location destination = exit.getDestination();
                 if (destination.canActorEnter(actor)) {
-                    int newDistance = Math.distance(destination, targetLocation);
+                    int newDistance = Mathematics.distance(destination, targetLocation);
                     if (newDistance < currentDistance) {
                         actions.add(destination.getMoveAction(actor, "towards interm", exit.getHotKey()));
                     }
