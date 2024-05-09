@@ -3,6 +3,7 @@ package game.actors;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.displays.Menu;
 import edu.monash.fit2099.engine.positions.GameMap;
@@ -51,6 +52,12 @@ public class Player extends Actor {
         if (lastAction.getNextAction() != null)
             return lastAction.getNextAction();
 
+        display.println(name);
+        display.println("HP: " + this.getAttribute(BaseActorAttributes.HEALTH) + "/" + this.getAttributeMaximum(BaseActorAttributes.HEALTH));
+        display.println("Credits: " + this.getBalance());
+//        System.out.println("HP: " + this.getAttribute(BaseActorAttributes.HEALTH) + "/" + this.getAttributeMaximum(BaseActorAttributes.HEALTH));
+//        System.out.println("Credits: " + this.getBalance());
+
         // return/print the console menu
         Menu menu = new Menu(actions);
         return menu.showMenu(this, display);
@@ -64,5 +71,16 @@ public class Player extends Actor {
     @Override
     public IntrinsicWeapon getIntrinsicWeapon() {
         return new IntrinsicWeapon(1, "punches", 5);
+    }
+
+    /**
+     * A method for returning the string representation of an actor.
+     * It displays the actor's name and its current hit points, along with its maximum health hit points.
+     * Also diaplys the amount of money the actor has
+     */
+    @Override
+    public String toString() {
+        return super.toString() +
+                " Balance: " + this.getBalance();
     }
 }
