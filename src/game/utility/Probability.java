@@ -62,11 +62,15 @@ public class Probability {
      * @throws IllegalArgumentException if probability is not within [0.0, 1.0]
      */
     public static boolean generateBoolean(double probability) {
-        if (probability < 0.0 || probability > 1.0) {
-            throw new IllegalArgumentException("Probability must be between 0.0 and 1.0");
+        final double MIN_PROBABILITY = 0.0;
+        final double MAX_PROBABILITY = 1.0;
+
+        if (probability < MIN_PROBABILITY || probability > MAX_PROBABILITY) {
+            throw new IllegalArgumentException("Probability must be between " + MIN_PROBABILITY + " and " + MAX_PROBABILITY);
         }
         return random.nextDouble() < probability;
     }
+
 
     /**
      * Generates a random numeric string with the specified number of digits.
