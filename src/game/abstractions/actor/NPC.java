@@ -2,24 +2,31 @@ package game.abstractions.actor;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
+import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.Behaviour;
 import edu.monash.fit2099.engine.displays.Display;
+import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.action.AttackAction;
 import game.constants.Status;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Collections;
 
 /**
  * An abstract class representing non-playable characters (NPCs) in the game world.
  * NPCs have behaviours that dictate their actions during gameplay.
- * Created by:
- *
- * @author Weize Yu
+ * Created by: Weize Yu
  */
 public abstract class NPC extends Actor {
+    /**
+     * Display engine
+     */
+    private final Display displayEngine = new Display();
     /**
      * A mapping of priorities to behaviours. Behaviours with higher priorities are executed first.
      */
@@ -47,12 +54,17 @@ public abstract class NPC extends Actor {
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        for (Behaviour behaviour : behaviours.values()) {
+
+        List<Integer> sortedKeys = new ArrayList<>(behaviours.keySet());
+        Collections.sort(sortedKeys);
+
+        for (Integer key : sortedKeys) {
+            Behaviour behaviour = behaviours.get(key);
             Action action = behaviour.getAction(this, map);
             if (action != null)
                 return action;
         }
-        return null; // Default to no action
+        return new DoNothingAction(); // Default to no action
     }
 
     /**
@@ -72,6 +84,28 @@ public abstract class NPC extends Actor {
         return actions;
     }
 
-    // Abstract method to be implemented by subclasses to create new instances of themselves
+    /**
+     * Abstract method to be implemented by subclasses to create new instances of themselves.
+     *
+     * @return a new instance of the subclass
+     */
     protected abstract NPC createNewInstance();
+
+    /**
+     * Handles the unconscious state of the NPC, dropping all items from its inventory and printing a message.
+     *
+     * @param actor the Actor responsible for causing the NPC to become unconscious
+     * @param map   the current GameMap
+     * @return a message describing the NPC's demise
+     */
+    @Override
+    public String unconscious(Actor actor, GameMap map) {
+        List<Item> inventoryCopy = new ArrayList<>(this.getItemInventory());
+        for (Item item : inventoryCopy) {
+            String handle = item.getDropAction(this).execute(this, map);
+            displayEngine.print(handle + '\n');
+            this.removeItemFromInventory(item);
+        }
+        return super.unconscious(actor, map);
+    }
 }
