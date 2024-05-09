@@ -30,7 +30,7 @@ public class PrintAction extends Action {
      * Method which does the executyion of printing by calling the print method in the corresponding item being printed.
      *
      * @param actor The actor performing the action.
-     * @param map The map the actor is on.
+     * @param map   The map the actor is on.
      * @return String describing the outcome of the print
      */
     @Override

@@ -5,11 +5,10 @@ import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
 import game.abstractions.item.PrintableItem;
+import game.actors.AlienBug;
 import game.actors.HuntsmanSpider;
 import game.actors.Player;
 import game.actors.SuspiciousAlien;
-
-import game.actors.AlienBug;
 import game.objects.ground.*;
 import game.objects.items.*;
 import game.spawning.SimpleSpawner;
@@ -68,7 +67,7 @@ public class Application {
         Player player = new Player("Intern", '@', 4);
         world.addPlayer(player, gameMap.at(15, 6));
 
-        List <PrintableItem> printingOptions = new ArrayList<>();
+        List<PrintableItem> printingOptions = new ArrayList<>();
         printingOptions.add(new EnergyDrink());
         printingOptions.add(new DragonSlayerSword());
         printingOptions.add(new ToiletRoll());
@@ -97,7 +96,6 @@ public class Application {
         gameMap.at(12, 8).addItem(new JarOfPickles());
         gameMap.at(12, 8).addItem(new JarOfPickles());
         gameMap.at(12, 8).addItem(new JarOfPickles());
-
 
 
         world.run();

@@ -14,9 +14,9 @@ public class PrintValidation {
     /**
      * Static method in which checks if an actor has funds to puchase item and then prints the item if so.
      *
-     * @param itemCost Cost of the item
+     * @param itemCost    Cost of the item
      * @param itemPrinted Item being printed
-     * @param actor Actor purchasing item
+     * @param actor       Actor purchasing item
      * @param printGround Ground printing the item
      * @return A string describing the result of the print.
      */

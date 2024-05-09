@@ -15,6 +15,7 @@ import game.utility.Probability;
 public class ToiletRoll extends Item implements PrintableItem {
     private int creditCost;
     private double costProbability;
+
     /***
      * Constructor.
      */
@@ -26,7 +27,8 @@ public class ToiletRoll extends Item implements PrintableItem {
 
     /**
      * Print method which implements the toilet rolls printing to player inventory functionality.
-     * @param actor The actor doing the print action
+     *
+     * @param actor       The actor doing the print action
      * @param printGround the ground type printing the item
      * @return String describing the outcome of the print
      */
@@ -43,6 +45,7 @@ public class ToiletRoll extends Item implements PrintableItem {
 
     /**
      * Getter for the cost of the toilet roll.
+     *
      * @return Cost of the toilet roll as an int
      */
     @Override

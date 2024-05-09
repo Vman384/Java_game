@@ -6,7 +6,6 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.Behaviour;
 import edu.monash.fit2099.engine.displays.Display;
-import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.action.AttackAction;
 import game.constants.Status;
@@ -33,7 +32,7 @@ public abstract class NPC extends ActorBase {
      *
      * @param name        the name of the NPC
      * @param displayChar the character representing the NPC on the map
-     * @param hitPoints    the hitPoints of the NPC, the NPC's starting hit points
+     * @param hitPoints   the hitPoints of the NPC, the NPC's starting hit points
      */
     public NPC(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);

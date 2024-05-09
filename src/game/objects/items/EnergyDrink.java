@@ -12,12 +12,12 @@ import game.utility.PrintValidation;
 import game.utility.Probability;
 
 public class EnergyDrink extends Item implements PrintableItem, Consumable {
-    private int creditCost;
     private final int healEffects = 1;
+    private int creditCost;
     private double costProbability;
+
     /**
      * Constructor for ConsumableItem subclass Energy Drink.
-     *
      */
     public EnergyDrink() {
         super("Energy Drink", '*', true);
@@ -28,7 +28,7 @@ public class EnergyDrink extends Item implements PrintableItem, Consumable {
     /**
      * Print method which implements the energy drinks printing to player inventory functionality.
      *
-     * @param actor The actor doing the print action
+     * @param actor       The actor doing the print action
      * @param printGround the ground type printing the item
      * @return
      */

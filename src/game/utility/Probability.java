@@ -7,6 +7,7 @@ import java.util.Random;
 /**
  * Utility class for probability-related operations.
  * Created by:
+ *
  * @author Weize Yu
  */
 public class Probability {

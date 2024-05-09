@@ -6,7 +6,6 @@ import game.abstractions.spawnable.Spawnable;
 import game.behaviour.FollowAndWanderBehaviour;
 import game.behaviour.PickUpScrapsBehaviour;
 import game.constants.Ability;
-import game.constants.Status;
 import game.utility.Probability;
 
 /**

@@ -19,6 +19,7 @@ import game.action.ConsumeAction;
 public class SmallFruit extends Item implements Spawnable, Consumable {
 
     private final int healEffects = 1;
+
     /**
      * Constructor.
      */

@@ -18,9 +18,9 @@ import game.utility.Probability;
 public class DragonSlayerSword extends WeaponItem implements PrintableItem {
     private int creditCost;
     private double errorProbability;
+
     /**
      * Constructor.
-     *
      */
     public DragonSlayerSword() {
         super("Dragon Slayer Sword", 'x', 50, "slices", 75);
@@ -31,7 +31,7 @@ public class DragonSlayerSword extends WeaponItem implements PrintableItem {
     /**
      * Print method which implements the dragons slayer swords printing to player inventory functionality.
      *
-     * @param actor The actor doing the print action
+     * @param actor       The actor doing the print action
      * @param printGround the ground type printing the item
      * @return string describing the outcome of the print
      */

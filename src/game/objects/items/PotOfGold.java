@@ -9,6 +9,7 @@ import game.action.ConsumeAction;
 public class PotOfGold extends Item implements Consumable {
 
     private int moneyValue = 10;
+
     /**
      * Constructor.
      */
@@ -16,7 +17,7 @@ public class PotOfGold extends Item implements Consumable {
         super("Pot of Gold", '$', true);
     }
 
-    
+
     /**
      * Generates a list of allowable actions for this consumable, which includes the action to consume it.
      *
@@ -31,12 +32,12 @@ public class PotOfGold extends Item implements Consumable {
     }
 
     /**
-    * adds a balance of money value to the actors wallet
-    *
-    * @param actor the actor consuming the item
-    * @return a message indicating the result of the consumption
-    */
-    @Override   
+     * adds a balance of money value to the actors wallet
+     *
+     * @param actor the actor consuming the item
+     * @return a message indicating the result of the consumption
+     */
+    @Override
     public String consume(Actor actor) {
         actor.addBalance(moneyValue);
         actor.removeItemFromInventory(this);

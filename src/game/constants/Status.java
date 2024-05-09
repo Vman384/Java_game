@@ -21,11 +21,11 @@ public enum Status {
      */
     HOSTILE_TO_PLAYER,
     /**
-     *  Indicates that this is the INTERN
+     * Indicates that this is the INTERN
      */
     INTERN,
     /**
-     *  Indicates that this is a SCRAP
+     * Indicates that this is a SCRAP
      */
     SCRAP
 }

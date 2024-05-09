@@ -35,22 +35,22 @@ public class JarOfPickles extends Item implements Consumable {
     }
 
     /**
-    * adds a balance of money value to the actors wallet
-    *
-    * @param actor the actor consuming the item
-    * @return a message indicating the result of the consumption
-    */
-    @Override   
+     * adds a balance of money value to the actors wallet
+     *
+     * @param actor the actor consuming the item
+     * @return a message indicating the result of the consumption
+     */
+    @Override
     public String consume(Actor actor) {
-        if (Probability.generateBoolean(this.healProbability)){
+        if (Probability.generateBoolean(this.healProbability)) {
             actor.heal(healAmount);
             actor.removeItemFromInventory(this);
             return actor + " consumes " + this + ". Health increased by " + healAmount + "!";
-        }else{
+        } else {
             actor.hurt(hurtAmount);
             actor.removeItemFromInventory(this);
             return actor + " consumes " + this + " and was out of date, hurt by " + this.hurtAmount + "!";
         }
-        
+
     }
 }

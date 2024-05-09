@@ -13,7 +13,7 @@ public interface PrintableItem {
     /**
      * This method is overriden by each printable item in which their respective printing process can be implemented.
      *
-     * @param actor The actor doing the print action
+     * @param actor       The actor doing the print action
      * @param printGround the ground type printing the item
      * @return A string displaying the outcome of the print
      */
@@ -21,6 +21,7 @@ public interface PrintableItem {
 
     /**
      * Getter for the cost of the item to be printed
+     *
      * @return integer of the price of the item being printed
      */
     int getCost();

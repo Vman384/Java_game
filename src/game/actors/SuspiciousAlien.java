@@ -6,7 +6,6 @@ import game.abstractions.actor.NPC;
 import game.abstractions.spawnable.Spawnable;
 import game.behaviour.AttackBehaviour;
 import game.behaviour.WanderBehaviour;
-import game.constants.Ability;
 import game.constants.Status;
 
 /**

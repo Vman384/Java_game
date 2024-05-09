@@ -1,12 +1,10 @@
 package game.action;
 
 import edu.monash.fit2099.engine.actions.Action;
-import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.attributes.ActorAttributeOperations;
 import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
-import edu.monash.fit2099.engine.actors.Actor;
-
-
+import edu.monash.fit2099.engine.positions.GameMap;
 
 
 public class AddHealthAction extends Action {
@@ -30,10 +28,10 @@ public class AddHealthAction extends Action {
      */
     @Override
     public String execute(Actor actor, GameMap map) {
-        actor.modifyAttributeMaximum(BaseActorAttributes.HEALTH, ActorAttributeOperations.INCREASE,this.healthIncrease);
+        actor.modifyAttributeMaximum(BaseActorAttributes.HEALTH, ActorAttributeOperations.INCREASE, this.healthIncrease);
         return actor + " Health increased by " + this.healthIncrease + "!";
     }
-    
+
 
     /**
      * Provides a description of the action for displaying in menus or logs.

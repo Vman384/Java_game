@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  * An abstract class representing characters in the game world.
  * This allows for shared functionality between all actors
@@ -28,6 +29,7 @@ public abstract class ActorBase extends Actor {
     public ActorBase(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
     }
+
     /**
      * Handles the unconscious state of the Actor, dropping all items from its inventory and printing a message.
      *
