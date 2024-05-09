@@ -1,10 +1,7 @@
 package game.abstractions.item;
 
-import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
-import edu.monash.fit2099.engine.items.Item;
-import game.action.ConsumeAction;
+
 
 /**
  * An abstract class representing consumable items in the game world.

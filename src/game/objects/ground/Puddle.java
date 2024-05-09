@@ -38,8 +38,11 @@ public class Puddle extends Ground implements Consumable {
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList actionList = new ActionList();
-        actionList.add(new ConsumeAction(this));
+        if(location.containsAnActor()){
+            actionList.add(new ConsumeAction(this));
+        }
         return actionList;
+
     }
 
     /**
