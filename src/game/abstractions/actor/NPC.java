@@ -22,11 +22,7 @@ import java.util.Collections;
  * NPCs have behaviours that dictate their actions during gameplay.
  * Created by: Weize Yu
  */
-public abstract class NPC extends Actor {
-    /**
-     * Display engine
-     */
-    private final Display displayEngine = new Display();
+public abstract class NPC extends ActorBase {
     /**
      * A mapping of priorities to behaviours. Behaviours with higher priorities are executed first.
      */
@@ -90,22 +86,4 @@ public abstract class NPC extends Actor {
      * @return a new instance of the subclass
      */
     protected abstract NPC createNewInstance();
-
-    /**
-     * Handles the unconscious state of the NPC, dropping all items from its inventory and printing a message.
-     *
-     * @param actor the Actor responsible for causing the NPC to become unconscious
-     * @param map   the current GameMap
-     * @return a message describing the NPC's demise
-     */
-    @Override
-    public String unconscious(Actor actor, GameMap map) {
-        List<Item> inventoryCopy = new ArrayList<>(this.getItemInventory());
-        for (Item item : inventoryCopy) {
-            String handle = item.getDropAction(this).execute(this, map);
-            displayEngine.print(handle + '\n');
-            this.removeItemFromInventory(item);
-        }
-        return super.unconscious(actor, map);
-    }
 }

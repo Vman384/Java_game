@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.displays.Menu;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
+import game.abstractions.actor.ActorBase;
 import game.constants.Ability;
 import game.constants.Status;
 
@@ -21,7 +22,7 @@ import game.constants.Status;
  * Modified by:
  * @author Weize Yu
  */
-public class Player extends Actor {
+public class Player extends ActorBase {
     /**
      * Constructor for Player objects.
      *
