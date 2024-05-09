@@ -32,7 +32,9 @@ public class Puddle extends Ground implements Consumable {
     /**
      * Generates a list of allowable actions for this consumable, which includes the action to consume it.
      *
-     * @param owner the actor who owns or holds the item
+     * @param actor the actor who owns or holds the item
+     * @param location the location of the puddle
+     * @param direction direction to actor
      * @return list of allowable actions
      */
     @Override

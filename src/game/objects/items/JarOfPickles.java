@@ -11,12 +11,14 @@ public class JarOfPickles extends Item implements Consumable {
 
     private int healAmount = 1;
     private int hurtAmount = 1;
+    private double healProbability;
 
     /**
      * Constructor.
      */
     public JarOfPickles() {
         super("Jar of Pickles", 'n', true);
+        this.healProbability = 0.5;
     }
 
     /**
@@ -40,7 +42,7 @@ public class JarOfPickles extends Item implements Consumable {
     */
     @Override   
     public String consume(Actor actor) {
-        if (Probability.generateBoolean(0.5)){
+        if (Probability.generateBoolean(this.healProbability)){
             actor.heal(healAmount);
             actor.removeItemFromInventory(this);
             return actor + " consumes " + this + ". Health increased by " + healAmount + "!";

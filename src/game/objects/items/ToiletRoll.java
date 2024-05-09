@@ -14,12 +14,14 @@ import game.utility.Probability;
  */
 public class ToiletRoll extends Item implements PrintableItem {
     private int creditCost;
+    private double costProbability;
     /***
      * Constructor.
      */
     public ToiletRoll() {
         super("Toilet Paper Roll", 's', true);
         this.creditCost = 5;
+        this.costProbability = 0.75;
     }
 
     /**
@@ -32,7 +34,7 @@ public class ToiletRoll extends Item implements PrintableItem {
     public String print(Actor actor, ComputerTerminal printGround) {
         int dummyCost = this.creditCost;
 
-        if (Probability.generateBoolean(0.75)) {
+        if (Probability.generateBoolean(this.costProbability)) {
             dummyCost = 1;
         }
 

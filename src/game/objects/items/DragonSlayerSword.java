@@ -17,6 +17,7 @@ import game.utility.Probability;
  */
 public class DragonSlayerSword extends WeaponItem implements PrintableItem {
     private int creditCost;
+    private double errorProbability;
     /**
      * Constructor.
      *
@@ -24,6 +25,7 @@ public class DragonSlayerSword extends WeaponItem implements PrintableItem {
     public DragonSlayerSword() {
         super("Dragon Slayer Sword", 'x', 50, "slices", 75);
         this.creditCost = 100;
+        this.errorProbability = 0.5;
     }
 
     /**
@@ -35,7 +37,7 @@ public class DragonSlayerSword extends WeaponItem implements PrintableItem {
      */
     @Override
     public String print(Actor actor, ComputerTerminal printGround) {
-        if (Probability.generateBoolean(0.5)) {
+        if (Probability.generateBoolean(this.errorProbability)) {
             actor.deductBalance(this.creditCost);
             return "Error! There has been an error in the " + printGround + " and the " + actor + " has lost " + this.creditCost + " credits.";
         }

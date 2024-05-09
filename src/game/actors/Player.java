@@ -55,8 +55,6 @@ public class Player extends Actor {
         display.println(name);
         display.println("HP: " + this.getAttribute(BaseActorAttributes.HEALTH) + "/" + this.getAttributeMaximum(BaseActorAttributes.HEALTH));
         display.println("Credits: " + this.getBalance());
-//        System.out.println("HP: " + this.getAttribute(BaseActorAttributes.HEALTH) + "/" + this.getAttributeMaximum(BaseActorAttributes.HEALTH));
-//        System.out.println("Credits: " + this.getBalance());
 
         // return/print the console menu
         Menu menu = new Menu(actions);
@@ -76,7 +74,7 @@ public class Player extends Actor {
     /**
      * A method for returning the string representation of an actor.
      * It displays the actor's name and its current hit points, along with its maximum health hit points.
-     * Also diaplys the amount of money the actor has
+     * Also displays the amount of money the actor has
      */
     @Override
     public String toString() {

@@ -14,6 +14,7 @@ import game.utility.Probability;
 public class EnergyDrink extends Item implements PrintableItem, Consumable {
     private int creditCost;
     private final int healEffects = 1;
+    private double costProbability;
     /**
      * Constructor for ConsumableItem subclass Energy Drink.
      *
@@ -21,6 +22,7 @@ public class EnergyDrink extends Item implements PrintableItem, Consumable {
     public EnergyDrink() {
         super("Energy Drink", '*', true);
         this.creditCost = 10;
+        this.costProbability = 0.2;
     }
 
     /**
@@ -34,7 +36,7 @@ public class EnergyDrink extends Item implements PrintableItem, Consumable {
     public String print(Actor actor, ComputerTerminal printGround) {
         int dummyCost = this.creditCost;
 
-        if (Probability.generateBoolean(0.2)) {
+        if (Probability.generateBoolean(this.costProbability)) {
             dummyCost = 2 * this.creditCost;
         }
 
