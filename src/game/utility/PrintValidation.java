@@ -12,7 +12,7 @@ import game.objects.ground.ComputerTerminal;
 public class PrintValidation {
 
     /**
-     * Static method in which checks if an actor has funds to puchase item and then prints the item if so.
+     * Static method in which checks if an actor has funds to purchase item and then prints the item if so.
      *
      * @param itemCost    Cost of the item
      * @param itemPrinted Item being printed

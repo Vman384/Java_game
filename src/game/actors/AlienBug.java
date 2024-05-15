@@ -21,7 +21,7 @@ public class AlienBug extends NPC implements Spawnable {
      * Constructor for AlienBug Objects
      */
     public AlienBug() {
-        super("Feature-" + Probability.generateRandomNumericString(3), 'a', 2);
+        super("Alien Bug" + Probability.generateRandomNumericString(3), 'a', 2);
         this.behaviours.put(999, new FollowAndWanderBehaviour());
         this.behaviours.put(99, new PickUpScrapsBehaviour());
         this.addCapability(Ability.ENTER_SHIP);
