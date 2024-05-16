@@ -1,15 +1,12 @@
 package game.objects.items;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.displays.Display;
 import game.abstractions.item.SubscriptionItem;
-import game.action.ConsumeAction;
 import game.action.MonolougeAction;
 import game.abstractions.item.Monolouge;
 import game.abstractions.item.PrintableItem;
@@ -17,22 +14,35 @@ import game.objects.ground.ComputerTerminal;
 import game.utility.PrintValidation;
 import game.utility.Probability;
 
+// Class representing an AI Device that can be subscribed to and provides monologues
 public class AiDevice extends SubscriptionItem implements PrintableItem, Monolouge {
+
+    // The cost of subscribing to the AI Device
     private static final int SUBSCRIPTION_FEE = 1;
+
+    // The length of the subscription period
     private static final int SUBSCRIPTION_LENGTH = 5;
+
+    // The frequency of subscription action
     private static final int SUBSCRIPTION_OCCURANCE = 1;
+
+    // The cost of the AI Device
     private static final int CREDIT_COST = 50;
+
+    // A list of possible monologues for the AI Device
     private ArrayList<String> MonolougeOptions = new ArrayList<String>();
 
-    /***
-     * Constructor.
+    /**
+     * Constructor for the AiDevice class.
+     * Initializes the AI Device with a name, symbol, and subscription details.
      */
     public AiDevice() {
         super("Astley", 'z', true,SUBSCRIPTION_FEE,SUBSCRIPTION_LENGTH,SUBSCRIPTION_OCCURANCE);
     }
 
     /**
-     * Print method which implements the toilet rolls printing to player inventory functionality.
+     * Print method which implements the Ai Device printing to player inventory functionality.
+     * Validates the printing action and returns a string describing the outcome of the print.
      *
      * @param actor       The actor doing the print action
      * @param printGround the ground type printing the item
@@ -66,7 +76,12 @@ public class AiDevice extends SubscriptionItem implements PrintableItem, Monolou
         return actionList;
     }
 
-
+    /**
+     * Performs the subscription action for the AI Device, adding a new monologue to the list of options.
+     *
+     * @param actor the actor performing the subscription action
+     * @return string indicating that the subscription action has run
+     */
     @Override
     public String subscriptionAction(Actor actor) {
         this.MonolougeOptions.add("The factory will never gonna give you up, valuable intern!");
@@ -85,6 +100,9 @@ public class AiDevice extends SubscriptionItem implements PrintableItem, Monolou
         return "subscription ran";
     }
 
+    /**
+     * Chooses a random monologue from the list of options and prints it to the display.
+     */
     public void monologue(){
         String toPrint = Probability.pickRandom(this.MonolougeOptions);
         Display display = new Display();

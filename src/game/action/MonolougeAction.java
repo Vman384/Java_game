@@ -11,14 +11,14 @@ public class MonolougeAction extends Action{
     /**
      * Constructor.
      *
-     * @param consumable the consumable item to be consumed
+     * @param monologue the item that can display a monologue
      */
     public MonolougeAction(Monolouge monolouge) {
         this.monolouge = monolouge;
     }
 
     /**
-     * Executes the consume action, causing the actor to consume the consumable item.
+     * Executes the Monologue action, causing the monologue method to be called
      *
      * @param actor the actor performing the action
      * @param map   the game map where the action is taking place
