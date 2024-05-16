@@ -73,7 +73,7 @@ public class Application {
         printingOptions.add(new ToiletRoll());
         printingOptions.add(new AiDevice());
         gameMap.at(14, 7).setGround(new ComputerTerminal(printingOptions));
-        player.addBalance(10000);
+        player.addBalance(52);
 
 
         gameMap.at(8, 6).setGround(new InheritreeNonMature(new SimpleSpawner(0.3, new SmallFruit())));

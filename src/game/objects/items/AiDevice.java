@@ -72,7 +72,9 @@ public class AiDevice extends SubscriptionItem implements PrintableItem, Monolou
     @Override
     public ActionList allowableActions(Actor owner) {
         ActionList actionList = new ActionList();
-        actionList.add(new MonolougeAction(this));
+        if(super.SubscriptionActive){
+            actionList.add(new MonolougeAction(this));
+        }
         return actionList;
     }
 

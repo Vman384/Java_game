@@ -12,7 +12,7 @@ public abstract class SubscriptionItem extends Item {
     private int SubscriptionLength;
 
     // A boolean indicating whether the subscription is currently active
-    private boolean SubscriptionActive;
+    protected boolean SubscriptionActive;
 
     // The number of ticks
     private int SubscriptionCount;
