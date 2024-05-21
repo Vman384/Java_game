@@ -27,5 +27,9 @@ public enum Status {
     /**
      * Indicates that this is a SCRAP
      */
-    SCRAP
+    SCRAP,
+    /**
+     * Indicates that THESUS has been placed.
+     */
+    PLACED
 }
