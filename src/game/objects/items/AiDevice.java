@@ -14,7 +14,7 @@ import game.objects.ground.ComputerTerminal;
 import game.utility.PrintValidation;
 import game.utility.Probability;
 
-// Class representing an AI Device that can be subscribed to and provides monologues
+// Class representing an AI Device that can be subscribed to, printed and provides monologues
 public class AiDevice extends SubscriptionItem implements PrintableItem, Monolouge {
 
     // The cost of subscribing to the AI Device
@@ -82,10 +82,9 @@ public class AiDevice extends SubscriptionItem implements PrintableItem, Monolou
      * Performs the subscription action for the AI Device, adding a new monologue to the list of options.
      *
      * @param actor the actor performing the subscription action
-     * @return string indicating that the subscription action has run
      */
     @Override
-    public String subscriptionAction(Actor actor) {
+    public void subscriptionAction(Actor actor) {
         this.MonolougeOptions.add("The factory will never gonna give you up, valuable intern!");
         this.MonolougeOptions.add("We promise we never gonna let you down with a range of staff benefits.");
         this.MonolougeOptions.add("We never gonna run around and desert you, dear intern!");
@@ -99,7 +98,6 @@ public class AiDevice extends SubscriptionItem implements PrintableItem, Monolou
         if(actor.getAttribute(BaseActorAttributes.HEALTH)<=2){
             this.MonolougeOptions.add("Don't worry, we never gonna tell a lie and hurt you, unlike those hostile creatures.");
         }
-        return "subscription ran";
     }
 
     /**

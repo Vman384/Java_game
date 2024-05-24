@@ -42,7 +42,7 @@ public abstract class SubscriptionItem extends Item {
     public SubscriptionItem(String Name, char DisplayChar, boolean Portable,
             int SubscriptionFee, int SubscriptionLength, int SubscriptionOccurance) {
         super(Name, DisplayChar, Portable);
-        this.SubscriptionActive = false;
+        this.SubscriptionActive = true;
         this.SubscriptionFee = SubscriptionFee;
         this.SubscriptionLength = SubscriptionLength;
         this.SubscriptionCount = 0;
@@ -55,38 +55,30 @@ public abstract class SubscriptionItem extends Item {
      *
      * @param actor
      *            The actor to charge for the subscription
-     * @return A string indicating the result of the subscription action
      */
-    public String subscription(Actor actor) {
+    public void subscription(Actor actor) {
         if (this.SubscriptionActive) {
             if (actor.getBalance() >= this.SubscriptionFee) {
                 actor.deductBalance(this.SubscriptionFee);
                 this.SubscriptionActive = true;
-                return "continuing subscription";
             } else {
                 this.SubscriptionActive = false;
-                return "Subscription has ended after this period";
             }
         } else {
             if (actor.getBalance() >= this.SubscriptionFee) {
                 actor.deductBalance(this.SubscriptionFee);
                 this.SubscriptionActive = true;
-                return "restarting subscription";
-            } else {
-                return "Subscription is inactive";
-            }
+            } 
         }
     }
 
     /**
      * Performs the action associated with the subscription.
      *
-     * @param actor
-     *            The actor performing the subscription action
-     * @return A string indicating the result of the subscription action
+     * @param actor The actor performing the subscription action
      */
-    public String subscriptionAction(Actor actor) {
-        return "executing subscription";
+    public void subscriptionAction(Actor actor) {
+        actor.deductBalance(SubscriptionFee);
     }
 
     /**
@@ -102,7 +94,7 @@ public abstract class SubscriptionItem extends Item {
      */
     @Override
     public void tick(Location currentLocation, Actor actor) {
-        if (this.SubscriptionCount % this.SubscriptionLength == 0) {
+        if (this.SubscriptionCount % this.SubscriptionLength == 0 & this.SubscriptionCount != 0) {
             subscription(actor);
         }
         if (this.SubscriptionCount % this.SubscriptionOccurance == 0 && this.SubscriptionActive) {
