@@ -3,6 +3,7 @@ package game.abstractions.item;
 /**
  * This interface represents a monologue in the game.
  * It has a single method, monologue(), which is used to display a monologue.
+ * @author Vedansh Malhan
  */
 public interface Monolouge {
     /**

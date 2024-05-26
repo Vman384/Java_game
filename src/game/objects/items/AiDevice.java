@@ -14,7 +14,10 @@ import game.objects.ground.ComputerTerminal;
 import game.utility.PrintValidation;
 import game.utility.Probability;
 
-// Class representing an AI Device that can be subscribed to, printed and provides monologues
+/**  Class representing an AI Device that can be subscribed to, printed and provides monologues
+* @author Vedansh Malhan
+*/
+
 public class AiDevice extends SubscriptionItem implements PrintableItem, Monolouge {
 
     // The cost of subscribing to the AI Device

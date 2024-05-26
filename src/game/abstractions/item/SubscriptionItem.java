@@ -3,7 +3,11 @@ package game.abstractions.item;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Location;
-
+/**
+ * SubscriptionItem abstract class which each item that has a subscription extends
+ *
+ * @author Vedansh Malhan
+ */
 public abstract class SubscriptionItem extends Item {
     // The subscription fee for the item
     private int SubscriptionFee;
