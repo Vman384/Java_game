@@ -1,11 +1,13 @@
 package game.objects.ground;
 
+import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.abstractions.item.PrintableItem;
 import game.action.PrintAction;
+import game.action.TravelAction;
 
 import java.util.List;
 
@@ -16,17 +18,19 @@ import java.util.List;
  */
 public class ComputerTerminal extends Ground {
     private List<PrintableItem> printingOptions;
+    private List<TravelAction> travelActions;
 
     /**
      * Class Constructor.
      *
      * @param printingOptions a list of all the printable items of the terminal
+     * @param travelActions a list of all travel action options
      */
-    public ComputerTerminal(List<PrintableItem> printingOptions) {
+    public ComputerTerminal(List<PrintableItem> printingOptions, List<TravelAction> travelActions) {
         super('=');
         this.printingOptions = printingOptions;
+        this.travelActions = travelActions;
     }
-
 
     /**
      * Returns an Action list containing all print actions for printable items.
@@ -41,6 +45,11 @@ public class ComputerTerminal extends Ground {
         ActionList actions = new ActionList();
         for (PrintableItem printableItem : printingOptions) {
             actions.add(new PrintAction(printableItem, this));
+        }
+        for (TravelAction travelAction : travelActions) {
+            if (!travelAction.containsActor(location)) {
+                actions.add(travelAction);
+            }
         }
 
         return actions;

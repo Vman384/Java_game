@@ -1,20 +1,22 @@
 package game.application;
 
+import edu.monash.fit2099.engine.actions.MoveActorAction;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
 import game.abstractions.item.PrintableItem;
+import game.action.TravelAction;
 import game.actors.AlienBug;
 import game.actors.HuntsmanSpider;
 import game.actors.Player;
 import game.actors.SuspiciousAlien;
+import game.maps.Maps;
 import game.objects.ground.*;
 import game.objects.items.*;
 import game.spawning.SimpleSpawner;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -36,58 +38,10 @@ public class Application {
                 new Dirt(), new Wall(), new Floor(), new Puddle());
         FancyGroundFactory groundStaticFactory = new FancyGroundFactory(new Wall(), new Floor(), new Dirt());
 
-        List<String> Polymorphia = Arrays.asList(
-                "...~~~~.........~~~...........",
-                "...~~~~.......................",
-                "...~~~........................",
-                "..............................",
-                ".............#####............",
-                ".............#___#...........~",
-                ".............#___#..........~~",
-                ".............##_##.........~~~",
-                ".................~~........~~~",
-                "................~~~~.......~~~",
-                ".............~~~~~~~........~~",
-                "......~.....~~~~~~~~.........~",
-                ".....~~~...~~~~~~~~~..........",
-                ".....~~~~~~~~~~~~~~~~........~",
-                ".....~~~~~~~~~~~~~~~~~~~....~~");
-
-        List<String> Connascence = Arrays.asList(
-                "..........................~~~~",
-                "..........................~~~~",
-                "..........................~~~~",
-                "~..........................~..",
-                "~~...........#####............",
-                "~~~..........#___#............",
-                "~~~..........#___#............",
-                "~~~..........##_##............",
-                "~~~..................~~.......",
-                "~~~~................~~~~......",
-                "~~~~...............~~~~~......",
-                "..~................~~~~.......",
-                "....................~~........",
-                ".............~~...............",
-                "............~~~~.............."
-        );
-
-        List<String> StaticFactory = Arrays.asList(
-                ".......",
-                ".#####.",
-                ".#___#.",
-                ".#___#.",
-                ".##_##.",
-                ".......",
-                ".......",
-                ".......",
-                ".......",
-                "......."
-        );
-
         // Initialised all maps as GameMaps
-        GameMap polymorphiaMap = new GameMap(groundFactoryMoons, Polymorphia);
-        GameMap connascenceMap = new GameMap(groundFactoryMoons, Connascence);
-        GameMap staticFactoryMap = new GameMap(groundStaticFactory, StaticFactory);
+        GameMap polymorphiaMap = new GameMap(groundFactoryMoons, Maps.POLYMORPHIA);
+        GameMap connascenceMap = new GameMap(groundFactoryMoons, Maps.CONNASCENCE);
+        GameMap staticFactoryMap = new GameMap(groundStaticFactory, Maps.STATICFACTORY);
 
         // Add all Game maps to World
         world.addGameMap(polymorphiaMap);
@@ -106,12 +60,27 @@ public class Application {
         Player player = new Player("Intern", '@', 4);
         world.addPlayer(player, polymorphiaMap.at(15, 6));
 
+        // Add items to Computer Terminal
         List<PrintableItem> printingOptions = new ArrayList<>();
         printingOptions.add(new EnergyDrink());
         printingOptions.add(new DragonSlayerSword());
         printingOptions.add(new ToiletRoll());
         printingOptions.add(new Teleporter());
-        polymorphiaMap.at(4, 10).setGround(new ComputerTerminal(printingOptions));
+
+        // Add travel actions to computer terminal
+        List<TravelAction> travelActions = new ArrayList<>();
+        travelActions.add(new TravelAction(polymorphiaMap.at(15, 6), ""));
+        travelActions.add(new TravelAction(connascenceMap.at(15, 6), ""));
+        travelActions.add(new TravelAction(staticFactoryMap.at(3, 3), ""));
+
+        ComputerTerminal computerTerminal = new ComputerTerminal(printingOptions, travelActions);
+
+        polymorphiaMap.at(15, 5).setGround(computerTerminal);
+        connascenceMap.at(15, 5).setGround(computerTerminal);
+        staticFactoryMap.at(3, 2).setGround(computerTerminal);
+
+
+
         player.addBalance(10000);
 
 

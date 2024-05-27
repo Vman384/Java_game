@@ -8,7 +8,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.abstractions.item.PrintableItem;
 import game.abstractions.item.Teleportable;
-import game.action.TeleportAction;
+import game.action.TravelAction;
 import game.objects.ground.ComputerTerminal;
 import game.utility.PrintValidation;
 import game.utility.Probability;
@@ -16,7 +16,6 @@ import game.utility.Probability;
 
 public class Teleporter extends Item implements PrintableItem, Teleportable {
     private final int creditCost;
-    private Location teleportLocation = null;
 
     public Teleporter() {
         super("THESEUS", '^', true);
@@ -37,7 +36,7 @@ public class Teleporter extends Item implements PrintableItem, Teleportable {
     @Override
     public ActionList allowableActions(Location location) {
         ActionList actionList = super.allowableActions(location);
-        MoveActorAction teleportActor = new TeleportAction(teleportLocation, "", this);
+        MoveActorAction teleportActor = new TravelAction(location, "", this);
         actionList.add(teleportActor);
         return actionList;
 
