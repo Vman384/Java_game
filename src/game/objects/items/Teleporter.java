@@ -1,6 +1,7 @@
 package game.objects.items;
 
 import edu.monash.fit2099.engine.actions.ActionList;
+import edu.monash.fit2099.engine.actions.MoveActorAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
@@ -14,8 +15,8 @@ import game.utility.Probability;
 
 
 public class Teleporter extends Item implements PrintableItem, Teleportable {
-    private int creditCost;
-    private Actor actor;
+    private final int creditCost;
+    private Location teleportLocation = null;
 
     public Teleporter() {
         super("THESEUS", '^', true);
@@ -34,32 +35,18 @@ public class Teleporter extends Item implements PrintableItem, Teleportable {
     }
 
     @Override
-    public void tick(Location location) {
-        super.tick(location);
-        allowableActions(location);
-    }
-
-    @Override
     public ActionList allowableActions(Location location) {
         ActionList actionList = super.allowableActions(location);
-        //System.out.println("Makes it here first obviously");
-        actionList.add(new TeleportAction(this));
+        MoveActorAction teleportActor = new TeleportAction(teleportLocation, "", this);
+        actionList.add(teleportActor);
         return actionList;
 
-        //if (location.getItems().contains(this)) {
-            //System.out.println("Actually does make it here z!!!!");
-            //actionList.add(new TeleportAction(this));
-        //}
-        //return actionList;
     }
     @Override
-    public String teleport(Actor actor, GameMap gameMap) {
+    public Location teleport(Actor actor, GameMap gameMap) {
         int xValue = Probability.pickRandomLocation(gameMap.getXRange());
         int yValue = Probability.pickRandomLocation(gameMap.getYRange());
-
-        Location randomLocation = new Location(gameMap, xValue, yValue);
-        gameMap.moveActor(actor, randomLocation);
-        return actor + " teleports to " + randomLocation;
+        return gameMap.at(xValue, yValue);
         }
 
 }
