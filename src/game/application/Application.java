@@ -52,7 +52,10 @@ public class Application {
                 ".....~~~~~~~~~~~~~~~~........~",
                 ".....~~~~~~~~~~~~~~~~~~~....~~");
 
+        GameMap connascence = new GameMap(groundFactory, map);
         GameMap gameMap = new GameMap(groundFactory, map);
+
+        world.addGameMap(connascence);
         world.addGameMap(gameMap);
 
         for (String line : FancyMessage.TITLE.split("\n")) {
@@ -75,7 +78,7 @@ public class Application {
         player.addBalance(10000);
 
 
-        gameMap.at(8, 6).setGround(new InheritreeNonMature(new SimpleSpawner(0.3, new SmallFruit())));
+        gameMap.at(8, 6).setGround(new InheritreeSapling(new SimpleSpawner(0.3, new SmallFruit())));
         gameMap.at(1, 6).setGround(new InheritreeMature(new SimpleSpawner(0.2, new LargeFruit())));
 
         gameMap.at(10, 10).setGround(new Crater(new SimpleSpawner(0.2, new HuntsmanSpider())));

@@ -43,6 +43,7 @@ public class ComputerTerminal extends Ground {
             actions.add(new PrintAction(printable, this));
         }
 
+
         return actions;
     }
 

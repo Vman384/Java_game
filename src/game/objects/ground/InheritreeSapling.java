@@ -7,19 +7,19 @@ import game.objects.items.LargeFruit;
 import game.spawning.SimpleSpawner;
 
 /**
- * Represents a non-mature Inheritree object in the game.
+ * Represents a sapling Inheritree object in the game.
  * This class extends the Tree class.
  * Created by:
  *
  * @author Weize Yu
  */
-public class InheritreeNonMature extends Tree implements Transformable {
+public class InheritreeSapling extends Tree implements Transformable {
 
     /**
      * Constructs a new InheritreeNonMature object.
      * Initializes its symbol and adds a fruit spawn rules.
      */
-    public InheritreeNonMature(SpawnRule... spawnrules) {
+    public InheritreeSapling(SpawnRule... spawnrules) {
         super('t', 0, spawnrules);
     }
 
