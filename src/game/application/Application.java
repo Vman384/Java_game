@@ -64,7 +64,7 @@ public class Application {
         printingOptions.add(new EnergyDrink());
         printingOptions.add(new DragonSlayerSword());
         printingOptions.add(new ToiletRoll());
-        printingOptions.add(new Teleporter());
+        printingOptions.add(new Teleporter("THESUS", '^'));
 
         // Add travel actions to computer terminal
         List<TravelAction> travelActions = new ArrayList<>();

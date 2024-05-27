@@ -17,8 +17,8 @@ import game.utility.Probability;
 public class Teleporter extends Item implements PrintableItem, Teleportable {
     private final int creditCost;
 
-    public Teleporter() {
-        super("THESEUS", '^', true);
+    public Teleporter(String name, char displayChar) {
+        super(name, displayChar, true);
         this.creditCost = 100;
 
     }

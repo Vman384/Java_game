@@ -57,7 +57,7 @@ public class TravelAction extends MoveActorAction {
         if (teleportable != null) {
             return actor + " travels with " + teleportable + " in current map";
         }
-        return actor + " travels to the " + gameMapEnum.getName();
+        return actor + " travels to the " + gameMapEnum.getClass().getName();
     }
 
     public boolean containsActor(Location currentLocation) {
