@@ -1,6 +1,5 @@
 package game.application;
 
-import edu.monash.fit2099.engine.actions.MoveActorAction;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
@@ -69,9 +68,9 @@ public class Application {
 
         // Add travel actions to computer terminal
         List<TravelAction> travelActions = new ArrayList<>();
-        travelActions.add(new TravelAction(polymorphiaMap.at(15, 6), ""));
-        travelActions.add(new TravelAction(connascenceMap.at(15, 6), ""));
-        travelActions.add(new TravelAction(staticFactoryMap.at(3, 3), ""));
+        travelActions.add(new TravelAction(polymorphiaMap.at(15, 6), "", Maps.GameMapEnum.POLYMORPHIA));
+        travelActions.add(new TravelAction(connascenceMap.at(15, 6), "", Maps.GameMapEnum.CONNASCENCE));
+        travelActions.add(new TravelAction(staticFactoryMap.at(3, 3), "", Maps.GameMapEnum.STATICFACTORY));
 
         ComputerTerminal computerTerminal = new ComputerTerminal(printingOptions, travelActions);
 

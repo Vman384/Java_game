@@ -1,12 +1,11 @@
 package game.maps;
 
-import edu.monash.fit2099.engine.positions.GameMap;
-
 import java.util.Arrays;
 import java.util.List;
 
 public class Maps {
-    public static List<String> POLYMORPHIA = Arrays.asList(
+
+    public static final List<String> POLYMORPHIA = Arrays.asList(
             "...~~~~.........~~~...........",
             "...~~~~.......................",
             "...~~~........................",
@@ -24,7 +23,7 @@ public class Maps {
             ".....~~~~~~~~~~~~~~~~~~~....~~"
     );
 
-    public static List<String> CONNASCENCE = Arrays.asList(
+    public static final List<String> CONNASCENCE = Arrays.asList(
             "..........................~~~~",
             "..........................~~~~",
             "..........................~~~~",
@@ -42,7 +41,7 @@ public class Maps {
             "............~~~~.............."
     );
 
-    public static List<String> STATICFACTORY = Arrays.asList(
+    public static final List<String> STATICFACTORY = Arrays.asList(
             ".......",
             ".#####.",
             ".#___#.",
@@ -54,4 +53,21 @@ public class Maps {
             ".......",
             "......."
     );
+
+    public enum GameMapEnum {
+        POLYMORPHIA("Polymorphia"),
+        CONNASCENCE("Connascence"),
+        STATICFACTORY("Static Factory");
+
+        private final String name;
+
+        GameMapEnum(String name) {
+            this.name = name;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+    }
 }

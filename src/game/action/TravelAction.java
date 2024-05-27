@@ -5,21 +5,24 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.abstractions.item.Teleportable;
+import game.maps.Maps;
 
 public class TravelAction extends MoveActorAction {
     private GameMap travelgameMap;
     private Teleportable teleportable = null;
     private Location travelLocation;
+    private Maps.GameMapEnum gameMapEnum;
 
     /**
      * If travel action is to another map
      * @param location
      * @param destination
      */
-    public TravelAction(Location location, String destination) {
+    public TravelAction(Location location, String destination, Maps.GameMapEnum gameMapEnum) {
         super(location, destination);
         this.travelLocation = location;
         this.travelgameMap = location.map();
+        this.gameMapEnum = gameMapEnum;
     }
 
     /**
@@ -42,21 +45,21 @@ public class TravelAction extends MoveActorAction {
                 return "Teleport Failed!";
             }
             gameMap.moveActor(actor, travelLocation);
-            return actor + " arrived at " + travelLocation + " in " + travelgameMap.toString();
+            return actor + " arrived at " + travelLocation + " in current map";
         } else {
             gameMap.moveActor(actor, travelLocation);
-            return actor + " arrived at " + travelLocation + " in " + travelgameMap.toString();
+            return actor + " arrived at " + travelLocation + " in " + gameMapEnum.getName();
         }
     }
 
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " travels to the " + this.travelgameMap.toString();
+        if (teleportable != null) {
+            return actor + " travels with " + teleportable + " in current map";
+        }
+        return actor + " travels to the " + gameMapEnum.getName();
     }
 
-    public String gameMapName(GameMap gameMap) {
-        return gameMap.getClass().getName();
-    }
     public boolean containsActor(Location currentLocation) {
         return currentLocation.map() == this.travelgameMap;
     }
