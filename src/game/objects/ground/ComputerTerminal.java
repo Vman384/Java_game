@@ -4,7 +4,7 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
-import game.abstractions.item.PrintableItem;
+import game.abstractions.item.Printable;
 import game.action.PrintAction;
 
 import java.util.List;
@@ -15,14 +15,14 @@ import java.util.List;
  * @author Dean Mascitti
  */
 public class ComputerTerminal extends Ground {
-    private List<PrintableItem> printingOptions;
+    private List<Printable> printingOptions;
 
     /**
      * Class Constructor.
      *
      * @param printingOptions a list of all the printable items of the terminal
      */
-    public ComputerTerminal(List<PrintableItem> printingOptions) {
+    public ComputerTerminal(List<Printable> printingOptions) {
         super('=');
         this.printingOptions = printingOptions;
     }
@@ -39,8 +39,8 @@ public class ComputerTerminal extends Ground {
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList actions = new ActionList();
-        for (PrintableItem printableItem : printingOptions) {
-            actions.add(new PrintAction(printableItem, this));
+        for (Printable printable : printingOptions) {
+            actions.add(new PrintAction(printable, this));
         }
 
         return actions;

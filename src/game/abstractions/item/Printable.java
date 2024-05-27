@@ -4,11 +4,11 @@ import edu.monash.fit2099.engine.actors.Actor;
 import game.objects.ground.ComputerTerminal;
 
 /**
- * PrintableItem interface which each item that can be printed implements.
+ * PrintableItem interface which each class that can be printed implements.
  *
  * @author Dean Mascitti
  */
-public interface PrintableItem {
+public interface Printable {
 
     /**
      * This method is overriden by each printable item in which their respective printing process can be implemented.

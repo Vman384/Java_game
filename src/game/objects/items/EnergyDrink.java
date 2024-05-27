@@ -5,13 +5,18 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.items.Item;
 import game.abstractions.item.Consumable;
-import game.abstractions.item.PrintableItem;
+import game.abstractions.item.Printable;
 import game.action.ConsumeAction;
 import game.objects.ground.ComputerTerminal;
 import game.utility.PrintValidation;
 import game.utility.Probability;
 
-public class EnergyDrink extends Item implements PrintableItem, Consumable {
+/**
+ * EnergyDrink class represents the class for the consumable item of an energy drink.
+ *
+ * @author Dean Mascitti
+ */
+public class EnergyDrink extends Item implements Printable, Consumable {
     private final int healEffects = 1;
     private int creditCost;
     private double costProbability;
