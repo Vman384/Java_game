@@ -29,7 +29,7 @@ public class TeleportAction extends Action {
      * @return String; describing the teleportation
      */
     @Override
-    public String execute(Actor actor, GameMap gameMap) { return this.teleportable.teleport(actor); }
+    public String execute(Actor actor, GameMap gameMap) { return teleportable.teleport(actor, gameMap); }
 
     @Override
     public String menuDescription(Actor actor) { return actor + " teleports with " + this.teleportable; }

@@ -15,12 +15,10 @@ import game.utility.Probability;
 
 public class Teleporter extends Item implements PrintableItem, Teleportable {
     private int creditCost;
-    private GameMap gameMap;
     private Actor actor;
 
-    public Teleporter(GameMap gameMap) {
+    public Teleporter() {
         super("THESEUS", '^', true);
-        this.gameMap = gameMap;
         this.creditCost = 100;
 
     }
@@ -37,13 +35,14 @@ public class Teleporter extends Item implements PrintableItem, Teleportable {
 
     @Override
     public void tick(Location location) {
-        teleport(actor);
+        super.tick(location);
+        allowableActions(location);
     }
 
     @Override
-    public ActionList allowableActions(Actor otherActor, Location location) {
-        ActionList actionList = new ActionList();
-        System.out.println("Makes it here first obviously");
+    public ActionList allowableActions(Location location) {
+        ActionList actionList = super.allowableActions(location);
+        //System.out.println("Makes it here first obviously");
         actionList.add(new TeleportAction(this));
         return actionList;
 
@@ -54,15 +53,12 @@ public class Teleporter extends Item implements PrintableItem, Teleportable {
         //return actionList;
     }
     @Override
-    public String teleport(Actor actor) {
+    public String teleport(Actor actor, GameMap gameMap) {
         int xValue = Probability.pickRandomLocation(gameMap.getXRange());
         int yValue = Probability.pickRandomLocation(gameMap.getYRange());
 
         Location randomLocation = new Location(gameMap, xValue, yValue);
-
-        if (!randomLocation.containsAnActor()) {
-            gameMap.moveActor(actor, randomLocation);}
-        else {teleport(actor);}
+        gameMap.moveActor(actor, randomLocation);
         return actor + " teleports to " + randomLocation;
         }
 

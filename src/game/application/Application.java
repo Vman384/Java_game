@@ -71,7 +71,7 @@ public class Application {
         printingOptions.add(new EnergyDrink());
         printingOptions.add(new DragonSlayerSword());
         printingOptions.add(new ToiletRoll());
-        printingOptions.add(new Teleporter(gameMap));
+        printingOptions.add(new Teleporter());
         gameMap.at(4, 10).setGround(new ComputerTerminal(printingOptions));
         player.addBalance(10000);
 
