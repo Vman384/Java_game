@@ -51,6 +51,6 @@ public class InheritreeSapling extends Tree implements Transformable {
      */
     @Override
     public void transform(Location location) {
-        location.setGround(new InheritreeYoung(new SimpleSpawner(0.2, new LargeFruit())));
+        location.setGround(new InheritreeYoung());
     }
 }

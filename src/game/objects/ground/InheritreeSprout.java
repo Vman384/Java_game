@@ -3,7 +3,7 @@ package game.objects.ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.abstractions.spawnable.SpawnRule;
 import game.abstractions.transformable.Transformable;
-import game.objects.items.LargeFruit;
+import game.objects.items.SmallFruit;
 import game.spawning.SimpleSpawner;
 
 public class InheritreeSprout extends Tree implements Transformable {
@@ -26,7 +26,7 @@ public class InheritreeSprout extends Tree implements Transformable {
     }
 
     /**
-     * Determines if the InheritreeNonMature can transform into a mature tree.
+     * Determines if the InheritreeSprout can transform into a mature tree.
      *
      * @return True if the tree has reached the transformation age, otherwise false.
      */
@@ -36,12 +36,12 @@ public class InheritreeSprout extends Tree implements Transformable {
     }
 
     /**
-     * Transforms the InheritreeNonMature into a mature tree.
+     * Transforms the InheritreeSprout into a mature tree.
      *
-     * @return A new InheritreeMature object.
+     * @return A new InheritreeSprout object.
      */
     @Override
     public void transform(Location location) {
-        location.setGround(new InheritreeMature(new SimpleSpawner(0.2, new LargeFruit())));
+        location.setGround(new InheritreeSapling(new SimpleSpawner(0.3, new SmallFruit())));
     }
 }

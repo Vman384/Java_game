@@ -11,7 +11,6 @@ import java.util.List;
 
 /**
  * A concrete implementation of SpawnRule for spawning entities that implement the Spawnable interface.
- * Created by:
  *
  * @author Weize Yu
  */
