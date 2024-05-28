@@ -5,7 +5,6 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.abstractions.item.Printable;
-import game.abstractions.item.PrintableItem;
 import game.action.PrintAction;
 import game.action.TravelAction;
 

@@ -5,7 +5,6 @@ import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
 import game.abstractions.item.Printable;
-import game.abstractions.item.PrintableItem;
 import game.action.TravelAction;
 import game.actors.AlienBug;
 import game.actors.HuntsmanSpider;
