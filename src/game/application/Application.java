@@ -4,6 +4,7 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
+import game.abstractions.item.Printable;
 import game.abstractions.item.PrintableItem;
 import game.action.TravelAction;
 import game.actors.AlienBug;
@@ -60,7 +61,7 @@ public class Application {
         world.addPlayer(player, polymorphiaMap.at(15, 6));
 
         // Add items to Computer Terminal
-        List<PrintableItem> printingOptions = new ArrayList<>();
+        List<Printable> printingOptions = new ArrayList<>();
         printingOptions.add(new EnergyDrink());
         printingOptions.add(new DragonSlayerSword());
         printingOptions.add(new ToiletRoll());
@@ -83,8 +84,9 @@ public class Application {
         player.addBalance(10000);
 
 
-        polymorphiaMap.at(8, 6).setGround(new InheritreeNonMature(new SimpleSpawner(0.3, new SmallFruit())));
-        polymorphiaMap.at(1, 6).setGround(new InheritreeMature(new SimpleSpawner(0.2, new LargeFruit())));
+        int sproutInitialAge = 0;
+        polymorphiaMap.at(8, 6).setGround(new InheritreeSprout(sproutInitialAge));
+
 
         polymorphiaMap.at(10, 10).setGround(new Crater(new SimpleSpawner(0.2, new HuntsmanSpider())));
         polymorphiaMap.at(1, 1).setGround((new Crater(new SimpleSpawner(0.1, new AlienBug()))));

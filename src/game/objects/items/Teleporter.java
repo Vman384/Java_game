@@ -6,7 +6,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
-import game.abstractions.item.PrintableItem;
+import game.abstractions.item.Printable;
 import game.abstractions.item.Teleportable;
 import game.action.TravelAction;
 import game.objects.ground.ComputerTerminal;
@@ -14,7 +14,7 @@ import game.utility.PrintValidation;
 import game.utility.Probability;
 
 
-public class Teleporter extends Item implements PrintableItem, Teleportable {
+public class Teleporter extends Item implements Printable, Teleportable {
     private final int creditCost;
 
     public Teleporter(String name, char displayChar) {
