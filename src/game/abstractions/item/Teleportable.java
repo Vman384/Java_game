@@ -5,7 +5,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 
 /**
- * The {@code Teleportable} interface should be implemented by items that have the ability to teleport
+ * The Teleportable interface should be implemented by items that have the ability to teleport
  * actors within the game. Implementing this interface allows an item to define custom logic for teleportation.
  */
 public interface Teleportable {
