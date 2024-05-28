@@ -14,13 +14,15 @@ import game.spawning.SimpleSpawner;
  * @author Weize Yu
  */
 public class InheritreeSapling extends Tree implements Transformable {
-    private int transformAge = 9;
+    private int transformAge;
+    private final static int NEXT_TRANSFORMATION = 6;
     /**
-     * Constructs a new InheritreeNonMature object.
+     * Constructs a new InheritreeSapling object.
      * Initializes its symbol and adds a fruit spawn rules.
      */
-    public InheritreeSapling(SpawnRule... spawnRules) {
-        super('t', 3, spawnRules);
+    public InheritreeSapling(int initialAge, SpawnRule... spawnRules) {
+        super('t', initialAge, spawnRules);
+        this.transformAge = initialAge + NEXT_TRANSFORMATION;
     }
 
     /**
@@ -45,12 +47,12 @@ public class InheritreeSapling extends Tree implements Transformable {
     }
 
     /**
-     * Transforms the InheritreeNonMature into a mature tree.
+     * Transforms the InheritreeNonMature into a young tree which cannot spawn anything.
      *
      * @return A new InheritreeMature object.
      */
     @Override
     public void transform(Location location) {
-        location.setGround(new InheritreeYoung());
+        location.setGround(new InheritreeYoung(this.transformAge));
     }
 }

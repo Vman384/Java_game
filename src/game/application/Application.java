@@ -77,7 +77,8 @@ public class Application {
         gameMap.at(4, 10).setGround(new ComputerTerminal(printingOptions));
         player.addBalance(10000);
 
-        gameMap.at(8, 6).setGround(new InheritreeSprout());
+        int sproutInitialAge = 0;
+        gameMap.at(8, 6).setGround(new InheritreeSprout(sproutInitialAge));
 
 //        gameMap.at(8, 6).setGround(new InheritreeSapling(new SimpleSpawner(0.3, new SmallFruit())));
 //        gameMap.at(1, 6).setGround(new InheritreeMature(new SimpleSpawner(0.2, new LargeFruit())));

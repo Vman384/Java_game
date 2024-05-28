@@ -8,13 +8,15 @@ import game.spawning.SimpleSpawner;
 
 public class InheritreeYoung extends Tree implements Transformable {
 
-    private int transformAge = 14;
+    private int transformAge;
+    private final static int NEXT_TRANSFORMATION = 5;
     /**
-     * Constructs a new InheritreeNonMature object.
+     * Constructs a new InheritreeYoung object.
      * Initializes its symbol and adds a fruit spawn rules.
      */
-    public InheritreeYoung(SpawnRule... spawnRules) {
-        super('t', 9, spawnRules);
+    public InheritreeYoung(int initialAge, SpawnRule... spawnRules) {
+        super('y', initialAge, spawnRules);
+        this.transformAge = initialAge + NEXT_TRANSFORMATION;
     }
 
     /**
@@ -29,7 +31,7 @@ public class InheritreeYoung extends Tree implements Transformable {
     }
 
     /**
-     * Determines if the InheritreeNonMature can transform into a mature tree.
+     * Determines if the InheritreeYoung can transform into a mature tree.
      *
      * @return True if the tree has reached the transformation age, otherwise false.
      */
@@ -39,12 +41,12 @@ public class InheritreeYoung extends Tree implements Transformable {
     }
 
     /**
-     * Transforms the InheritreeNonMature into a mature tree.
+     * Transforms the InheritreeYoung into a mature tree which can spawn large fruit.
      *
      * @return A new InheritreeMature object.
      */
     @Override
     public void transform(Location location) {
-        location.setGround(new InheritreeMature(new SimpleSpawner(0.2, new LargeFruit())));
+        location.setGround(new InheritreeMature(this.transformAge, new SimpleSpawner(0.2, new LargeFruit())));
     }
 }

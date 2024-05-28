@@ -8,10 +8,12 @@ import game.spawning.SimpleSpawner;
 
 public class InheritreeSprout extends Tree implements Transformable {
 
-    private int transformAge = 3;
+    private int transformAge;
+    private final static int NEXT_TRANSFORMATION = 3;
 
-    public InheritreeSprout(SpawnRule... spawnRules) {
-        super(',', 0, spawnRules);
+    public InheritreeSprout(int initialAge, SpawnRule... spawnRules) {
+        super(',', initialAge, spawnRules);
+        this.transformAge = initialAge + NEXT_TRANSFORMATION;
     }
 
     /**
@@ -36,12 +38,12 @@ public class InheritreeSprout extends Tree implements Transformable {
     }
 
     /**
-     * Transforms the InheritreeSprout into a mature tree.
+     * Transforms the InheritreeSprout into a Sapling tree which can spawn small fruit.
      *
      * @return A new InheritreeSprout object.
      */
     @Override
     public void transform(Location location) {
-        location.setGround(new InheritreeSapling(new SimpleSpawner(0.3, new SmallFruit())));
+        location.setGround(new InheritreeSapling(this.transformAge, new SimpleSpawner(0.3, new SmallFruit())));
     }
 }

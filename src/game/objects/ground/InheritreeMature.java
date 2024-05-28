@@ -16,7 +16,7 @@ public class InheritreeMature extends Tree {
      *
      * @param spawnrules rules for spawning its subjects
      */
-    public InheritreeMature(SpawnRule... spawnrules) {
-        super('T', 5, spawnrules);
+    public InheritreeMature(int initialAge, SpawnRule... spawnrules) {
+        super('T', initialAge, spawnrules);
     }
 }
