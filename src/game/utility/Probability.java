@@ -96,6 +96,12 @@ public class Probability {
         return String.valueOf(randomNumber);
     }
 
+    /**
+     * Generates a random location (x,y) from given list
+     * @param numberRange the list of game map coordinates
+     * @return an integer representing a coordinate
+     * @param <T>
+     */
     public static <T> Integer pickRandomLocation(NumberRange numberRange) {
         ArrayList<Integer> list = new ArrayList<Integer>();
         for (Integer element : numberRange) {
