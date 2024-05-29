@@ -33,7 +33,7 @@ public class TravelAction extends MoveActorAction {
     private GameMapEnum gameMapEnum;
 
     /**
-     * Constructor for travel action to another map.
+     * Constructor for travel action to another map via computerTerminal
      *
      * @param location     The destination location.
      * @param destination  A description of the destination.
@@ -47,7 +47,7 @@ public class TravelAction extends MoveActorAction {
     }
 
     /**
-     * Constructor for travel action within the same map via teleportation.
+     * Constructor for travel action within the same map via teleporter.
      *
      * @param location     The destination location.
      * @param destination  A description of the destination.
@@ -73,12 +73,10 @@ public class TravelAction extends MoveActorAction {
             if (travelLocation.containsAnActor()) {
                 return "Teleport Failed!";
             }
-            gameMap.moveActor(actor, travelLocation);
-            return actor + " arrived at " + travelLocation + " in current map";
-        } else {
-            gameMap.moveActor(actor, travelLocation);
-            return actor + " arrived at " + travelLocation + " in " + gameMapEnum.getName();
         }
+        gameMap.moveActor(actor, travelLocation);
+        String mapName = (teleportable != null) ? "current map" : gameMapEnum.getName();
+        return actor + " arrived at " + travelLocation + " in " + mapName;
     }
 
     /**
@@ -89,10 +87,9 @@ public class TravelAction extends MoveActorAction {
      */
     @Override
     public String menuDescription(Actor actor) {
-        if (teleportable != null) {
-            return actor + " travels with " + teleportable + " in current map";
-        }
-        return actor + " travels to the " + gameMapEnum.getName();
+        return (teleportable != null)
+                ? actor + " travels with " + teleportable + " in current map"
+                : actor + " travels to the " + gameMapEnum.getName();
     }
 
     /**
