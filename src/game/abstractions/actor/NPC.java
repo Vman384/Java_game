@@ -73,7 +73,7 @@ public abstract class NPC extends ActorBase {
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
-        if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
+        if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY) & this.hasCapability(Status.HOSTILE_TO_PLAYER)) {
             actions.add(new AttackAction(this, direction));
         }
         return actions;
