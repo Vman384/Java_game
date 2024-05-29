@@ -14,6 +14,7 @@ import game.maps.Maps;
 import game.objects.ground.*;
 import game.objects.items.*;
 import game.spawning.SimpleSpawner;
+import game.utility.GameMapEnum;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,9 +69,9 @@ public class Application {
 
         // Add travel actions to computer terminal
         List<TravelAction> travelActions = new ArrayList<>();
-        travelActions.add(new TravelAction(polymorphiaMap.at(15, 6), "", Maps.GameMapEnum.POLYMORPHIA));
-        travelActions.add(new TravelAction(connascenceMap.at(15, 6), "", Maps.GameMapEnum.CONNASCENCE));
-        travelActions.add(new TravelAction(staticFactoryMap.at(3, 3), "", Maps.GameMapEnum.STATICFACTORY));
+        travelActions.add(new TravelAction(polymorphiaMap.at(15, 6), "", GameMapEnum.POLYMORPHIA));
+        travelActions.add(new TravelAction(connascenceMap.at(15, 6), "", GameMapEnum.CONNASCENCE));
+        travelActions.add(new TravelAction(staticFactoryMap.at(3, 3), "", GameMapEnum.STATICFACTORY));
 
         ComputerTerminal computerTerminal = new ComputerTerminal(printingOptions, travelActions);
 
