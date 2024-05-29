@@ -15,10 +15,13 @@ import game.utility.Probability;
 
 /**
  * The teleporter class represents an item that can teleport an actor to a random location within the same game map.
- * It implements {@link PrintableItem} and {@link Teleportable} interfaces.
+ * It implements PrintableItem and Teleportable interfaces.
  */
 public class Teleporter extends Item implements PrintableItem, Teleportable {
-    private final int creditCost;
+    /**
+     * Cost of teleporting device
+     */
+    private final int creditCost = 100;
 
     /**
      * Constructor to create a teleporter item.
@@ -28,7 +31,6 @@ public class Teleporter extends Item implements PrintableItem, Teleportable {
      */
     public Teleporter(String name, char displayChar) {
         super(name, displayChar, true);
-        this.creditCost = 100;
     }
 
     /**
