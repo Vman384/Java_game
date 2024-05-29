@@ -32,6 +32,11 @@ public class AiDevice extends SubscriptionItem implements PrintableItem, Monolou
     // The cost of the AI Device
     private static final int CREDIT_COST = 50;
 
+    private static final int ITEM_MONOLOGUE_OPTION = 10;
+    private static final int BALANCE_MONOLOGUE_OPTION = 50;
+    private static final int HEALTH_MONOLOGUE_OPTION = 2;
+    
+
     // A list of possible monologues for the AI Device
     private ArrayList<String> MonolougeOptions = new ArrayList<String>();
 
@@ -91,14 +96,14 @@ public class AiDevice extends SubscriptionItem implements PrintableItem, Monolou
         this.MonolougeOptions.add("The factory will never gonna give you up, valuable intern!");
         this.MonolougeOptions.add("We promise we never gonna let you down with a range of staff benefits.");
         this.MonolougeOptions.add("We never gonna run around and desert you, dear intern!");
-        if(actor.getItemInventory().size()>=10){
+        if(actor.getItemInventory().size()>=ITEM_MONOLOGUE_OPTION){
             this.MonolougeOptions.add("We never gonna make you cry with unfair compensation.");
         }
-        if(actor.getBalance()>=50){
+        if(actor.getBalance()>=BALANCE_MONOLOGUE_OPTION){
             this.MonolougeOptions.add("Trust is essential in this business. We promise we never gonna say goodbye to a valuable intern like you.");
 
         }
-        if(actor.getAttribute(BaseActorAttributes.HEALTH)<=2){
+        if(actor.getAttribute(BaseActorAttributes.HEALTH)<=HEALTH_MONOLOGUE_OPTION){
             this.MonolougeOptions.add("Don't worry, we never gonna tell a lie and hurt you, unlike those hostile creatures.");
         }
     }
