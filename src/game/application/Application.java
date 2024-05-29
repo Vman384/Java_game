@@ -71,8 +71,9 @@ public class Application {
         printingOptions.add(new EnergyDrink());
         printingOptions.add(new DragonSlayerSword());
         printingOptions.add(new ToiletRoll());
-        gameMap.at(4, 10).setGround(new ComputerTerminal(printingOptions));
-        player.addBalance(10000);
+        printingOptions.add(new AiDevice());
+        gameMap.at(14, 7).setGround(new ComputerTerminal(printingOptions));
+        player.addBalance(52);
 
 
         gameMap.at(8, 6).setGround(new InheritreeNonMature(new SimpleSpawner(0.3, new SmallFruit())));
