@@ -4,7 +4,7 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.abstractions.actor.NPC;
-import game.action.BuyActionGenerator;
+import game.action.buying.BuyActionGenerator;
 
 /**
  * Represents a humanoid non-player character (NPC) in the game. Humanoids have the ability to engage in buying actions.
