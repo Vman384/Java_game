@@ -66,7 +66,7 @@ public class Application {
         printingOptions.add(new DragonSlayerSword());
         printingOptions.add(new ToiletRoll());
         printingOptions.add(new Teleporter("THESEUS", '^'));
-
+        printingOptions.add(new AiDevice());
         // Add travel actions to computer terminal
         List<TravelAction> travelActions = new ArrayList<>();
         travelActions.add(new TravelAction(polymorphiaMap.at(15, 6), "", GameMapEnum.POLYMORPHIA));
@@ -80,9 +80,7 @@ public class Application {
         staticFactoryMap.at(3, 2).setGround(computerTerminal);
 
 
-
         player.addBalance(10000);
-
 
         polymorphiaMap.at(8, 6).setGround(new InheritreeNonMature(new SimpleSpawner(0.3, new SmallFruit())));
         polymorphiaMap.at(1, 6).setGround(new InheritreeMature(new SimpleSpawner(0.2, new LargeFruit())));
