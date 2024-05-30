@@ -37,7 +37,7 @@ public class InheritreeSapling extends Tree implements Transformable {
     }
 
     /**
-     * Determines if the InheritreeNonMature can transform into a mature tree.
+     * Determines if the InheritreeSapling can transform.
      *
      * @return True if the tree has reached the transformation age, otherwise false.
      */
@@ -47,9 +47,9 @@ public class InheritreeSapling extends Tree implements Transformable {
     }
 
     /**
-     * Transforms the InheritreeNonMature into a young tree which cannot spawn anything.
+     * Transforms the InheritreeSapling into a young tree which cannot spawn anything.
      *
-     * @return A new InheritreeMature object.
+     * @return A new InheritreeYoung object.
      */
     @Override
     public void transform(Location location) {
