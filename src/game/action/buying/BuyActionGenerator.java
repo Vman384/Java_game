@@ -3,12 +3,14 @@ package game.action.buying;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.action.buying.modifiers.BuyingModifiers;
 import game.utility.Mathematics;
 
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * A class responsible for generating BuyAction instances based on
@@ -40,8 +42,10 @@ public class BuyActionGenerator {
         ActionList buyActions = new ActionList();
         Location buyerLocation = map.locationOf(buyer);
         Location sellerLocation = map.locationOf(seller);
-
-        if (Mathematics.distance(buyerLocation, sellerLocation) <= 1) { // within proximity
+        if (buyerLocation.getExits().stream()
+                .map(Exit::getDestination)
+                .collect(Collectors.toList())
+                .contains(sellerLocation)) { // within proximity
             for (Item item : seller.getItemInventory()) {
                 Iterable<BuyingModifiers> modifiers = itemModifiers.get(item.getClass());
                 if (modifiers != null) {
