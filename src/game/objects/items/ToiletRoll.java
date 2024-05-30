@@ -2,7 +2,7 @@ package game.objects.items;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
-import game.abstractions.item.PrintableItem;
+import game.abstractions.item.Printable;
 import game.objects.ground.ComputerTerminal;
 import game.utility.PrintValidation;
 import game.utility.Probability;
@@ -12,7 +12,7 @@ import game.utility.Probability;
  *
  * @author Dean Mascitti
  */
-public class ToiletRoll extends Item implements PrintableItem {
+public class ToiletRoll extends Item implements Printable {
     private int creditCost;
     private double costProbability;
 

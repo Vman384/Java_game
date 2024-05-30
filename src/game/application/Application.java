@@ -5,8 +5,7 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
-import game.abstractions.item.PrintableItem;
-import game.action.buying.BuyActionGenerator;
+import game.abstractions.item.Printable;
 import game.action.TravelAction;
 import game.action.buying.modifiers.*;
 import game.actors.*;
@@ -63,12 +62,12 @@ public class Application {
         world.addPlayer(player, polymorphiaMap.at(15, 6));
 
         // Add items to Computer Terminal
-        List<PrintableItem> printingOptions = new ArrayList<>();
+        List<Printable> printingOptions = new ArrayList<>();
         printingOptions.add(new EnergyDrink());
         printingOptions.add(new DragonSlayerSword());
         printingOptions.add(new ToiletRoll());
         printingOptions.add(new Teleporter("THESEUS", '^'));
-
+        printingOptions.add(new AiDevice());
         // Add travel actions to computer terminal
         List<TravelAction> travelActions = new ArrayList<>();
         travelActions.add(new TravelAction(polymorphiaMap.at(15, 6), "", GameMapEnum.POLYMORPHIA));
@@ -130,7 +129,6 @@ public class Application {
         player.addItemToInventory(new PotOfGold());
 
         player.addBalance(10000);
-
 
         polymorphiaMap.at(8, 6).setGround(new InheritreeNonMature(new SimpleSpawner(0.3, new SmallFruit())));
         polymorphiaMap.at(1, 6).setGround(new InheritreeMature(new SimpleSpawner(0.2, new LargeFruit())));
