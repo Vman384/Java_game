@@ -4,17 +4,19 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
-import game.abstractions.item.PrintableItem;
+import game.abstractions.item.Printable;
+import game.action.TravelAction;
 import game.actors.AlienBug;
 import game.actors.HuntsmanSpider;
 import game.actors.Player;
 import game.actors.SuspiciousAlien;
+import game.maps.Maps;
 import game.objects.ground.*;
 import game.objects.items.*;
 import game.spawning.SimpleSpawner;
+import game.utility.GameMapEnum;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -32,28 +34,19 @@ public class Application {
 
         World world = new World(new Display());
 
-        FancyGroundFactory groundFactory = new FancyGroundFactory(
+        FancyGroundFactory groundFactoryMoons = new FancyGroundFactory(
                 new Dirt(), new Wall(), new Floor(), new Puddle());
+        FancyGroundFactory groundStaticFactory = new FancyGroundFactory(new Wall(), new Floor(), new Dirt());
 
-        List<String> map = Arrays.asList(
-                "...~~~~.........~~~...........",
-                "...~~~~.......................",
-                "...~~~........................",
-                "..............................",
-                ".............#####............",
-                ".............#___#...........~",
-                ".............#___#..........~~",
-                ".............##_##.........~~~",
-                ".................~~........~~~",
-                "................~~~~.......~~~",
-                ".............~~~~~~~........~~",
-                "......~.....~~~~~~~~.........~",
-                ".....~~~...~~~~~~~~~..........",
-                ".....~~~~~~~~~~~~~~~~........~",
-                ".....~~~~~~~~~~~~~~~~~~~....~~");
+        // Initialised all maps as GameMaps
+        GameMap polymorphiaMap = new GameMap(groundFactoryMoons, Maps.POLYMORPHIA);
+        GameMap connascenceMap = new GameMap(groundFactoryMoons, Maps.CONNASCENCE);
+        GameMap staticFactoryMap = new GameMap(groundStaticFactory, Maps.STATICFACTORY);
 
-        GameMap gameMap = new GameMap(groundFactory, map);
-        world.addGameMap(gameMap);
+        // Add all Game maps to World
+        world.addGameMap(polymorphiaMap);
+        world.addGameMap(connascenceMap);
+        world.addGameMap(staticFactoryMap);
 
         for (String line : FancyMessage.TITLE.split("\n")) {
             new Display().println(line);
@@ -65,38 +58,51 @@ public class Application {
         }
 
         Player player = new Player("Intern", '@', 4);
-        world.addPlayer(player, gameMap.at(15, 6));
+        world.addPlayer(player, polymorphiaMap.at(15, 6));
 
-        List<PrintableItem> printingOptions = new ArrayList<>();
+        // Add items to Computer Terminal
+        List<Printable> printingOptions = new ArrayList<>();
         printingOptions.add(new EnergyDrink());
         printingOptions.add(new DragonSlayerSword());
         printingOptions.add(new ToiletRoll());
+        printingOptions.add(new Teleporter("THESEUS", '^'));
         printingOptions.add(new AiDevice());
-        gameMap.at(14, 7).setGround(new ComputerTerminal(printingOptions));
-        player.addBalance(52);
+        // Add travel actions to computer terminal
+        List<TravelAction> travelActions = new ArrayList<>();
+        travelActions.add(new TravelAction(polymorphiaMap.at(15, 6), "", GameMapEnum.POLYMORPHIA));
+        travelActions.add(new TravelAction(connascenceMap.at(15, 6), "", GameMapEnum.CONNASCENCE));
+        travelActions.add(new TravelAction(staticFactoryMap.at(3, 3), "", GameMapEnum.STATICFACTORY));
+
+        ComputerTerminal computerTerminal = new ComputerTerminal(printingOptions, travelActions);
+
+        polymorphiaMap.at(15, 5).setGround(computerTerminal);
+        connascenceMap.at(15, 5).setGround(computerTerminal);
+        staticFactoryMap.at(3, 2).setGround(computerTerminal);
 
 
-        gameMap.at(8, 6).setGround(new InheritreeNonMature(new SimpleSpawner(0.3, new SmallFruit())));
-        gameMap.at(1, 6).setGround(new InheritreeMature(new SimpleSpawner(0.2, new LargeFruit())));
+        player.addBalance(10000);
 
-        gameMap.at(10, 10).setGround(new Crater(new SimpleSpawner(0.2, new HuntsmanSpider())));
-        gameMap.at(1, 1).setGround((new Crater(new SimpleSpawner(0.1, new AlienBug()))));
-        gameMap.at(15, 11).setGround((new Crater(new SimpleSpawner(0.05, new SuspiciousAlien()))));
+        polymorphiaMap.at(8, 6).setGround(new InheritreeNonMature(new SimpleSpawner(0.3, new SmallFruit())));
+        polymorphiaMap.at(1, 6).setGround(new InheritreeMature(new SimpleSpawner(0.2, new LargeFruit())));
 
-        gameMap.at(3, 6).addActor(new AlienBug());
-        gameMap.at(5, 6).addActor(new AlienBug());
+        polymorphiaMap.at(10, 10).setGround(new Crater(new SimpleSpawner(0.2, new HuntsmanSpider())));
+        polymorphiaMap.at(1, 1).setGround((new Crater(new SimpleSpawner(0.1, new AlienBug()))));
+        polymorphiaMap.at(15, 11).setGround((new Crater(new SimpleSpawner(0.05, new SuspiciousAlien()))));
 
-        gameMap.at(2, 3).addItem(new MetalSheet());
-        gameMap.at(4, 6).addItem(new LargeBolt());
-        gameMap.at(5, 6).addItem(new LargeBolt());
-        gameMap.at(6, 6).addItem(new LargeBolt());
-        gameMap.at(7, 6).addItem(new LargeBolt());
-        gameMap.at(10, 6).addItem(new LargeBolt());
-        gameMap.at(11, 12).addItem(new MetalPipe());
-        gameMap.at(10, 12).addItem(new PotOfGold());
-        gameMap.at(12, 8).addItem(new JarOfPickles());
-        gameMap.at(12, 8).addItem(new JarOfPickles());
-        gameMap.at(12, 8).addItem(new JarOfPickles());
+        polymorphiaMap.at(3, 6).addActor(new AlienBug());
+        polymorphiaMap.at(5, 6).addActor(new AlienBug());
+
+        polymorphiaMap.at(2, 3).addItem(new MetalSheet());
+        polymorphiaMap.at(4, 6).addItem(new LargeBolt());
+        polymorphiaMap.at(5, 6).addItem(new LargeBolt());
+        polymorphiaMap.at(6, 6).addItem(new LargeBolt());
+        polymorphiaMap.at(7, 6).addItem(new LargeBolt());
+        polymorphiaMap.at(10, 6).addItem(new LargeBolt());
+        polymorphiaMap.at(11, 12).addItem(new MetalPipe());
+        polymorphiaMap.at(10, 12).addItem(new PotOfGold());
+        polymorphiaMap.at(12, 8).addItem(new JarOfPickles());
+        polymorphiaMap.at(12, 8).addItem(new JarOfPickles());
+        polymorphiaMap.at(12, 8).addItem(new JarOfPickles());
 
 
         world.run();
