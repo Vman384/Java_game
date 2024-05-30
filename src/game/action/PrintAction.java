@@ -3,7 +3,7 @@ package game.action;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.abstractions.item.PrintableItem;
+import game.abstractions.item.Printable;
 import game.objects.ground.ComputerTerminal;
 
 /**
@@ -12,7 +12,7 @@ import game.objects.ground.ComputerTerminal;
  * @author Dean Mascitti
  */
 public class PrintAction extends Action {
-    private PrintableItem itemPrinted;
+    private Printable itemPrinted;
     private ComputerTerminal printGround;
 
     /**
@@ -21,7 +21,7 @@ public class PrintAction extends Action {
      * @param itemPrinted The item being printed
      * @param printGround The ground type in which is printing the item
      */
-    public PrintAction(PrintableItem itemPrinted, ComputerTerminal printGround) {
+    public PrintAction(Printable itemPrinted, ComputerTerminal printGround) {
         this.itemPrinted = itemPrinted;
         this.printGround = printGround;
     }

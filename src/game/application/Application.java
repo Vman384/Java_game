@@ -4,7 +4,7 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
-import game.abstractions.item.PrintableItem;
+import game.abstractions.item.Printable;
 import game.action.TravelAction;
 import game.actors.AlienBug;
 import game.actors.HuntsmanSpider;
@@ -61,7 +61,7 @@ public class Application {
         world.addPlayer(player, polymorphiaMap.at(15, 6));
 
         // Add items to Computer Terminal
-        List<PrintableItem> printingOptions = new ArrayList<>();
+        List<Printable> printingOptions = new ArrayList<>();
         printingOptions.add(new EnergyDrink());
         printingOptions.add(new DragonSlayerSword());
         printingOptions.add(new ToiletRoll());
