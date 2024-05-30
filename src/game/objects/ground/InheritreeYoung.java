@@ -28,7 +28,7 @@ public class InheritreeYoung extends Tree implements Transformable {
     public void tick(Location location) {
         super.tick(location);
         if(canTransform()) {
-            this.evolutionManager.grow(location);
+            this.evolutionManager.evolve(location);
         }
     }
 

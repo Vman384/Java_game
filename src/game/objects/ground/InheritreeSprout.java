@@ -27,7 +27,7 @@ public class InheritreeSprout extends Tree implements Transformable {
         super.tick(location);
 
         if(canTransform()) {
-            this.evolutionManager.grow(location);
+            this.evolutionManager.evolve(location);
         }
     }
 

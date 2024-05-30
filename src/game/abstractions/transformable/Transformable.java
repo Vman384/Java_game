@@ -1,7 +1,5 @@
 package game.abstractions.transformable;
 
-import edu.monash.fit2099.engine.positions.Location;
-
 /**
  * Interface representing objects that can transform into different forms.
  * Created by:
