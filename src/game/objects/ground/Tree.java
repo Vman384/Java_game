@@ -3,6 +3,7 @@ package game.objects.ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.abstractions.ground.SpawnerGround;
 import game.abstractions.spawnable.SpawnRule;
+import game.abstractions.transformable.EvolutionManager;
 
 /**
  * class representing a tree in the game world.
@@ -12,7 +13,7 @@ import game.abstractions.spawnable.SpawnRule;
  *
  * @author Weize Yu
  */
-public class Tree extends SpawnerGround {
+public abstract class Tree extends SpawnerGround {
 
     /**
      * The age of the tree.
@@ -61,4 +62,6 @@ public class Tree extends SpawnerGround {
         // By default, the tree does not transform and returns itself
         return this;
     }
+
+    public abstract void assignEvolutionManager(EvolutionManager evolutionManager);
 }

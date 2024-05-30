@@ -10,27 +10,9 @@ import edu.monash.fit2099.engine.positions.Location;
  */
 public interface Transformable {
     /**
-     * checks if object can transform
-     *
-     * @return void
-     */
-    default void checkTransform(Location location) {
-        if (canTransform()) {
-            transform(location);
-        }
-    }
-
-    /**
      * Checks if the object can transform into another form based on certain conditions.
      *
      * @return true if the object can transform, false otherwise
      */
     boolean canTransform();
-
-    /**
-     * Transforms the object into another form.
-     *
-     * @return void
-     */
-    void transform(Location location);
 }

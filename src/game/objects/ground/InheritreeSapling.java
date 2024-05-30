@@ -2,6 +2,7 @@ package game.objects.ground;
 
 import edu.monash.fit2099.engine.positions.Location;
 import game.abstractions.spawnable.SpawnRule;
+import game.abstractions.transformable.EvolutionManager;
 import game.abstractions.transformable.Transformable;
 import game.objects.items.LargeFruit;
 import game.spawning.SimpleSpawner;
@@ -16,6 +17,7 @@ import game.spawning.SimpleSpawner;
 public class InheritreeSapling extends Tree implements Transformable {
     private int transformAge;
     private final static int NEXT_TRANSFORMATION = 6;
+    private EvolutionManager evolutionManager;
     /**
      * Constructs a new InheritreeSapling object.
      * Initializes its symbol and adds a fruit spawn rules.
@@ -33,7 +35,10 @@ public class InheritreeSapling extends Tree implements Transformable {
     @Override
     public void tick(Location location) {
         super.tick(location);
-        checkTransform(location);
+        if (canTransform()) {
+            this.evolutionManager.grow(location);
+        }
+
     }
 
     /**
@@ -46,13 +51,9 @@ public class InheritreeSapling extends Tree implements Transformable {
         return age >= this.transformAge; // Adjust the transformation age as needed
     }
 
-    /**
-     * Transforms the InheritreeSapling into a young tree which cannot spawn anything.
-     *
-     * @return A new InheritreeYoung object.
-     */
+
     @Override
-    public void transform(Location location) {
-        location.setGround(new InheritreeYoung(this.transformAge));
+    public void assignEvolutionManager(EvolutionManager evolutionManager) {
+        this.evolutionManager = evolutionManager;
     }
 }
