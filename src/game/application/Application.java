@@ -8,6 +8,9 @@ import edu.monash.fit2099.engine.positions.World;
 import game.abstractions.item.PrintableItem;
 import game.action.buying.BuyActionGenerator;
 import game.action.TravelAction;
+import game.action.buying.modifiers.BuyingModifiers;
+import game.action.buying.modifiers.DeductBalance;
+import game.action.buying.modifiers.RemoveItemFromInventory;
 import game.actors.*;
 import game.maps.Maps;
 import game.objects.ground.*;
@@ -81,13 +84,26 @@ public class Application {
         staticFactoryMap.at(3, 2).setGround(computerTerminal);
 
         BuyActionGenerator buyActionGenerator;
-        Map<Class<? extends Item>, Integer> itemPrices = new HashMap<>();
-        itemPrices.put(LargeBolt.class, 10);
-        itemPrices.put(MetalSheet.class, 50);
-        itemPrices.put(ToiletRoll.class, 15);
+        Map<Class<? extends Item>, Iterable<BuyingModifiers>> itemModifiers = new HashMap<>();
 
-        buyActionGenerator = new BuyActionGenerator(itemPrices);
+        List<BuyingModifiers> largeBoltModifiers = new ArrayList<>();
+        largeBoltModifiers.add(new DeductBalance(10));
+        largeBoltModifiers.add(new RemoveItemFromInventory());
+        itemModifiers.put(LargeBolt.class, largeBoltModifiers);
+
+        List<BuyingModifiers> metalSheetModifiers = new ArrayList<>();
+        metalSheetModifiers.add(new DeductBalance(50));
+        metalSheetModifiers.add(new RemoveItemFromInventory());
+        itemModifiers.put(MetalSheet.class, metalSheetModifiers);
+
+        List<BuyingModifiers> toiletRollModifiers = new ArrayList<>();
+        toiletRollModifiers.add(new DeductBalance(15));
+        toiletRollModifiers.add(new RemoveItemFromInventory());
+        itemModifiers.put(ToiletRoll.class, toiletRollModifiers);
+
+        buyActionGenerator = new BuyActionGenerator(itemModifiers);
         staticFactoryMap.at(3, 9).addActor(new Humanoid(buyActionGenerator));
+
 
 
 

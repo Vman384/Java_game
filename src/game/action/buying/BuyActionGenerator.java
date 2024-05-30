@@ -5,7 +5,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
-import game.action.buying.BuyAction;
+import game.action.buying.modifiers.BuyingModifiers;
 import game.utility.Mathematics;
 
 import java.util.Map;
@@ -16,16 +16,16 @@ import java.util.Map;
  */
 public class BuyActionGenerator {
 
-    // Dependency injection for item prices.
-    private final Map<Class<? extends Item>, Integer> itemPrices;
+    // Dependency injection for item modifiers.
+    private final Map<Class<? extends Item>, Iterable<BuyingModifiers>> itemModifiers;
 
     /**
-     * Constructor to inject the price mapping.
+     * Constructor to inject the modifiers mapping.
      *
-     * @param itemPrices A map of item types to their corresponding prices.
+     * @param itemModifiers A map of item types to their corresponding modifiers.
      */
-    public BuyActionGenerator(Map<Class<? extends Item>, Integer> itemPrices) {
-        this.itemPrices = itemPrices;
+    public BuyActionGenerator(Map<Class<? extends Item>, Iterable<BuyingModifiers>> itemModifiers) {
+        this.itemModifiers = itemModifiers;
     }
 
     /**
@@ -43,9 +43,9 @@ public class BuyActionGenerator {
 
         if (Mathematics.distance(buyerLocation, sellerLocation) <= 1) { // within proximity
             for (Item item : seller.getItemInventory()) {
-                Integer price = itemPrices.get(item.getClass());
-                if (price != null) {
-                    buyActions.add(new BuyAction(item, buyer, price));
+                Iterable<BuyingModifiers> modifiers = itemModifiers.get(item.getClass());
+                if (modifiers != null) {
+                    buyActions.add(new BuyAction(item, buyer, modifiers));
                 }
             }
         }

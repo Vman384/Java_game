@@ -4,6 +4,7 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.action.buying.modifiers.BuyingModifiers;
 
 /**
  * An action to buy an item from another actor.
@@ -12,19 +13,19 @@ public class BuyAction extends Action {
 
     private final Item item;
     private final Actor buyer;
-    private final int price;
+    private final Iterable<BuyingModifiers> modifiers;
 
     /**
      * Constructor.
      *
-     * @param item  the item to be bought
-     * @param buyer the actor buying the item
-     * @param price the price of the item
+     * @param item       the item to be bought
+     * @param buyer      the actor buying the item
+     * @param modifiers  the buying modifiers to be applied
      */
-    public BuyAction(Item item, Actor buyer, int price) {
+    public BuyAction(Item item, Actor buyer, Iterable<BuyingModifiers> modifiers) {
         this.item = item;
         this.buyer = buyer;
-        this.price = price;
+        this.modifiers = modifiers;
     }
 
     /**
@@ -36,13 +37,13 @@ public class BuyAction extends Action {
      */
     @Override
     public String execute(Actor actor, GameMap map) {
-        buyer.deductBalance(price);
-        actor.addBalance(price);
+        StringBuilder result = new StringBuilder();
 
-        actor.removeItemFromInventory(item);
-        buyer.addItemToInventory(item);
+        for (BuyingModifiers modifier : modifiers) {
+            result.append(modifier.execute(buyer, actor, item)).append(" ");
+        }
 
-        return buyer + " bought " + item + " from " + actor + " for $" + price;
+        return result.toString().trim();
     }
 
     /**
@@ -53,6 +54,13 @@ public class BuyAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " sells " + item + " for " + price + " credits, to " + buyer;
+        StringBuilder description = new StringBuilder();
+        description.append(actor).append(" sells ").append(item).append(" to ").append(buyer).append(" ");
+
+        for (BuyingModifiers modifier : modifiers) {
+            description.append(modifier.description()).append(" ");
+        }
+
+        return description.toString().trim();
     }
 }
