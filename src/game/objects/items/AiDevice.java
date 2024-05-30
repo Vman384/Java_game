@@ -1,24 +1,24 @@
 package game.objects.items;
 
-import java.util.ArrayList;
-
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.displays.Display;
+import game.abstractions.item.Monolouge;
+import game.abstractions.item.Printable;
 import game.abstractions.item.SubscriptionItem;
 import game.action.MonolougeAction;
-import game.abstractions.item.Monolouge;
-import game.abstractions.item.PrintableItem;
 import game.objects.ground.ComputerTerminal;
 import game.utility.PrintValidation;
 import game.utility.Probability;
+
+import java.util.ArrayList;
 
 /**  Class representing an AI Device that can be subscribed to, printed and provides monologues
 * @author Vedansh Malhan
 */
 
-public class AiDevice extends SubscriptionItem implements PrintableItem, Monolouge {
+public class AiDevice extends SubscriptionItem implements Printable, Monolouge {
 
     // The cost of subscribing to the AI Device
     private static final int SUBSCRIPTION_FEE = 1;
