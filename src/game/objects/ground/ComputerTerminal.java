@@ -32,7 +32,7 @@ public class ComputerTerminal extends Ground {
     }
 
     /**
-     * Returns an Action list containing all print actions for printable items.
+     * Returns an Action list containing all print actions for printable items including printable items and travel actions .
      *
      * @param actor     the Actor acting
      * @param location  the current Location

@@ -16,7 +16,7 @@ import game.utility.Probability;
  *
  * @author Dean Mascitti
  */
-public class EnergyDrink extends Item implements Printable, Consumable {
+gpublic class EnergyDrink extends Item implements Printable, Consumable {
     private final int healEffects = 1;
     private int creditCost;
     private double costProbability;
