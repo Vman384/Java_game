@@ -1,15 +1,14 @@
 package game.application;
 
 import edu.monash.fit2099.engine.displays.Display;
+import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
 import game.abstractions.item.PrintableItem;
+import game.action.BuyActionGenerator;
 import game.action.TravelAction;
-import game.actors.AlienBug;
-import game.actors.HuntsmanSpider;
-import game.actors.Player;
-import game.actors.SuspiciousAlien;
+import game.actors.*;
 import game.maps.Maps;
 import game.objects.ground.*;
 import game.objects.items.*;
@@ -17,7 +16,9 @@ import game.spawning.SimpleSpawner;
 import game.utility.GameMapEnum;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * The main class to start the game.
@@ -78,6 +79,15 @@ public class Application {
         polymorphiaMap.at(15, 5).setGround(computerTerminal);
         connascenceMap.at(15, 5).setGround(computerTerminal);
         staticFactoryMap.at(3, 2).setGround(computerTerminal);
+
+        BuyActionGenerator buyActionGenerator;
+        Map<Class<? extends Item>, Integer> itemPrices = new HashMap<>();
+        itemPrices.put(LargeBolt.class, 10);
+        itemPrices.put(MetalSheet.class, 50);
+        itemPrices.put(ToiletRoll.class, 15);
+
+        buyActionGenerator = new BuyActionGenerator(itemPrices);
+        staticFactoryMap.at(3, 9).addActor(new Humanoid(buyActionGenerator));
 
 
 

@@ -53,6 +53,6 @@ public class BuyAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return actor + "sells" + item + " for " + price + "credits, to" + buyer;
+        return actor + " sells " + item + " for " + price + " credits, to " + buyer;
     }
 }
