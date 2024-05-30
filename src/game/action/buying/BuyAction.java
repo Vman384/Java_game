@@ -40,7 +40,7 @@ public class BuyAction extends Action {
         StringBuilder result = new StringBuilder();
 
         for (BuyingModifiers modifier : modifiers) {
-            result.append(modifier.execute(buyer, actor, item)).append(" ");
+            result.append(modifier.execute(buyer, actor, item, map)).append(" ");
         }
 
         return result.toString().trim();

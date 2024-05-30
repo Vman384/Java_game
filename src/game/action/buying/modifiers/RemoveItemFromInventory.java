@@ -2,6 +2,7 @@ package game.action.buying.modifiers;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.positions.GameMap;
 
 /**
  * This buying modifier handles the transfer of an item from the seller's inventory
@@ -11,13 +12,14 @@ public class RemoveItemFromInventory implements BuyingModifiers {
     /**
      * Removes the purchased item from the seller's inventory and adds it to the buyer's inventory.
      *
-     * @param buyer  The Actor making the purchase.
-     * @param seller The Actor selling the item.
-     * @param item   The Item being purchased.
+     * @param buyer   The Actor making the purchase.
+     * @param seller  The Actor selling the item.
+     * @param item    The Item being purchased.
+     * @param gameMap The GameMap the actors are in.
      * @return A message indicating successful item transfer.
      */
     @Override
-    public String execute(Actor buyer, Actor seller, Item item) {
+    public String execute(Actor buyer, Actor seller, Item item, GameMap gameMap) {
         seller.removeItemFromInventory(item);
         buyer.addItemToInventory(item);
         return buyer + " received " + item + " from " + seller;

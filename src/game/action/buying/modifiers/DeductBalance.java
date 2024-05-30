@@ -2,11 +2,12 @@ package game.action.buying.modifiers;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.positions.GameMap;
 
 /**
  * This modifier is responsible for deducting a specified price from the buyer's balance
  * and adding it to the seller's balance during a buying transaction.
- *
+ * <p>
  * It ensures a proper transfer of funds in exchange for the item being purchased.
  */
 public class DeductBalance implements BuyingModifiers {
@@ -24,13 +25,14 @@ public class DeductBalance implements BuyingModifiers {
     /**
      * Executes the balance deduction and addition.
      *
-     * @param buyer  The Actor making the purchase.
-     * @param seller The Actor selling the item.
-     * @param item   The Item being purchased (not used in this specific implementation).
+     * @param buyer   The Actor making the purchase.
+     * @param seller  The Actor selling the item.
+     * @param item    The Item being purchased (not used in this specific implementation).
+     * @param gameMap The GameMap the actors are in.
      * @return A message indicating that the balance transfer was successful.
      */
     @Override
-    public String execute(Actor buyer, Actor seller, Item item) {
+    public String execute(Actor buyer, Actor seller, Item item, GameMap gameMap) {
         buyer.deductBalance(price);
         seller.addBalance(price);
         return buyer + " deducted " + price + " from balance and added to " + seller;

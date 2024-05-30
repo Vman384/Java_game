@@ -8,9 +8,7 @@ import edu.monash.fit2099.engine.positions.World;
 import game.abstractions.item.PrintableItem;
 import game.action.buying.BuyActionGenerator;
 import game.action.TravelAction;
-import game.action.buying.modifiers.BuyingModifiers;
-import game.action.buying.modifiers.DeductBalance;
-import game.action.buying.modifiers.RemoveItemFromInventory;
+import game.action.buying.modifiers.*;
 import game.actors.*;
 import game.maps.Maps;
 import game.objects.ground.*;
@@ -87,25 +85,49 @@ public class Application {
         Map<Class<? extends Item>, Iterable<BuyingModifiers>> itemModifiers = new HashMap<>();
 
         List<BuyingModifiers> largeBoltModifiers = new ArrayList<>();
-        largeBoltModifiers.add(new DeductBalance(10));
-        largeBoltModifiers.add(new RemoveItemFromInventory());
+        largeBoltModifiers.add(new DeductBalance(25));
         itemModifiers.put(LargeBolt.class, largeBoltModifiers);
 
         List<BuyingModifiers> metalSheetModifiers = new ArrayList<>();
-        metalSheetModifiers.add(new DeductBalance(50));
+        metalSheetModifiers.add(new RandomPriceModifier(20, 0.6, 10));
         metalSheetModifiers.add(new RemoveItemFromInventory());
         itemModifiers.put(MetalSheet.class, metalSheetModifiers);
 
+        List<BuyingModifiers> largeFruitModifiers = new ArrayList<>();
+        largeFruitModifiers.add(new DeductBalance(30));
+        largeFruitModifiers.add(new RemoveItemFromInventory());
+        itemModifiers.put(LargeFruit.class, largeFruitModifiers);
+
+        List<BuyingModifiers> jarOfPicklesModifiers = new ArrayList<>();
+        jarOfPicklesModifiers.add(new RandomPriceModifier(25, 0.5, 50));
+        jarOfPicklesModifiers.add(new RemoveItemFromInventory());
+        itemModifiers.put(JarOfPickles.class, jarOfPicklesModifiers);
+
+        List<BuyingModifiers> metalPipeModifiers = new ArrayList<>();
+        metalPipeModifiers.add(new DeductBalance(35));
+        metalPipeModifiers.add(new RemoveItemFromInventory());
+        itemModifiers.put(MetalPipe.class, metalPipeModifiers);
+
+        List<BuyingModifiers> potOfGoldModifiers = new ArrayList<>();
+        potOfGoldModifiers.add(new RandomPriceModifier(500, 0.25, 0));
+        potOfGoldModifiers.add(new RemoveItemFromInventory());
+        itemModifiers.put(PotOfGold.class, potOfGoldModifiers);
+
         List<BuyingModifiers> toiletRollModifiers = new ArrayList<>();
-        toiletRollModifiers.add(new DeductBalance(15));
+        toiletRollModifiers.add(new DeductBalance(1));
+        toiletRollModifiers.add(new RandomInstantKill(1));
         toiletRollModifiers.add(new RemoveItemFromInventory());
         itemModifiers.put(ToiletRoll.class, toiletRollModifiers);
 
         buyActionGenerator = new BuyActionGenerator(itemModifiers);
         staticFactoryMap.at(3, 9).addActor(new Humanoid(buyActionGenerator));
 
-
-
+        player.addItemToInventory(new JarOfPickles());
+        player.addItemToInventory(new JarOfPickles());
+        player.addItemToInventory(new JarOfPickles());
+        player.addItemToInventory(new PotOfGold());
+        player.addItemToInventory(new PotOfGold());
+        player.addItemToInventory(new PotOfGold());
 
         player.addBalance(10000);
 
