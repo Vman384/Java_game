@@ -1,6 +1,7 @@
 package game.objects.ground;
 
 import game.abstractions.spawnable.SpawnRule;
+import game.abstractions.transformable.EvolutionManager;
 
 /**
  * Represents a mature Inheritree object in the game.
@@ -10,13 +11,19 @@ import game.abstractions.spawnable.SpawnRule;
  * @author Weize Yu
  */
 public class InheritreeMature extends Tree {
+    private EvolutionManager evolutionManager;
 
     /**
      * Constructor for InheritreeMature objects.
      *
      * @param spawnrules rules for spawning its subjects
      */
-    public InheritreeMature(SpawnRule... spawnrules) {
-        super('T', 5, spawnrules);
+    public InheritreeMature(int initialAge, SpawnRule... spawnrules) {
+        super('T', initialAge, spawnrules);
+    }
+
+    @Override
+    public void assignEvolutionManager(EvolutionManager evolutionManager) {
+        this.evolutionManager = evolutionManager; // for if there are in the future more stages
     }
 }

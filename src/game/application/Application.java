@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
 import game.abstractions.item.Printable;
+import game.abstractions.transformable.EvolutionManager;
 import game.action.TravelAction;
 import game.actors.AlienBug;
 import game.actors.HuntsmanSpider;
@@ -82,8 +83,23 @@ public class Application {
 
         player.addBalance(10000);
 
-        polymorphiaMap.at(8, 6).setGround(new InheritreeNonMature(new SimpleSpawner(0.3, new SmallFruit())));
-        polymorphiaMap.at(1, 6).setGround(new InheritreeMature(new SimpleSpawner(0.2, new LargeFruit())));
+        List<Tree> treeStages = new ArrayList<>();
+
+        int sproutInitialAge = 0;
+        int saplingInitialAge = sproutInitialAge + 3;
+        int youngInitialAge = saplingInitialAge + 6;
+        int matureInitialAge = youngInitialAge + 5;
+
+        treeStages.add(new InheritreeSapling(saplingInitialAge, new SimpleSpawner(0.3, new SmallFruit())));
+        treeStages.add(new InheritreeYoung(youngInitialAge));
+        treeStages.add(new InheritreeMature(matureInitialAge, new SimpleSpawner(0.2, new LargeFruit())));
+
+        EvolutionManager evolutionManager = new EvolutionManager(treeStages);
+        InheritreeSprout initialInheritree = new InheritreeSprout(sproutInitialAge);
+        initialInheritree.assignEvolutionManager(evolutionManager);
+
+        polymorphiaMap.at(8, 6).setGround(initialInheritree);
+
 
         polymorphiaMap.at(10, 10).setGround(new Crater(new SimpleSpawner(0.2, new HuntsmanSpider())));
         polymorphiaMap.at(1, 1).setGround((new Crater(new SimpleSpawner(0.1, new AlienBug()))));
