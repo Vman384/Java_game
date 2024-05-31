@@ -26,7 +26,7 @@ public class Teleporter extends Item implements Printable, Teleportable {
     /**
      * Constructor to create a teleporter item.
      *
-     * @param name The name of the teleporter item.
+     * @param name        The name of the teleporter item.
      * @param displayChar The character to display for the teleporter item.
      */
     public Teleporter(String name, char displayChar) {
@@ -36,7 +36,7 @@ public class Teleporter extends Item implements Printable, Teleportable {
     /**
      * Prints the teleporter's details using the provided computerterminal.
      *
-     * @param actor The actor who is printing the item.
+     * @param actor       The actor who is printing the item.
      * @param printGround The computer terminal used for printing.
      * @return A string indicating the result of the print action.
      */
@@ -72,7 +72,7 @@ public class Teleporter extends Item implements Printable, Teleportable {
     /**
      * Teleports the actor to a random location within the same game map.
      *
-     * @param actor The actor to be teleported.
+     * @param actor   The actor to be teleported.
      * @param gameMap The game map in which the teleportation will occur.
      * @return The new location within the game map to which the actor is teleported.
      */

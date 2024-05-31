@@ -14,9 +14,11 @@ import game.utility.Probability;
 
 import java.util.ArrayList;
 
-/**  Class representing an AI Device that can be subscribed to, printed and provides monologues
-* @author Vedansh Malhan
-*/
+/**
+ * Class representing an AI Device that can be subscribed to, printed and provides monologues
+ *
+ * @author Vedansh Malhan
+ */
 
 public class AiDevice extends SubscriptionItem implements Printable, Monolouge {
 
@@ -35,17 +37,17 @@ public class AiDevice extends SubscriptionItem implements Printable, Monolouge {
     private static final int ITEM_MONOLOGUE_OPTION = 10;
     private static final int BALANCE_MONOLOGUE_OPTION = 50;
     private static final int HEALTH_MONOLOGUE_OPTION = 2;
-    
+
 
     // A list of possible monologues for the AI Device
-    private ArrayList<String> MonolougeOptions = new ArrayList<String>();
+    private final ArrayList<String> MonolougeOptions = new ArrayList<String>();
 
     /**
      * Constructor for the AiDevice class.
      * Initializes the AI Device with a name, symbol, and subscription details.
      */
     public AiDevice() {
-        super("Astley", 'z', true,SUBSCRIPTION_FEE,SUBSCRIPTION_LENGTH,SUBSCRIPTION_OCCURANCE);
+        super("Astley", 'z', true, SUBSCRIPTION_FEE, SUBSCRIPTION_LENGTH, SUBSCRIPTION_OCCURANCE);
     }
 
     /**
@@ -80,7 +82,7 @@ public class AiDevice extends SubscriptionItem implements Printable, Monolouge {
     @Override
     public ActionList allowableActions(Actor owner) {
         ActionList actionList = super.allowableActions(owner);
-        if(super.SubscriptionActive){
+        if (super.SubscriptionActive) {
             actionList.add(new MonolougeAction(this));
         }
         return actionList;
@@ -96,14 +98,14 @@ public class AiDevice extends SubscriptionItem implements Printable, Monolouge {
         this.MonolougeOptions.add("The factory will never gonna give you up, valuable intern!");
         this.MonolougeOptions.add("We promise we never gonna let you down with a range of staff benefits.");
         this.MonolougeOptions.add("We never gonna run around and desert you, dear intern!");
-        if(actor.getItemInventory().size()>=ITEM_MONOLOGUE_OPTION){
+        if (actor.getItemInventory().size() >= ITEM_MONOLOGUE_OPTION) {
             this.MonolougeOptions.add("We never gonna make you cry with unfair compensation.");
         }
-        if(actor.getBalance()>=BALANCE_MONOLOGUE_OPTION){
+        if (actor.getBalance() >= BALANCE_MONOLOGUE_OPTION) {
             this.MonolougeOptions.add("Trust is essential in this business. We promise we never gonna say goodbye to a valuable intern like you.");
 
         }
-        if(actor.getAttribute(BaseActorAttributes.HEALTH)<=HEALTH_MONOLOGUE_OPTION){
+        if (actor.getAttribute(BaseActorAttributes.HEALTH) <= HEALTH_MONOLOGUE_OPTION) {
             this.MonolougeOptions.add("Don't worry, we never gonna tell a lie and hurt you, unlike those hostile creatures.");
         }
     }
@@ -111,7 +113,7 @@ public class AiDevice extends SubscriptionItem implements Printable, Monolouge {
     /**
      * Chooses a random monologue from the list of options and prints it to the display.
      */
-    public void monologue(){
+    public void monologue() {
         String toPrint = Probability.pickRandom(this.MonolougeOptions);
         Display display = new Display();
         display.print(toPrint);

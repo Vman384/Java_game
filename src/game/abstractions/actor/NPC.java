@@ -11,10 +11,11 @@ import game.action.AttackAction;
 import game.constants.Status;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Collections;
+
 
 /**
  * An abstract class representing non-playable characters (NPCs) in the game world.
@@ -73,7 +74,7 @@ public abstract class NPC extends ActorBase {
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
-        if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
+        if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY) & this.hasCapability(Status.HOSTILE_TO_PLAYER)) {
             actions.add(new AttackAction(this, direction));
         }
         return actions;

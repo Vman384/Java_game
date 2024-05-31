@@ -7,11 +7,11 @@ import game.abstractions.item.Monolouge;
 
 /**
  * The action for when a class needs to monologue
+ *
  * @author Vedansh Malhan
- * 
  */
-public class MonolougeAction extends Action{
-        private Monolouge monolouge;
+public class MonolougeAction extends Action {
+    private final Monolouge monolouge;
 
     /**
      * Constructor.

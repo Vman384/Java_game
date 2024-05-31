@@ -6,17 +6,19 @@ import edu.monash.fit2099.engine.items.Item;
 import game.abstractions.item.Consumable;
 import game.action.ConsumeAction;
 import game.utility.Probability;
+
 /**
  * Represents a jar of pickles which can be consumed by the actor
  * to either heal or hurt them with a 50% probability
  * Created by:
+ *
  * @author Vedansh Malhan
  */
 public class JarOfPickles extends Item implements Consumable {
 
-    private int healAmount = 1;
-    private int hurtAmount = 1;
-    private double healProbability;
+    private final int healAmount = 1;
+    private final int hurtAmount = 1;
+    private final double healProbability;
 
     /**
      * Constructor.
@@ -40,12 +42,12 @@ public class JarOfPickles extends Item implements Consumable {
     }
 
     /**
-    * either hurts or heals the actor
-    *
-    * @param actor the actor consuming the item
-    * @return a message indicating the result of the consumption
-    */
-    @Override   
+     * either hurts or heals the actor
+     *
+     * @param actor the actor consuming the item
+     * @return a message indicating the result of the consumption
+     */
+    @Override
     public String consume(Actor actor) {
         if (Probability.generateBoolean(this.healProbability)) {
             actor.heal(healAmount);

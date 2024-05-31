@@ -16,8 +16,8 @@ import game.utility.Probability;
  * @author Dean Mascitti
  */
 public class DragonSlayerSword extends WeaponItem implements Printable {
-    private int creditCost;
-    private double errorProbability;
+    private final int creditCost;
+    private final double errorProbability;
 
     /**
      * Constructor.

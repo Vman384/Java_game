@@ -3,6 +3,7 @@ package game.abstractions.item;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Location;
+
 /**
  * SubscriptionItem abstract class which each item that has a subscription extends
  *
@@ -10,41 +11,31 @@ import edu.monash.fit2099.engine.positions.Location;
  */
 public abstract class SubscriptionItem extends Item {
     // The subscription fee for the item
-    private int SubscriptionFee;
-
+    private final int SubscriptionFee;
     // The length of the subscription period
-    private int SubscriptionLength;
-
+    private final int SubscriptionLength;
+    // The number of turns between each subscription action
+    private final int SubscriptionOccurance;
     // A boolean indicating whether the subscription is currently active
     protected boolean SubscriptionActive;
-
     // The number of ticks
     private int SubscriptionCount;
-
-    // The number of turns between each subscription action
-    private int SubscriptionOccurance;
 
     /**
      * Constructs a new SubscriptionItem with the given name, display character,
      * portability, subscription fee, subscription length, and subscription
      * occurrence.
      *
-     * @param Name
-     *            The name of the item
-     * @param DisplayChar
-     *            The character used to display the item on the map
-     * @param Portable
-     *            A boolean indicating whether the item can be carried by an
-     *            actor
-     * @param SubscriptionFee
-     *            The subscription fee for the item
-     * @param SubscriptionLength
-     *            The length of the subscription period
-     * @param SubscriptionOccurance
-     *            The number of turns between each subscription action
+     * @param Name                  The name of the item
+     * @param DisplayChar           The character used to display the item on the map
+     * @param Portable              A boolean indicating whether the item can be carried by an
+     *                              actor
+     * @param SubscriptionFee       The subscription fee for the item
+     * @param SubscriptionLength    The length of the subscription period
+     * @param SubscriptionOccurance The number of turns between each subscription action
      */
     public SubscriptionItem(String Name, char DisplayChar, boolean Portable,
-            int SubscriptionFee, int SubscriptionLength, int SubscriptionOccurance) {
+                            int SubscriptionFee, int SubscriptionLength, int SubscriptionOccurance) {
         super(Name, DisplayChar, Portable);
         this.SubscriptionActive = true;
         this.SubscriptionFee = SubscriptionFee;
@@ -57,8 +48,7 @@ public abstract class SubscriptionItem extends Item {
      * Charges the actor's balance for the subscription fee and updates the
      * subscription status.
      *
-     * @param actor
-     *            The actor to charge for the subscription
+     * @param actor The actor to charge for the subscription
      */
     public void subscription(Actor actor) {
         if (this.SubscriptionActive) {
@@ -72,7 +62,7 @@ public abstract class SubscriptionItem extends Item {
             if (actor.getBalance() >= this.SubscriptionFee) {
                 actor.deductBalance(this.SubscriptionFee);
                 this.SubscriptionActive = true;
-            } 
+            }
         }
     }
 
@@ -88,13 +78,11 @@ public abstract class SubscriptionItem extends Item {
     /**
      * Updates the subscription status and performs the subscription action if
      * necessary.
-     *
+     * <p>
      * This method is called once per turn, if the Item is being carried.
      *
-     * @param currentLocation
-     *            The location of the actor carrying this Item.
-     * @param actor
-     *            The actor carrying this Item.
+     * @param currentLocation The location of the actor carrying this Item.
+     * @param actor           The actor carrying this Item.
      */
     @Override
     public void tick(Location currentLocation, Actor actor) {

@@ -12,8 +12,8 @@ import game.abstractions.transformable.Transformable;
  */
 public class InheritreeSprout extends Tree implements Transformable {
 
-    private int transformAge;
     private final static int NEXT_TRANSFORMATION = 3;
+    private final int transformAge;
     private EvolutionManager evolutionManager;
 
     /**
@@ -36,7 +36,7 @@ public class InheritreeSprout extends Tree implements Transformable {
     public void tick(Location location) {
         super.tick(location);
 
-        if(canTransform()) {
+        if (canTransform()) {
             this.evolutionManager.evolve(location);
         }
     }
