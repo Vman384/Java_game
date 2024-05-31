@@ -10,17 +10,16 @@ import edu.monash.fit2099.engine.positions.Location;
  * @author Vedansh Malhan
  */
 public abstract class SubscriptionItem extends Item {
-    // A boolean indicating whether the subscription is currently active
-    protected boolean SubscriptionActive;
     // The subscription fee for the item
     private final int SubscriptionFee;
     // The length of the subscription period
     private final int SubscriptionLength;
-    // The number of ticks
-    private int SubscriptionCount;
-
     // The number of turns between each subscription action
     private final int SubscriptionOccurance;
+    // A boolean indicating whether the subscription is currently active
+    protected boolean SubscriptionActive;
+    // The number of ticks
+    private int SubscriptionCount;
 
     /**
      * Constructs a new SubscriptionItem with the given name, display character,
