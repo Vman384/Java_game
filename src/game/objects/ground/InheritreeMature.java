@@ -24,6 +24,6 @@ public class InheritreeMature extends Tree {
 
     @Override
     public void assignEvolutionManager(EvolutionManager evolutionManager) {
-        this.evolutionManager = evolutionManager; // for if there are in the future more stages
+        this.evolutionManager = evolutionManager; // for if there are more stages in the future
     }
 }

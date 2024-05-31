@@ -16,22 +16,14 @@ public class EvolutionManager {
     /**
      * Constructs an EvolutionManager with a sequence of evolution stages.
      *
-     * @param evolutionStagesIterable An Iterable containing the different stages of evolution.
+     * @param evolutionStages A Queue containing the different stages of evolution.
      * @throws IllegalArgumentException If the evolution stages are null or empty.
      */
-    public EvolutionManager(Iterable<Tree> evolutionStagesIterable) {
-        if (evolutionStagesIterable == null) {
-            throw new IllegalArgumentException("Evolution stages cannot be null.");
-        }
-
-        this.evolutionStages = new LinkedList<>();
-        for (Tree tree : evolutionStagesIterable) {
-            this.evolutionStages.offer(tree);
-        }
-
-        if (this.evolutionStages.isEmpty()) {
+    public EvolutionManager(Queue<Tree> evolutionStages) {
+        if (evolutionStages.isEmpty()) {
             throw new IllegalArgumentException("Evolution stages cannot be empty.");
         }
+        this.evolutionStages = evolutionStages;
     }
 
     /**

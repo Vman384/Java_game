@@ -18,7 +18,9 @@ import game.spawning.SimpleSpawner;
 import game.utility.GameMapEnum;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * The main class to start the game.
@@ -83,7 +85,7 @@ public class Application {
 
         player.addBalance(10000);
 
-        List<Tree> treeStages = new ArrayList<>();
+        Queue<Tree> treeStages = new LinkedList<>();
 
         int sproutInitialAge = 0;
         int saplingInitialAge = sproutInitialAge + 3;
