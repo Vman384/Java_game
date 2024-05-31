@@ -1,6 +1,5 @@
 package game.utility;
 
-import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.positions.NumberRange;
 
 import java.util.ArrayList;
@@ -98,9 +97,10 @@ public class Probability {
 
     /**
      * Generates a random location (x,y) from given list
+     *
      * @param numberRange the list of game map coordinates
-     * @return an integer representing a coordinate
      * @param <T>
+     * @return an integer representing a coordinate
      */
     public static <T> Integer pickRandomLocation(NumberRange numberRange) {
         ArrayList<Integer> list = new ArrayList<Integer>();

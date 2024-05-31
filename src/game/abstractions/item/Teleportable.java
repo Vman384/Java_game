@@ -13,9 +13,9 @@ public interface Teleportable {
     /**
      * Teleports the specified actor to a new location within the provided game map.
      *
-     * @param actor The actor to be teleported.
+     * @param actor   The actor to be teleported.
      * @param gameMap The game map in which the teleportation will occur.
      * @return The new location within the game map to which the actor is teleported.
      */
-     Location teleport(Actor actor, GameMap gameMap);
+    Location teleport(Actor actor, GameMap gameMap);
 }

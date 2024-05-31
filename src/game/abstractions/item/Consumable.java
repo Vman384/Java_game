@@ -19,5 +19,5 @@ public interface Consumable {
      * @param actor the actor consuming the item
      * @return a message indicating the result of the consumption
      */
-    public String consume(Actor actor);
+    String consume(Actor actor);
 }

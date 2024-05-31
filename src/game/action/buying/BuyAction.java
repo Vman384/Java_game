@@ -18,9 +18,9 @@ public class BuyAction extends Action {
     /**
      * Constructor.
      *
-     * @param item       the item to be bought
-     * @param buyer      the actor buying the item
-     * @param modifiers  the buying modifiers to be applied
+     * @param item      the item to be bought
+     * @param buyer     the actor buying the item
+     * @param modifiers the buying modifiers to be applied
      */
     public BuyAction(Item item, Actor buyer, Iterable<BuyingModifiers> modifiers) {
         this.item = item;

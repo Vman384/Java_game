@@ -4,8 +4,6 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.abstractions.spawnable.SpawnRule;
 import game.abstractions.transformable.EvolutionManager;
 import game.abstractions.transformable.Transformable;
-import game.objects.items.LargeFruit;
-import game.spawning.SimpleSpawner;
 
 /**
  * Represents a sapling Inheritree object in the game.
@@ -14,8 +12,8 @@ import game.spawning.SimpleSpawner;
  * @author Dean Mascitti
  */
 public class InheritreeSapling extends Tree implements Transformable {
-    private int transformAge;
     private final static int NEXT_TRANSFORMATION = 6;
+    private final int transformAge;
     private EvolutionManager evolutionManager;
 
 

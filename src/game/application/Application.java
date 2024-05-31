@@ -17,12 +17,7 @@ import game.objects.items.*;
 import game.spawning.SimpleSpawner;
 import game.utility.GameMapEnum;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * The main class to start the game.

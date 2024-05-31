@@ -47,7 +47,7 @@ public class Humanoid extends NPC {
 
     /**
      * Creates a new instance of this Humanoid.
-     *
+     * <p>
      * Note: This method is currently not implemented and returns null. If you want to create copies of Humanoids,
      * you'll need to provide a specific implementation.
      *

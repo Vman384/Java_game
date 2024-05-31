@@ -16,14 +16,14 @@ import java.util.List;
  * @author Dean Mascitti
  */
 public class ComputerTerminal extends Ground {
-    private List<Printable> printingOptions;
-    private List<TravelAction> travelActions;
+    private final List<Printable> printingOptions;
+    private final List<TravelAction> travelActions;
 
     /**
      * Class Constructor.
      *
      * @param printingOptions a list of all the printable items of the terminal
-     * @param travelActions a list of all travel action options
+     * @param travelActions   a list of all travel action options
      */
     public ComputerTerminal(List<Printable> printingOptions, List<TravelAction> travelActions) {
         super('=');

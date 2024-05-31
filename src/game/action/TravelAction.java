@@ -15,7 +15,7 @@ public class TravelAction extends MoveActorAction {
     /**
      * The game map where the actor is traveling to.
      */
-    private GameMap travelgameMap;
+    private final GameMap travelgameMap;
 
     /**
      * An item that allows the actor to teleport.
@@ -35,9 +35,9 @@ public class TravelAction extends MoveActorAction {
     /**
      * Constructor for travel action to another map via computerTerminal
      *
-     * @param location     The destination location.
-     * @param destination  A description of the destination.
-     * @param gameMapEnum  The enumeration representing the target game map.
+     * @param location    The destination location.
+     * @param destination A description of the destination.
+     * @param gameMapEnum The enumeration representing the target game map.
      */
     public TravelAction(Location location, String destination, GameMapEnum gameMapEnum) {
         super(location, destination);
@@ -62,8 +62,8 @@ public class TravelAction extends MoveActorAction {
     /**
      * Executes the travel action, moving the actor to the specified location.
      *
-     * @param actor    The actor performing the action.
-     * @param gameMap  The map the actor is on.
+     * @param actor   The actor performing the action.
+     * @param gameMap The map the actor is on.
      * @return A string describing the result of the action.
      */
     @Override

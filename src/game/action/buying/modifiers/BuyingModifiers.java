@@ -21,7 +21,7 @@ public interface BuyingModifiers {
      * @param gameMap The GameMap the actors are in.
      * @return A string message describing the outcome of the modifier.
      */
-    public String execute(Actor buyer, Actor seller, Item item, GameMap gameMap);
+    String execute(Actor buyer, Actor seller, Item item, GameMap gameMap);
 
     /**
      * Provides a description of the modifier's effect.

@@ -12,7 +12,7 @@ import game.abstractions.item.Consumable;
  * @author Weize Yu
  */
 public class ConsumeAction extends Action {
-    private Consumable consumable;
+    private final Consumable consumable;
 
     /**
      * Constructor.

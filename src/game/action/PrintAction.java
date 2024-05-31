@@ -12,8 +12,8 @@ import game.objects.ground.ComputerTerminal;
  * @author Dean Mascitti
  */
 public class PrintAction extends Action {
-    private Printable itemPrinted;
-    private ComputerTerminal printGround;
+    private final Printable itemPrinted;
+    private final ComputerTerminal printGround;
 
     /**
      * Constructor.

@@ -10,11 +10,12 @@ import game.action.ConsumeAction;
  * Represents a pot of gold which can be consumed by the actor
  * to add a balance of moneyValue to the actor
  * Created by:
+ *
  * @author Vedansh Malhan
  */
 public class PotOfGold extends Item implements Consumable {
 
-    private int moneyValue = 10;
+    private final int moneyValue = 10;
 
     /**
      * Constructor.

@@ -13,8 +13,8 @@ import game.utility.Probability;
  * @author Dean Mascitti
  */
 public class ToiletRoll extends Item implements Printable {
-    private int creditCost;
-    private double costProbability;
+    private final int creditCost;
+    private final double costProbability;
 
     /***
      * Constructor.
