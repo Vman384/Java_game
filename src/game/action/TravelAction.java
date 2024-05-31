@@ -102,3 +102,4 @@ public class TravelAction extends MoveActorAction {
         return currentLocation.map() == this.travelgameMap;
     }
 }
+

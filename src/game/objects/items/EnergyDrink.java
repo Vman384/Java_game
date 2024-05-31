@@ -11,6 +11,11 @@ import game.objects.ground.ComputerTerminal;
 import game.utility.PrintValidation;
 import game.utility.Probability;
 
+/**
+ * EnergyDrink class represents the class for the consumable item of an energy drink.
+ *
+ * @author Dean Mascitti
+ */
 public class EnergyDrink extends Item implements Printable, Consumable {
     private final int healEffects = 1;
     private int creditCost;

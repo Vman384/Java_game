@@ -83,3 +83,4 @@ public class Teleporter extends Item implements Printable, Teleportable {
         return gameMap.at(xValue, yValue);
     }
 }
+

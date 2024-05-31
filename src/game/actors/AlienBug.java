@@ -48,3 +48,4 @@ public class AlienBug extends NPC implements Spawnable {
     }
 
 }
+
