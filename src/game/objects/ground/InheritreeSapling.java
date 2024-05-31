@@ -10,17 +10,20 @@ import game.spawning.SimpleSpawner;
 /**
  * Represents a sapling Inheritree object in the game.
  * This class extends the Tree class.
- * Created by:
  *
- * @author Weize Yu
+ * @author Dean Mascitti
  */
 public class InheritreeSapling extends Tree implements Transformable {
     private int transformAge;
     private final static int NEXT_TRANSFORMATION = 6;
     private EvolutionManager evolutionManager;
+
+
     /**
      * Constructs a new InheritreeSapling object.
-     * Initializes its symbol and adds a fruit spawn rules.
+     *
+     * @param initialAge the initial age of the sapling inheritree
+     * @param spawnRules rules for its spawning objects
      */
     public InheritreeSapling(int initialAge, SpawnRule... spawnRules) {
         super('t', initialAge, spawnRules);
@@ -52,6 +55,11 @@ public class InheritreeSapling extends Tree implements Transformable {
     }
 
 
+    /**
+     * Assigns the sapling inheritree with the evolution manager managing its next evolution stages.
+     *
+     * @param evolutionManager the evolution manager object
+     */
     @Override
     public void assignEvolutionManager(EvolutionManager evolutionManager) {
         this.evolutionManager = evolutionManager;

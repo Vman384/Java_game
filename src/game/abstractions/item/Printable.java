@@ -4,7 +4,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import game.objects.ground.ComputerTerminal;
 
 /**
- * PrintableItem interface which each class that can be printed implements.
+ * Printable interface which each class that can be printed implements.
  *
  * @author Dean Mascitti
  */

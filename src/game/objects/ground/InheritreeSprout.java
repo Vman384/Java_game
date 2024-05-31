@@ -5,13 +5,23 @@ import game.abstractions.spawnable.SpawnRule;
 import game.abstractions.transformable.EvolutionManager;
 import game.abstractions.transformable.Transformable;
 
-
+/**
+ * InheritreeSprout class representing the sprout stage of the inheritree.
+ *
+ * @author Dean Mascitti
+ */
 public class InheritreeSprout extends Tree implements Transformable {
 
     private int transformAge;
     private final static int NEXT_TRANSFORMATION = 3;
     private EvolutionManager evolutionManager;
 
+    /**
+     * Constructor
+     *
+     * @param initialAge the initial age of the inheritree sprout
+     * @param spawnRules rules for spawning its objects
+     */
     public InheritreeSprout(int initialAge, SpawnRule... spawnRules) {
         super(',', initialAge, spawnRules);
         this.transformAge = initialAge + NEXT_TRANSFORMATION;
@@ -32,9 +42,9 @@ public class InheritreeSprout extends Tree implements Transformable {
     }
 
     /**
-     * Determines if the InheritreeSprout can transform into a mature tree.
+     * Determines if the InheritreeSprout can transform into a young inheritree.
      *
-     * @return True if the tree has reached the transformation age, otherwise false.
+     * @return True if the tree has reached the required transformation age, otherwise false.
      */
     @Override
     public boolean canTransform() {
@@ -42,6 +52,11 @@ public class InheritreeSprout extends Tree implements Transformable {
     }
 
 
+    /**
+     * Assigns the sprout with the evolution manager managing its next evolution stages.
+     *
+     * @param evolutionManager the evolution manager object
+     */
     @Override
     public void assignEvolutionManager(EvolutionManager evolutionManager) {
         this.evolutionManager = evolutionManager;

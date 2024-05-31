@@ -5,14 +5,26 @@ import game.abstractions.spawnable.SpawnRule;
 import game.abstractions.transformable.EvolutionManager;
 import game.abstractions.transformable.Transformable;
 
+/**
+ * InheritreeYoung class represents the young stage of the inheritree.
+ *
+ * @author Dean Mascitti
+ */
 public class InheritreeYoung extends Tree implements Transformable {
 
     private int transformAge;
     private final static int NEXT_TRANSFORMATION = 5;
     private EvolutionManager evolutionManager;
+
     /**
      * Constructs a new InheritreeYoung object.
      * Initializes its symbol and adds a fruit spawn rules.
+     */
+    /**
+     * Constructs a new InheritreeYoung object.
+     *
+     * @param initialAge ititial age of the young inheritree
+     * @param spawnRules rules for its spawning objects
      */
     public InheritreeYoung(int initialAge, SpawnRule... spawnRules) {
         super('y', initialAge, spawnRules);
@@ -43,6 +55,11 @@ public class InheritreeYoung extends Tree implements Transformable {
     }
 
 
+    /**
+     * Assigns the young inheritree with the evolution manager managing its next evolution stages.
+     *
+     * @param evolutionManager the evolution manager object
+     */
     @Override
     public void assignEvolutionManager(EvolutionManager evolutionManager) {
         this.evolutionManager = evolutionManager;
