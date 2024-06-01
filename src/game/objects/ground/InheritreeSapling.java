@@ -2,7 +2,6 @@ package game.objects.ground;
 
 import edu.monash.fit2099.engine.positions.Location;
 import game.abstractions.spawnable.SpawnRule;
-import game.abstractions.transformable.EvolutionManager;
 import game.abstractions.transformable.Transformable;
 
 /**
@@ -14,8 +13,6 @@ import game.abstractions.transformable.Transformable;
 public class InheritreeSapling extends Tree implements Transformable {
     private final static int NEXT_TRANSFORMATION = 6;
     private final int transformAge;
-    private EvolutionManager evolutionManager;
-
 
     /**
      * Constructs a new InheritreeSapling object.
@@ -50,16 +47,5 @@ public class InheritreeSapling extends Tree implements Transformable {
     @Override
     public boolean canTransform() {
         return age >= this.transformAge; // Adjust the transformation age as needed
-    }
-
-
-    /**
-     * Assigns the sapling inheritree with the evolution manager managing its next evolution stages.
-     *
-     * @param evolutionManager the evolution manager object
-     */
-    @Override
-    public void assignEvolutionManager(EvolutionManager evolutionManager) {
-        this.evolutionManager = evolutionManager;
     }
 }

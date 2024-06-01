@@ -1,7 +1,6 @@
 package game.objects.ground;
 
 import game.abstractions.spawnable.SpawnRule;
-import game.abstractions.transformable.EvolutionManager;
 import game.abstractions.transformable.Transformable;
 
 /**
@@ -12,7 +11,6 @@ import game.abstractions.transformable.Transformable;
  * @author Dean Mascitti
  */
 public class InheritreeMature extends Tree implements Transformable {
-    private EvolutionManager evolutionManager;
 
     /**
      * Constructor for InheritreeMature objects.
@@ -24,15 +22,6 @@ public class InheritreeMature extends Tree implements Transformable {
         super('T', initialAge, spawnrules);
     }
 
-    /**
-     * Assigns the mature inheritree with the evolution manager managing its next evolution stages.
-     *
-     * @param evolutionManager the evolution manager object
-     */
-    @Override
-    public void assignEvolutionManager(EvolutionManager evolutionManager) {
-        this.evolutionManager = evolutionManager; // for if there are more stages in the future
-    }
 
     @Override
     public boolean canTransform() {

@@ -1,8 +1,7 @@
 package game.abstractions.transformable;
 
 import edu.monash.fit2099.engine.positions.Location;
-import game.objects.ground.GroundBase;
-import game.objects.ground.Tree;
+import game.abstractions.ground.GroundBase;
 
 import java.util.Queue;
 
