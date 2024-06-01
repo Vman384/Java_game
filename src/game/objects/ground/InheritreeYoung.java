@@ -1,15 +1,13 @@
 package game.objects.ground;
 
-import edu.monash.fit2099.engine.positions.Location;
 import game.abstractions.spawnable.SpawnRule;
-import game.abstractions.transformable.Transformable;
 
 /**
  * InheritreeYoung class represents the young stage of the inheritree.
  *
  * @author Dean Mascitti
  */
-public class InheritreeYoung extends Tree implements Transformable {
+public class InheritreeYoung extends Tree {
 
     private final static int NEXT_TRANSFORMATION = 5;
     private final int transformAge;
@@ -27,19 +25,6 @@ public class InheritreeYoung extends Tree implements Transformable {
     public InheritreeYoung(int initialAge, SpawnRule... spawnRules) {
         super('y', initialAge, spawnRules);
         this.transformAge = initialAge + NEXT_TRANSFORMATION;
-    }
-
-    /**
-     * Performs actions that occur on each game tick, such as aging and potentially transforming.
-     *
-     * @param location the location of the tree in the game world
-     */
-    @Override
-    public void tick(Location location) {
-        super.tick(location);
-        if (canTransform()) {
-            this.evolutionManager.evolve(location);
-        }
     }
 
     /**

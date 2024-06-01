@@ -1,7 +1,6 @@
 package game.objects.ground;
 
 import game.abstractions.spawnable.SpawnRule;
-import game.abstractions.transformable.Transformable;
 
 /**
  * Represents a mature Inheritree object in the game.
@@ -10,7 +9,7 @@ import game.abstractions.transformable.Transformable;
  * @author Weize Yu
  * @author Dean Mascitti
  */
-public class InheritreeMature extends Tree implements Transformable {
+public class InheritreeMature extends Tree {
 
     /**
      * Constructor for InheritreeMature objects.
@@ -22,9 +21,4 @@ public class InheritreeMature extends Tree implements Transformable {
         super('T', initialAge, spawnrules);
     }
 
-
-    @Override
-    public boolean canTransform() {
-        return false;
-    }
 }

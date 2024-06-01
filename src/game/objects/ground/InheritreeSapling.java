@@ -1,8 +1,6 @@
 package game.objects.ground;
 
-import edu.monash.fit2099.engine.positions.Location;
 import game.abstractions.spawnable.SpawnRule;
-import game.abstractions.transformable.Transformable;
 
 /**
  * Represents a sapling Inheritree object in the game.
@@ -10,7 +8,7 @@ import game.abstractions.transformable.Transformable;
  *
  * @author Dean Mascitti
  */
-public class InheritreeSapling extends Tree implements Transformable {
+public class InheritreeSapling extends Tree {
     private final static int NEXT_TRANSFORMATION = 6;
     private final int transformAge;
 
@@ -23,20 +21,6 @@ public class InheritreeSapling extends Tree implements Transformable {
     public InheritreeSapling(int initialAge, SpawnRule... spawnRules) {
         super('t', initialAge, spawnRules);
         this.transformAge = initialAge + NEXT_TRANSFORMATION;
-    }
-
-    /**
-     * Performs actions that occur on each game tick, such as aging and potentially transforming.
-     *
-     * @param location the location of the tree in the game world
-     */
-    @Override
-    public void tick(Location location) {
-        super.tick(location);
-        if (canTransform()) {
-            this.evolutionManager.evolve(location);
-        }
-
     }
 
     /**
