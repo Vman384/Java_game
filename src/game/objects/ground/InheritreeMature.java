@@ -11,7 +11,7 @@ import game.abstractions.transformable.Transformable;
  * @author Weize Yu
  * @author Dean Mascitti
  */
-public class InheritreeMature extends Tree implements Transformable {
+public class InheritreeMature extends Tree{
     private EvolutionManager evolutionManager;
 
     /**
@@ -32,10 +32,5 @@ public class InheritreeMature extends Tree implements Transformable {
     @Override
     public void assignEvolutionManager(EvolutionManager evolutionManager) {
         this.evolutionManager = evolutionManager; // for if there are more stages in the future
-    }
-
-    @Override
-    public boolean canTransform() {
-        return false;
     }
 }
