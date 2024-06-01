@@ -5,7 +5,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.displays.Display;
 import game.abstractions.item.Monolouge;
-import game.abstractions.item.Printable;
+import game.abstractions.item.Purchasable;
 import game.abstractions.item.SubscriptionItem;
 import game.action.MonolougeAction;
 import game.objects.ground.ComputerTerminal;
@@ -20,7 +20,7 @@ import java.util.ArrayList;
  * @author Vedansh Malhan
  */
 
-public class AiDevice extends SubscriptionItem implements Printable, Monolouge {
+public class AiDevice extends SubscriptionItem implements Purchasable, Monolouge {
 
     // The cost of subscribing to the AI Device
     private static final int SUBSCRIPTION_FEE = 1;

@@ -8,7 +8,7 @@ import game.objects.ground.ComputerTerminal;
  *
  * @author Dean Mascitti
  */
-public interface Printable {
+public interface Purchasable {
 
     /**
      * This method is overriden by each printable item in which their respective printing process can be implemented.

@@ -42,15 +42,4 @@ public abstract class Tree extends SpawnerGround {
         age++;
     }
 
-
-    /**
-     * Transforms the tree into another form. Subclasses can override this method to implement specific transformation behavior.
-     *
-     * @return the transformed tree, which may be of a different type than the original tree
-     */
-    public Tree transform() {
-        // By default, the tree does not transform and returns itself
-        return this;
-    }
-
 }

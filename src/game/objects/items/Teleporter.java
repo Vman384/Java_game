@@ -6,7 +6,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
-import game.abstractions.item.Printable;
+import game.abstractions.item.Purchasable;
 import game.abstractions.item.Teleportable;
 import game.action.TravelAction;
 import game.objects.ground.ComputerTerminal;
@@ -17,7 +17,7 @@ import game.utility.Probability;
  * The teleporter class represents an item that can teleport an actor to a random location within the same game map.
  * It implements PrintableItem and Teleportable interfaces.
  */
-public class Teleporter extends Item implements Printable, Teleportable {
+public class Teleporter extends Item implements Purchasable, Teleportable {
     /**
      * Cost of teleporting device
      */

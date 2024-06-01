@@ -4,7 +4,7 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.abstractions.item.Printable;
+import game.abstractions.item.Purchasable;
 import game.action.AttackAction;
 import game.objects.ground.ComputerTerminal;
 import game.utility.PrintValidation;
@@ -15,7 +15,7 @@ import game.utility.Probability;
  *
  * @author Dean Mascitti
  */
-public class DragonSlayerSword extends WeaponItem implements Printable {
+public class DragonSlayerSword extends WeaponItem implements Purchasable {
     private final int creditCost;
     private final double errorProbability;
 
