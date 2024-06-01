@@ -144,31 +144,48 @@ public class Application {
         buyActionGenerator = new BuyActionGenerator(itemModifiers);
         staticFactoryMap.at(3, 9).addActor(new Humanoid(buyActionGenerator));
 
-        player.addItemToInventory(new JarOfPickles());
-        player.addItemToInventory(new JarOfPickles());
-        player.addItemToInventory(new JarOfPickles());
-        player.addItemToInventory(new PotOfGold());
-        player.addItemToInventory(new PotOfGold());
-        player.addItemToInventory(new PotOfGold());
+//        player.addItemToInventory(new JarOfPickles());
+//        player.addItemToInventory(new JarOfPickles());
+//        player.addItemToInventory(new JarOfPickles());
+//        player.addItemToInventory(new PotOfGold());
+//        player.addItemToInventory(new PotOfGold());
+//        player.addItemToInventory(new PotOfGold());
 
         player.addBalance(10000);
 
-        Queue<GroundBase> treeStages = new LinkedList<>();
+        Queue<GroundBase> treeStagesConnascence = new LinkedList<>();
 
         int sproutInitialAge = 0;
         int saplingInitialAge = sproutInitialAge + 3;
         int youngInitialAge = saplingInitialAge + 6;
         int matureInitialAge = youngInitialAge + 5;
 
-        treeStages.add(new InheritreeSapling(saplingInitialAge, new SimpleSpawner(0.3, new SmallFruit())));
-        treeStages.add(new InheritreeYoung(youngInitialAge));
-        treeStages.add(new InheritreeMature(matureInitialAge, new SimpleSpawner(0.2, new LargeFruit())));
+        treeStagesConnascence.add(new InheritreeSapling(saplingInitialAge, new SimpleSpawner(0.3, new SmallFruit())));
+        treeStagesConnascence.add(new InheritreeYoung(youngInitialAge));
+        treeStagesConnascence.add(new InheritreeMature(matureInitialAge, new SimpleSpawner(0.2, new LargeFruit())));
 
-        EvolutionManager evolutionManager = new EvolutionManager(treeStages);
+        EvolutionManager evolutionManager = new EvolutionManager(treeStagesConnascence);
         InheritreeSprout initialInheritree = new InheritreeSprout(sproutInitialAge);
         initialInheritree.assignEvolutionManager(evolutionManager);
 
-        polymorphiaMap.at(8, 6).setGround(initialInheritree);
+        // can have different growth stages for different maps as is all dependent on evolution manager
+        connascenceMap.at(8, 6).setGround(initialInheritree);
+
+        Queue<GroundBase> treeStagesPolymorphia = new LinkedList<>();
+
+
+        int saplingInitialAgePoly = 0;
+        int matureInitialAgePoly = saplingInitialAgePoly + 5;
+
+
+        treeStagesPolymorphia.add(new InheritreeMature(matureInitialAgePoly, new SimpleSpawner(0.2, new LargeFruit())));
+
+        EvolutionManager evolutionManagerPoly = new EvolutionManager(treeStagesPolymorphia);
+        InheritreeSapling initialInheritreePoly = new InheritreeSapling(saplingInitialAgePoly, new SimpleSpawner(0.3, new SmallFruit()));
+        initialInheritreePoly.assignEvolutionManager(evolutionManagerPoly);
+
+        // can have different growth stages for different maps as is all dependent on evolution manager
+        polymorphiaMap.at(8, 6).setGround(initialInheritreePoly);
 
 
         polymorphiaMap.at(10, 10).setGround(new Crater(new SimpleSpawner(0.2, new HuntsmanSpider())));
