@@ -3,6 +3,7 @@ package game.abstractions.ground;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.abstractions.spawnable.SpawnRule;
+import game.objects.ground.GroundBase;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,7 +15,7 @@ import java.util.List;
  *
  * @author Weize Yu
  */
-public class SpawnerGround extends Ground {
+public class SpawnerGround extends GroundBase {
 
     /**
      * List of rules for spawning items near the tree.

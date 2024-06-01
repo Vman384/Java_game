@@ -20,17 +20,7 @@ import game.actors.HuntsmanSpider;
 import game.actors.Player;
 import game.actors.SuspiciousAlien;
 import game.maps.Maps;
-import game.objects.ground.ComputerTerminal;
-import game.objects.ground.Crater;
-import game.objects.ground.Dirt;
-import game.objects.ground.Floor;
-import game.objects.ground.InheritreeMature;
-import game.objects.ground.InheritreeSapling;
-import game.objects.ground.InheritreeSprout;
-import game.objects.ground.InheritreeYoung;
-import game.objects.ground.Puddle;
-import game.objects.ground.Tree;
-import game.objects.ground.Wall;
+import game.objects.ground.*;
 import game.objects.items.AiDevice;
 import game.objects.items.DragonSlayerSword;
 import game.objects.items.EnergyDrink;
@@ -163,7 +153,7 @@ public class Application {
 
         player.addBalance(10000);
 
-        Queue<Tree> treeStages = new LinkedList<>();
+        Queue<GroundBase> treeStages = new LinkedList<>();
 
         int sproutInitialAge = 0;
         int saplingInitialAge = sproutInitialAge + 3;

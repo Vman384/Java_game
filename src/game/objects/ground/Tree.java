@@ -43,15 +43,6 @@ public abstract class Tree extends SpawnerGround {
         age++;
     }
 
-    /**
-     * Checks if the tree can transform into another form based on certain conditions.
-     *
-     * @return true if the tree can transform, false otherwise
-     */
-    public boolean canTransform() {
-        return false;
-    }
-
 
     /**
      * Transforms the tree into another form. Subclasses can override this method to implement specific transformation behavior.
@@ -63,5 +54,4 @@ public abstract class Tree extends SpawnerGround {
         return this;
     }
 
-    public abstract void assignEvolutionManager(EvolutionManager evolutionManager);
 }

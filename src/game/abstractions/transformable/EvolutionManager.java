@@ -1,6 +1,7 @@
 package game.abstractions.transformable;
 
 import edu.monash.fit2099.engine.positions.Location;
+import game.objects.ground.GroundBase;
 import game.objects.ground.Tree;
 
 import java.util.Queue;
@@ -10,7 +11,7 @@ import java.util.Queue;
  * It maintains a queue of evolution stages and handles the transition to the next stage.
  */
 public class EvolutionManager {
-    private final Queue<Tree> evolutionStages;
+    private final Queue<GroundBase> evolutionStages;
 
     /**
      * Constructs an EvolutionManager with a sequence of evolution stages.
@@ -18,7 +19,7 @@ public class EvolutionManager {
      * @param evolutionStages A Queue containing the different stages of evolution.
      * @throws IllegalArgumentException If the evolution stages are null or empty.
      */
-    public EvolutionManager(Queue<Tree> evolutionStages) {
+    public EvolutionManager(Queue<GroundBase> evolutionStages) {
         if (evolutionStages.isEmpty()) {
             throw new IllegalArgumentException("Evolution stages cannot be empty.");
         }
@@ -42,10 +43,10 @@ public class EvolutionManager {
      */
     public void evolve(Location location) {
         if (hasNextStage()) {
-            Tree nextStageTree = evolutionStages.poll();
-            assert nextStageTree != null;
-            nextStageTree.assignEvolutionManager(this);
-            location.setGround(nextStageTree);
+            GroundBase nextStage = evolutionStages.poll();
+            assert nextStage != null;
+            nextStage.assignEvolutionManager(this);
+            location.setGround(nextStage);
         } else {
             throw new IllegalStateException("Cannot evolve: No more evolution stages available.");
         }
