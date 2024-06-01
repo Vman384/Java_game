@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
+import game.abstractions.ground.GroundBase;
 import game.abstractions.item.Printable;
 import game.abstractions.transformable.EvolutionManager;
 import game.action.TravelAction;

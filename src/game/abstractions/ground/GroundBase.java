@@ -1,4 +1,4 @@
-package game.objects.ground;
+package game.abstractions.ground;
 
 import edu.monash.fit2099.engine.positions.Ground;
 import game.abstractions.transformable.EvolutionManager;
