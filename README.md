@@ -5,4 +5,4 @@ A2 Contribution Log:
 https://docs.google.com/spreadsheets/d/1wuQj6lBI9yzbE56OdSR9qHaZMXB5VB0PfMqkTOFL4Ms/edit#gid=0
 
 A3 Req 3 video:
-https://youtu.be/MZdoSUlXQsQ
+https://youtu.be/ly4B3gLPzv8
