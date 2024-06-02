@@ -95,6 +95,7 @@ public class AiDevice extends SubscriptionItem implements Purchasable, Monolouge
      */
     @Override
     public void subscriptionAction(Actor actor) {
+        this.MonolougeOptions.clear();
         this.MonolougeOptions.add("The factory will never gonna give you up, valuable intern!");
         this.MonolougeOptions.add("We promise we never gonna let you down with a range of staff benefits.");
         this.MonolougeOptions.add("We never gonna run around and desert you, dear intern!");
