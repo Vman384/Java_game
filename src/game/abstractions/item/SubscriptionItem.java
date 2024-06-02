@@ -72,13 +72,12 @@ public abstract class SubscriptionItem extends Item {
      * @param actor The actor performing the subscription action
      */
     public void subscriptionAction(Actor actor) {
-        actor.deductBalance(SubscriptionFee);
+        return;
     }
 
     /**
      * Updates the subscription status and performs the subscription action if
      * necessary.
-     * <p>
      * This method is called once per turn, if the Item is being carried.
      *
      * @param currentLocation The location of the actor carrying this Item.

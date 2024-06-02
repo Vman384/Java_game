@@ -4,6 +4,7 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.displays.Display;
+import edu.monash.fit2099.engine.positions.GameMap;
 import game.abstractions.item.Monolouge;
 import game.abstractions.item.Purchasable;
 import game.abstractions.item.SubscriptionItem;
@@ -89,12 +90,9 @@ public class AiDevice extends SubscriptionItem implements Purchasable, Monolouge
     }
 
     /**
-     * Performs the subscription action for the AI Device, adding a new monologue to the list of options.
-     *
-     * @param actor the actor performing the subscription action
+     * Chooses a random monologue from the list of options and prints it to the display.
      */
-    @Override
-    public void subscriptionAction(Actor actor) {
+    public void monologue(Actor actor, GameMap map) {
         this.MonolougeOptions.clear();
         this.MonolougeOptions.add("The factory will never gonna give you up, valuable intern!");
         this.MonolougeOptions.add("We promise we never gonna let you down with a range of staff benefits.");
@@ -109,12 +107,6 @@ public class AiDevice extends SubscriptionItem implements Purchasable, Monolouge
         if (actor.getAttribute(BaseActorAttributes.HEALTH) <= HEALTH_MONOLOGUE_OPTION) {
             this.MonolougeOptions.add("Don't worry, we never gonna tell a lie and hurt you, unlike those hostile creatures.");
         }
-    }
-
-    /**
-     * Chooses a random monologue from the list of options and prints it to the display.
-     */
-    public void monologue() {
         String toPrint = Probability.pickRandom(this.MonolougeOptions);
         Display display = new Display();
         display.print(toPrint);

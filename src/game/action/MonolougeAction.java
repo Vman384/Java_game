@@ -31,7 +31,7 @@ public class MonolougeAction extends Action {
      */
     @Override
     public String execute(Actor actor, GameMap map) {
-        monolouge.monologue();
+        monolouge.monologue(actor, map);
         return "";
     }
 
